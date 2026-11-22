@@ -476,11 +476,38 @@
     min-width: 220px;
   }
 
+  .item-editor-slot {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
   .item-cell-wrap input {
     width: 100%;
     padding: 5px 8px;
     font-size: 0.82rem;
     background: var(--surface-deep);
+  }
+
+  .item-display-btn {
+    width: 100%;
+    text-align: left;
+    padding: 5px 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-strong);
+    background: var(--surface-deep);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: text;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .item-display-btn:hover {
+    border-color: var(--forever-border);
+    background: var(--surface-2);
   }
 
   .gear-table select {
@@ -911,6 +938,7 @@ let todoSort = "remaining_desc";
 let todoHideDone = false;
 let openInstances = new Set(["The Temple of Atal'Hakkar (Sunken Temple)"]);
 let tableSort = { col: "Instance", dir: "asc" };
+let editingItemId = null;
 let toastTimer = null;
 
 const els = {
@@ -1018,16 +1046,44 @@ function isUrl(str) {
   return /^https?:\/\//i.test(String(str || "").trim());
 }
 
+const LOWERCASE_WORDS = new Set(["a", "an", "and", "at", "by", "for", "from", "in", "of", "on", "or", "the", "to", "with"]);
+
+function parseWowheadItemUrl(str) {
+  const s = String(str || "").trim();
+  if (!isUrl(s)) return null;
+  let parsed;
+  try {
+    parsed = new URL(s);
+  } catch {
+    return null;
+  }
+  const host = parsed.hostname.toLowerCase();
+  if (host !== "wowhead.com" && !host.endsWith(".wowhead.com")) return null;
+
+  // Match /item=12345 or /forever/item=12345/living-crown or /classic/item=16670/boots-of-elements
+  const m = parsed.pathname.match(/\/item=(\d+)(?:\/([^/?#]+))?/i);
+  if (!m) return null;
+
+  const itemId = m[1];
+  const slug = m[2];
+  if (slug) {
+    const words = decodeURIComponent(slug).replace(/[-_]+/g, " ").trim().split(/\s+/);
+    const title = words.map((w, idx) => {
+      const lower = w.toLowerCase();
+      if (idx > 0 && LOWERCASE_WORDS.has(lower)) return lower;
+      return lower.charAt(0).toUpperCase() + lower.slice(1);
+    }).join(" ");
+    if (title) return title;
+  }
+  return `Item #${itemId}`;
+}
+
 function shortLabelForItem(str) {
   const s = String(str || "").trim();
   if (!s) return "";
-  if (isUrl(s)) {
-    const m = s.match(/\/item=\d+\/([^/?#]+)/i);
-    if (m) {
-      return m[1].split("-").map(w => w ? w[0].toUpperCase() + w.slice(1) : "").join(" ");
-    }
-    return "Item Link";
-  }
+  const wh = parseWowheadItemUrl(s);
+  if (wh) return wh;
+  if (isUrl(s)) return "Item Link";
   return s;
 }
 
@@ -1229,6 +1285,8 @@ function renderGearTab() {
     }
 
     const itemIsUrl = isUrl(item.itemText);
+    const wowheadName = parseWowheadItemUrl(item.itemText);
+    const showDisplayMode = Boolean(wowheadName) && editingItemId !== item.id;
 
     return `
       <tr class="${item.obtained ? "row-obtained" : ""}" data-item-id="${esc(item.id)}">
@@ -1249,8 +1307,13 @@ function renderGearTab() {
         </td>
         <td>
           <div class="item-cell-wrap">
-            <input type="text" data-gear-field="itemText" value="${esc(item.itemText)}" placeholder="Paste Wowhead link or item name (optional)" />
-            ${itemIsUrl ? `<a class="inline-link" href="${esc(item.itemText.trim())}" target="_blank" rel="noopener noreferrer" title="Open link in new tab">↗</a>` : ""}
+            <div class="item-editor-slot">
+              ${showDisplayMode
+                ? `<button type="button" class="item-display-btn" data-edit-item="${esc(item.id)}" title="Click to edit Wowhead URL">${esc(wowheadName)}</button>`
+                : `<input type="text" data-gear-field="itemText" value="${esc(item.itemText)}" placeholder="Paste Wowhead link or item name (optional)" />`
+              }
+            </div>
+            <a class="inline-link ${itemIsUrl ? "" : "hidden"}" data-item-open-link href="${itemIsUrl ? esc(item.itemText.trim()) : "#"}" target="_blank" rel="noopener noreferrer" title="Open link in new tab">↗</a>
           </div>
         </td>
         <td style="width:36px;text-align:right">
@@ -2073,6 +2136,21 @@ els.gearView.addEventListener("click", (e) => {
     els.gearFileInput.click();
     return;
   }
+  const editItemBtn = e.target.closest("[data-edit-item]");
+  if (editItemBtn) {
+    const id = editItemBtn.getAttribute("data-edit-item");
+    const tr = editItemBtn.closest("tr[data-item-id]");
+    const item = gs.items.find(i => i.id === id);
+    if (tr && item) {
+      editingItemId = id;
+      const slotDiv = tr.querySelector(".item-editor-slot");
+      slotDiv.innerHTML = `<input type="text" data-gear-field="itemText" value="${esc(item.itemText)}" placeholder="Paste Wowhead link or item name (optional)" />`;
+      const input = slotDiv.querySelector("input");
+      input.focus();
+      input.select();
+    }
+    return;
+  }
   const delBtn = e.target.closest("[data-delete-item]");
   if (delBtn) {
     const id = delBtn.getAttribute("data-delete-item");
@@ -2102,7 +2180,7 @@ els.gearView.addEventListener("change", (e) => {
   }
   const tr = e.target.closest("tr[data-item-id]");
   const field = e.target.getAttribute("data-gear-field");
-  if (!tr || !field) return;
+  if (!tr || !field || field === "itemText") return;
   const item = gs.items.find(i => i.id === tr.getAttribute("data-item-id"));
   if (!item) return;
 
@@ -2121,8 +2199,6 @@ els.gearView.addEventListener("change", (e) => {
     item.boss = e.target.value;
   } else if (field === "slot") {
     item.slot = e.target.value;
-  } else if (field === "itemText") {
-    item.itemText = e.target.value;
   }
   saveState();
   render();
@@ -2160,7 +2236,46 @@ els.gearView.addEventListener("input", (e) => {
     if (item) {
       item.itemText = e.target.value;
       saveState();
+      // Keep the sibling ↗ open-URL button synced live while typing/pasting
+      const linkEl = tr.querySelector("[data-item-open-link]");
+      if (linkEl) {
+        const valid = isUrl(item.itemText);
+        linkEl.classList.toggle("hidden", !valid);
+        linkEl.href = valid ? item.itemText.trim() : "#";
+      }
     }
+  }
+});
+
+// Convert valid Wowhead URLs into readable item names on blur (without disturbing sibling ↗ link clicks)
+els.gearView.addEventListener("focusout", (e) => {
+  if (e.target.getAttribute("data-gear-field") !== "itemText") return;
+  const gs = getActiveSet();
+  const tr = e.target.closest("tr[data-item-id]");
+  const item = tr && gs.items.find(i => i.id === tr.getAttribute("data-item-id"));
+  if (!item) return;
+
+  item.itemText = e.target.value.trim();
+  editingItemId = null;
+  saveState();
+
+  const linkEl = tr.querySelector("[data-item-open-link]");
+  if (linkEl) {
+    const valid = isUrl(item.itemText);
+    linkEl.classList.toggle("hidden", !valid);
+    linkEl.href = valid ? item.itemText : "#";
+  }
+
+  const wowheadName = parseWowheadItemUrl(item.itemText);
+  if (wowheadName) {
+    const slotDiv = tr.querySelector(".item-editor-slot");
+    slotDiv.innerHTML = `<button type="button" class="item-display-btn" data-edit-item="${esc(item.id)}" title="Click to edit Wowhead URL">${esc(wowheadName)}</button>`;
+  }
+});
+
+els.gearView.addEventListener("keydown", (e) => {
+  if (e.target.getAttribute("data-gear-field") === "itemText" && (e.key === "Enter" || e.key === "Escape")) {
+    e.target.blur();
   }
 });
 
