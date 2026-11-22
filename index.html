@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WoW Forever (1.60.1) — Pre-BiS &amp; Dungeon Tracker</title>
+<style>
+  :root {
+    /* Wowhead-sampled neutral dark grays */
+    --bg: #101010;
+    --surface: #181818;
+    --surface-2: #202020;
+    --surface-deep: #141414;
+    --hover: #242424;
+    --border: #2d2d2d;
+    --border-strong: #3d3d3d;
+
+    /* Crisp Wowhead foreground hierarchy */
+    --text: #e6e6e6;
+    --text-strong: #ffffff;
+    --muted: #8f8f8f;
+    --subtle: #666666;
+
+    /* WoW Forever sampled steel-cerulean blues */
+    --forever: #175b8c;
+    --forever-hover: #1e6ea8;
+    --forever-bright: #5db2e8;
+    --forever-text: #8ccbf2;
+    --forever-tint: rgba(23, 91, 140, 0.22);
+    --forever-tint-soft: rgba(23, 91, 140, 0.12);
+    --forever-border: #2874ab;
+
+    /* Semantic tones */
+    --success: #3fb950;
+    --success-tint: rgba(63, 185, 80, 0.14);
+    --danger: #d9534f;
+    --danger-tint: rgba(217, 83, 79, 0.14);
+
+    /* Boss type colors */
+    --type-main: #c8c8c8;
+    --type-final: #e06c75;
+    --type-rare: #b77ced;
+    --type-secret: #d97cb5;
+    --type-summoned: #4ec2b4;
+    --type-optional: #969696;
+    --type-event: #78a9d6;
+
+    --radius: 4px;
+    --radius-sm: 3px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 13.5px;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.42;
+  }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px 0;
+  }
+
+  .wrap {
+    max-width: 1380px;
+    margin: 0 auto;
+  }
+
+  .title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .brand-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .forever-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--forever);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--forever-border);
+    user-select: none;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-strong);
+    letter-spacing: -0.1px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-top: 4px;
+  }
+
+  .header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Top-level Tabs */
+  .main-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 14px;
+  }
+
+  .tab-btn {
+    background: var(--surface-deep);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    padding: 8px 15px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    bottom: -1px;
+    cursor: pointer;
+  }
+
+  .tab-btn:hover {
+    color: var(--text-strong);
+    background: var(--surface-2);
+    border-color: var(--border-strong);
+  }
+
+  .tab-btn.active {
+    background: var(--bg);
+    color: var(--text-strong);
+    border-color: var(--border);
+    box-shadow: inset 0 2px 0 var(--forever);
+  }
+
+  .tab-count {
+    background: var(--surface-2);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+
+  .tab-btn.active .tab-count {
+    background: var(--forever);
+    color: #ffffff;
+    border-color: var(--forever-border);
+  }
+
+  /* Form controls */
+  button, select, input[type="search"], input[type="text"], input[type="url"] {
+    font: inherit;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    outline: none;
+    transition: border-color 0.12s, background 0.12s;
+  }
+
+  button {
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  button:hover, select:hover, input:hover {
+    border-color: var(--border-strong);
+    background-color: var(--hover);
+  }
+
+  input:hover {
+    background-color: var(--surface-deep);
+  }
+
+  button:focus, select:focus, input:focus {
+    border-color: var(--forever-bright);
+  }
+
+  select:disabled, input:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    background: var(--surface-deep);
+  }
+
+  button.primary {
+    background: var(--forever);
+    border-color: var(--forever-border);
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  button.primary:hover {
+    background: var(--forever-hover);
+    border-color: var(--forever-bright);
+  }
+
+  button.danger {
+    color: #ef8a87;
+    border-color: rgba(217, 83, 79, 0.4);
+    background: var(--danger-tint);
+  }
+
+  button.danger:hover {
+    background: rgba(217, 83, 79, 0.24);
+    border-color: var(--danger);
+  }
+
+  button.toggle-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  button.toggle-pill.active {
+    background: var(--forever);
+    border-color: var(--forever-border);
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  button.toggle-pill.active:hover {
+    background: var(--forever-hover);
+  }
+
+  /* Sticky Compendium Controls */
+  .controls-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--surface-deep);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+  }
+
+  .controls-grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 2.2fr) minmax(190px, 1.3fr) minmax(150px, 1fr) minmax(185px, 1.1fr);
+    gap: 6px;
+    align-items: center;
+  }
+
+  .controls-row-2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .segmented {
+    display: inline-flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .segmented button {
+    border: none;
+    background: transparent;
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .segmented button:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+
+  .segmented button.active {
+    background: var(--forever);
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .inline-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .stat-pill {
+    background: var(--surface-deep);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 3px 9px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .stat-pill strong { color: var(--text-strong); }
+  .stat-pill.accent strong { color: var(--forever-text); }
+  .stat-pill.done strong { color: var(--success); }
+
+  label.chk {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    cursor: pointer;
+    user-select: none;
+    padding: 4px 6px;
+  }
+
+  label.chk:hover { color: var(--text); }
+  label.chk input[type="checkbox"] { accent-color: var(--forever); cursor: pointer; }
+
+  main {
+    padding: 14px 20px 48px;
+  }
+
+  /* Utilitarian rectangular tags */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+
+  .origin-forever {
+    background: var(--forever-tint);
+    color: var(--forever-text);
+    border-color: var(--forever-border);
+  }
+
+  .origin-classic {
+    background: var(--surface-2);
+    color: var(--muted);
+    border-color: var(--border-strong);
+  }
+
+  .type-Main { background: var(--surface-2); color: var(--type-main); border-color: var(--border); }
+  .type-Final { background: rgba(224, 108, 117, 0.14); color: var(--type-final); border-color: rgba(224, 108, 117, 0.35); }
+  .type-Rare { background: rgba(183, 124, 237, 0.14); color: var(--type-rare); border-color: rgba(183, 124, 237, 0.35); }
+  .type-Secret { background: rgba(217, 124, 181, 0.14); color: var(--type-secret); border-color: rgba(217, 124, 181, 0.35); }
+  .type-Summoned { background: rgba(78, 194, 180, 0.14); color: var(--type-summoned); border-color: rgba(78, 194, 180, 0.32); }
+  .type-Optional { background: var(--surface-deep); color: var(--type-optional); border-color: var(--border); }
+  .type-Event { background: rgba(120, 169, 214, 0.14); color: var(--type-event); border-color: rgba(120, 169, 214, 0.32); }
+
+  .accent-badge {
+    background: var(--forever-tint);
+    color: var(--forever-text);
+    border-color: var(--forever-border);
+  }
+
+  .done-tag {
+    background: var(--success-tint);
+    color: var(--success);
+    border-color: rgba(63, 185, 80, 0.35);
+  }
+
+  /* Panels */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+
+  .gearset-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .bookmark-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+
+  .bookmark-row label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .bookmark-row input {
+    flex: 1 1 320px;
+    font-size: 0.82rem;
+    background: var(--surface-deep);
+  }
+
+  a.link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--forever-border);
+    background: var(--forever);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  a.link-btn:hover { background: var(--forever-hover); }
+
+  a.inline-link {
+    color: var(--forever-text);
+    text-decoration: none;
+    font-size: 0.8rem;
+    padding: 4px 7px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--forever-border);
+    background: var(--forever-tint);
+    white-space: nowrap;
+  }
+
+  a.inline-link:hover { background: var(--forever); color: #ffffff; }
+
+  .item-cell-wrap {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 220px;
+  }
+
+  .item-cell-wrap input {
+    width: 100%;
+    padding: 5px 8px;
+    font-size: 0.82rem;
+    background: var(--surface-deep);
+  }
+
+  .gear-table select {
+    padding: 5px 7px;
+    font-size: 0.82rem;
+    width: 100%;
+    min-width: 114px;
+  }
+
+  .gear-table td.col-dungeon select { min-width: 175px; }
+  .gear-table td.col-boss select { min-width: 185px; }
+  .gear-table td.col-source select { min-width: 112px; }
+  .gear-table td.col-slot select { min-width: 112px; }
+
+  /* Dungeon Cards */
+  .instance-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .instance-card.forever-card { border-left: 3px solid var(--forever); }
+  .instance-card.classic-card { border-left: 3px solid var(--border-strong); }
+
+  .instance-header {
+    width: 100%;
+    text-align: left;
+    background: var(--surface-2);
+    border: none;
+    border-radius: 0;
+    padding: 9px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .instance-header:hover { background: var(--hover); }
+
+  .inst-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .chevron {
+    display: inline-block;
+    width: 14px;
+    color: var(--muted);
+    transition: transform 0.12s ease;
+    font-size: 0.72rem;
+  }
+
+  .instance-card.open .chevron {
+    transform: rotate(90deg);
+    color: var(--forever-bright);
+  }
+
+  .inst-name {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: var(--text-strong);
+  }
+
+  .inst-meta {
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .instance-body {
+    display: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .instance-card.open .instance-body { display: block; }
+
+  .wing-banner {
+    background: var(--surface-deep);
+    color: var(--forever-text);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 5px 14px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .instance-body .table-wrap {
+    border: none;
+    border-radius: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+  }
+
+  th, td {
+    padding: 7px 10px;
+    text-align: left;
+    border-bottom: 1px solid #242424;
+    vertical-align: middle;
+  }
+
+  th {
+    background: var(--surface-deep);
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.45px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border);
+  }
+
+  th.sortable { cursor: pointer; user-select: none; }
+  th.sortable:hover, th.sorted { color: var(--forever-text); }
+
+  tr:last-child td { border-bottom: none; }
+  tbody tr { background: var(--surface); }
+  tbody tr:nth-child(even) { background: #161616; }
+  tbody tr:hover { background: var(--hover); }
+  tbody tr.row-obtained { opacity: 0.48; }
+  tbody tr.row-obtained .boss-name { text-decoration: line-through; }
+  tbody tr.row-targeted { background: var(--forever-tint-soft); }
+  tbody tr.row-targeted:hover { background: var(--forever-tint); }
+
+  .order-cell {
+    color: var(--subtle);
+    font-variant-numeric: tabular-nums;
+    width: 36px;
+    text-align: right;
+  }
+
+  .check-cell {
+    width: 44px;
+    text-align: center;
+  }
+
+  .check-cell input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--forever);
+    cursor: pointer;
+    vertical-align: middle;
+  }
+
+  .boss-name {
+    font-weight: 600;
+    color: var(--text-strong);
+    white-space: nowrap;
+  }
+
+  .notes-cell {
+    color: var(--muted);
+    font-size: 0.8rem;
+    min-width: 220px;
+  }
+
+  .sources-cell {
+    color: var(--subtle);
+    font-size: 0.75rem;
+    min-width: 155px;
+  }
+
+  .remove-btn {
+    padding: 3px 7px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .remove-btn:hover {
+    color: #ef8a87;
+    border-color: rgba(217, 83, 79, 0.4);
+    background: var(--danger-tint);
+  }
+
+  /* To-Do item rows inside a boss cell */
+  .todo-drops {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .drop-chip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    background: var(--surface-deep);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  .drop-chip.done {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  .drop-chip input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--forever);
+    cursor: pointer;
+  }
+
+  .slot-tag {
+    background: var(--forever-tint);
+    color: var(--forever-text);
+    border: 1px solid var(--forever-border);
+    border-radius: 2px;
+    padding: 0 5px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .set-tag {
+    background: var(--surface-2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0 5px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .progress-wrap { margin-bottom: 12px; }
+  .progress-bar-bg {
+    height: 6px;
+    background: var(--surface-2);
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--forever);
+    transition: width 0.2s ease;
+  }
+  .progress-bar-fill.complete { background: var(--success); }
+
+  .empty-state {
+    text-align: center;
+    padding: 42px 20px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .empty-state h3 { margin: 0 0 8px; color: var(--text-strong); font-size: 1rem; }
+
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--forever);
+    color: #ffffff;
+    border: 1px solid var(--forever-border);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+  }
+
+  .toast.show { opacity: 1; }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 920px) {
+    .controls-grid { grid-template-columns: 1fr 1fr; }
+    .controls-grid input[type="search"] { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="title-row">
+      <div>
+        <div class="brand-line">
+          <span class="forever-pill">FOREVER 1.60.1</span>
+          <h1>Pre-BiS &amp; Dungeon Boss Tracker</h1>
+        </div>
+        <div class="subtitle">Assign dungeon bosses per gear slot — your farm To-Do list updates automatically.</div>
+      </div>
+      <div class="header-actions">
+        <button id="btnExport" class="primary" title="Export the active tab as CSV">Export CSV</button>
+        <button id="btnBackupJson" title="Download all gearsets as a JSON backup">Backup JSON</button>
+        <button id="btnRestoreJson" title="Restore gearsets from a JSON backup">Restore JSON…</button>
+        <input id="gearFileInput" type="file" accept=".csv,text/csv" class="hidden" />
+        <input id="jsonFileInput" type="file" accept=".json,application/json" class="hidden" />
+      </div>
+    </div>
+
+    <nav class="main-tabs" role="tablist">
+      <button id="tabGear" class="tab-btn active" role="tab" aria-selected="true">
+        Gear Builder <span class="tab-count" id="countGear">0</span>
+      </button>
+      <button id="tabTodo" class="tab-btn" role="tab" aria-selected="false">
+        Boss To-Do List <span class="tab-count" id="countTodo">0</span>
+      </button>
+      <button id="tabCompendium" class="tab-btn" role="tab" aria-selected="false">
+        Dungeon Compendium <span class="tab-count" id="countCompendium">0</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- COMPENDIUM STICKY CONTROLS -->
+<div class="controls-bar hidden" id="compendiumControls">
+  <div class="wrap">
+    <div class="controls-grid">
+      <input id="searchInput" type="search" placeholder="Search boss, instance, zone, notes…" autocomplete="off" />
+      <select id="instanceFilter" aria-label="Filter by instance"></select>
+      <select id="typeFilter" aria-label="Filter by boss type">
+        <option value="">All Boss Types</option>
+        <option value="Main">Main</option>
+        <option value="Final">Final</option>
+        <option value="Optional">Optional</option>
+        <option value="Rare">Rare</option>
+        <option value="Secret">Secret</option>
+        <option value="Summoned">Summoned</option>
+        <option value="Event">Event</option>
+      </select>
+      <select id="sortSelect" aria-label="Sort order">
+        <option value="instance_asc">Sort: Instance (A → Z)</option>
+        <option value="instance_desc">Sort: Instance (Z → A)</option>
+        <option value="level_asc">Sort: Level (Low → High)</option>
+        <option value="level_desc">Sort: Level (High → Low)</option>
+        <option value="bosses_desc">Sort: Boss Count (Most)</option>
+        <option value="bosses_asc">Sort: Boss Count (Fewest)</option>
+      </select>
+    </div>
+
+    <div class="controls-row-2">
+      <div class="inline-tools">
+        <div class="segmented" role="tablist">
+          <button id="viewGrouped" class="active" role="tab">Grouped by Instance</button>
+          <button id="viewTable" role="tab">Flat Table</button>
+        </div>
+        <button id="btnEndgame" class="toggle-pill" type="button" title="Only show Sunken Temple (50+) and higher dungeons">
+          Endgame Only (Sunken Temple+)
+        </button>
+        <label class="chk"><input type="checkbox" id="chkCoreOnly" /> Main &amp; Final only</label>
+      </div>
+      <div class="inline-tools">
+        <button id="btnExpandAll">Expand All</button>
+        <button id="btnCollapseAll">Collapse All</button>
+        <button id="btnResetFilters">Reset Filters</button>
+      </div>
+    </div>
+
+    <div class="stats" id="statsBar"></div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div id="gearView"><div class="empty-state"><h3>Loading boss database…</h3></div></div>
+    <div id="todoView" class="hidden"></div>
+    <div id="compendiumView" class="hidden"></div>
+  </div>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+const BOSSES_CSV_URL = "./wow_forever_dungeon_bosses.csv";
+
+const SLOTS = [
+  "Head", "Neck", "Shoulder", "Back", "Chest", "Wrist",
+  "Hands", "Waist", "Legs", "Feet", "Finger", "Trinket",
+  "Main Hand", "Off Hand", "Two Hand", "Ranged", "Relic"
+];
+
+const STANDARD_SLOTS = [
+  "Head", "Neck", "Shoulder", "Back", "Chest", "Wrist",
+  "Hands", "Waist", "Legs", "Feet", "Finger", "Finger",
+  "Trinket", "Trinket", "Main Hand", "Off Hand", "Ranged"
+];
+
+const SOURCES = [
+  "Dungeon", "Raid", "BoE", "Quest", "Honor",
+  "Rank", "Reputation", "Reals", "Profession"
+];
+
+const STORAGE_KEY = "wow_forever_1601_gearsets_v1";
+
+let allBosses = [];
+let state = null;
+let activeTab = "gear";          // "gear" | "todo" | "compendium"
+let viewMode = "grouped";        // Compendium: "grouped" | "table"
+let endgameOnly = false;
+let gearEndgameOnly = true;
+let gearSourceFilter = "";
+let gearHideObtained = false;
+let todoScope = "active";        // "active" | "all"
+let todoSort = "remaining_desc";
+let todoHideDone = false;
+let openInstances = new Set(["The Temple of Atal'Hakkar (Sunken Temple)"]);
+let tableSort = { col: "Instance", dir: "asc" };
+let toastTimer = null;
+
+const els = {
+  tabGear: document.getElementById("tabGear"),
+  tabTodo: document.getElementById("tabTodo"),
+  tabCompendium: document.getElementById("tabCompendium"),
+  countGear: document.getElementById("countGear"),
+  countTodo: document.getElementById("countTodo"),
+  countCompendium: document.getElementById("countCompendium"),
+  compendiumControls: document.getElementById("compendiumControls"),
+  gearView: document.getElementById("gearView"),
+  todoView: document.getElementById("todoView"),
+  compendiumView: document.getElementById("compendiumView"),
+  search: document.getElementById("searchInput"),
+  instance: document.getElementById("instanceFilter"),
+  type: document.getElementById("typeFilter"),
+  sort: document.getElementById("sortSelect"),
+  btnEndgame: document.getElementById("btnEndgame"),
+  coreOnly: document.getElementById("chkCoreOnly"),
+  stats: document.getElementById("statsBar"),
+  viewGrouped: document.getElementById("viewGrouped"),
+  viewTable: document.getElementById("viewTable"),
+  expandAll: document.getElementById("btnExpandAll"),
+  collapseAll: document.getElementById("btnCollapseAll"),
+  resetFilters: document.getElementById("btnResetFilters"),
+  exportBtn: document.getElementById("btnExport"),
+  backupJsonBtn: document.getElementById("btnBackupJson"),
+  restoreJsonBtn: document.getElementById("btnRestoreJson"),
+  gearFileInput: document.getElementById("gearFileInput"),
+  jsonFileInput: document.getElementById("jsonFileInput"),
+  toast: document.getElementById("toast"),
+};
+
+function showToast(msg) {
+  els.toast.textContent = msg;
+  els.toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => els.toast.classList.remove("show"), 2600);
+}
+
+function uid() {
+  return "id_" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+}
+
+function createDefaultGearset(name = "Pre-BiS Set 1") {
+  return {
+    id: uid(),
+    name,
+    bookmarkUrl: "",
+    items: STANDARD_SLOTS.map(slot => ({
+      id: uid(),
+      obtained: false,
+      slot,
+      source: "Dungeon",
+      dungeon: "",
+      boss: "",
+      itemText: "",
+    })),
+  };
+}
+
+function loadState() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    if (raw && Array.isArray(raw.gearsets) && raw.gearsets.length) {
+      if (!raw.gearsets.some(g => g.id === raw.activeSetId)) {
+        raw.activeSetId = raw.gearsets[0].id;
+      }
+      for (const gs of raw.gearsets) {
+        for (const item of gs.items || []) {
+          if (item.dungeon === "Blackrock Spire" || item.dungeon === "Dire Maul") {
+            const match = allBosses.find(b => b.Boss_Name === item.boss && b.Instance.startsWith(item.dungeon + ":"));
+            if (match) item.dungeon = match.Instance;
+          }
+        }
+      }
+      return raw;
+    }
+  } catch {}
+  const first = createDefaultGearset("Pre-BiS Set 1");
+  return { activeSetId: first.id, gearsets: [first] };
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function getActiveSet() {
+  return state.gearsets.find(g => g.id === state.activeSetId) || state.gearsets[0];
+}
+
+function esc(str) {
+  return String(str ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function isEndgame(r) {
+  return r.Min_Level >= 50;
+}
+
+function isUrl(str) {
+  return /^https?:\/\//i.test(String(str || "").trim());
+}
+
+function shortLabelForItem(str) {
+  const s = String(str || "").trim();
+  if (!s) return "";
+  if (isUrl(s)) {
+    const m = s.match(/\/item=\d+\/([^/?#]+)/i);
+    if (m) {
+      return m[1].split("-").map(w => w ? w[0].toUpperCase() + w.slice(1) : "").join(" ");
+    }
+    return "Item Link";
+  }
+  return s;
+}
+
+function getDungeonCatalog(onlyEndgame) {
+  const map = new Map();
+  for (const r of allBosses) {
+    if (onlyEndgame && !isEndgame(r)) continue;
+    if (!map.has(r.Instance)) {
+      map.set(r.Instance, {
+        name: r.Instance,
+        origin: r.Origin,
+        zone: r.Zone,
+        level: r.Level_Range,
+        minLevel: r.Min_Level,
+        maxLevel: r.Max_Level,
+        bosses: [],
+      });
+    }
+    map.get(r.Instance).bosses.push(r);
+  }
+  for (const d of map.values()) {
+    d.bosses.sort((a, b) => a.Boss_Order - b.Boss_Order);
+  }
+  return map;
+}
+
+function getBossRecord(dungeon, bossName) {
+  return allBosses.find(b => b.Instance === dungeon && b.Boss_Name === bossName) || null;
+}
+
+function getDerivedTargets(scope) {
+  const sets = scope === "all" ? state.gearsets : [getActiveSet()];
+  const entries = [];
+  for (const gs of sets) {
+    for (const item of gs.items) {
+      if (item.source === "Dungeon" && item.dungeon && item.boss) {
+        const bossRec = getBossRecord(item.dungeon, item.boss);
+        entries.push({
+          gearsetId: gs.id,
+          gearsetName: gs.name,
+          item,
+          bossRec,
+        });
+      }
+    }
+  }
+  return entries;
+}
+
+function updateTabCounts() {
+  const activeSet = getActiveSet();
+  const totalItems = activeSet.items.length;
+  const gotItems = activeSet.items.filter(i => i.obtained).length;
+  els.countGear.textContent = `${gotItems}/${totalItems}`;
+
+  const targets = getDerivedTargets(todoScope);
+  const bossKeys = new Set();
+  const remainingBossKeys = new Set();
+  for (const t of targets) {
+    const k = `${t.item.dungeon}||${t.item.boss}`;
+    bossKeys.add(k);
+    if (!t.item.obtained) remainingBossKeys.add(k);
+  }
+  els.countTodo.textContent = bossKeys.size ? `${remainingBossKeys.size}/${bossKeys.size}` : "0";
+  els.countCompendium.textContent = allBosses.length;
+}
+
+// ============================================================================
+// SHAREABLE GEARSET LINKS (#share=...)
+// ============================================================================
+function encodeSharePayload(gs) {
+  const payload = {
+    n: gs.name,
+    u: gs.bookmarkUrl || "",
+    i: gs.items.map(x => [
+      x.obtained ? 1 : 0,
+      x.slot,
+      x.source,
+      x.source === "Dungeon" ? x.dungeon : "",
+      x.source === "Dungeon" ? x.boss : "",
+      x.itemText || "",
+    ]),
+  };
+  const bytes = new TextEncoder().encode(JSON.stringify(payload));
+  let bin = "";
+  bytes.forEach(b => (bin += String.fromCharCode(b)));
+  return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
+function decodeSharePayload(encoded) {
+  const pad = "=".repeat((4 - (encoded.length % 4)) % 4);
+  const b64 = encoded.replace(/-/g, "+").replace(/_/g, "/") + pad;
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  const payload = JSON.parse(new TextDecoder().decode(bytes));
+  if (!payload || !Array.isArray(payload.i)) throw new Error("Invalid share data");
+  return {
+    id: uid(),
+    name: String(payload.n || "Shared Gearset").trim(),
+    bookmarkUrl: String(payload.u || ""),
+    items: payload.i.map(arr => ({
+      id: uid(),
+      obtained: Boolean(arr[0]),
+      slot: SLOTS.includes(arr[1]) ? arr[1] : "Head",
+      source: SOURCES.includes(arr[2]) ? arr[2] : "Dungeon",
+      dungeon: String(arr[3] || ""),
+      boss: String(arr[4] || ""),
+      itemText: String(arr[5] || ""),
+    })),
+  };
+}
+
+function checkIncomingShareHash() {
+  const hash = window.location.hash || "";
+  if (!hash.startsWith("#share=")) return;
+  const code = hash.slice("#share=".length);
+  try {
+    const imported = decodeSharePayload(code);
+    if (confirm(`Import shared gearset "${imported.name}" (${imported.items.length} items)?`)) {
+      state.gearsets.push(imported);
+      state.activeSetId = imported.id;
+      saveState();
+      showToast(`Imported "${imported.name}"`);
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Could not read the shared gearset link.");
+  } finally {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+}
+
+async function copyShareLink() {
+  const gs = getActiveSet();
+  const code = encodeSharePayload(gs);
+  const url = `${window.location.origin}${window.location.pathname}#share=${code}`;
+  try {
+    await navigator.clipboard.writeText(url);
+    showToast(`Copied share link for "${gs.name}"`);
+  } catch {
+    prompt("Copy this shareable gearset link:", url);
+  }
+}
+
+// ============================================================================
+// TAB 1: GEAR BUILDER
+// ============================================================================
+function renderGearTab() {
+  const gs = getActiveSet();
+  const dungeonCatalog = getDungeonCatalog(gearEndgameOnly);
+  const fullCatalog = getDungeonCatalog(false);
+  const sortedDungeons = [...dungeonCatalog.values()].sort((a, b) => a.minLevel - b.minLevel || a.name.localeCompare(b.name));
+
+  const total = gs.items.length;
+  const obtained = gs.items.filter(i => i.obtained).length;
+  const dungeonRows = gs.items.filter(i => i.source === "Dungeon");
+  const actionableAssigned = dungeonRows.filter(i => i.dungeon && i.boss);
+  const actionableRemaining = actionableAssigned.filter(i => !i.obtained).length;
+  const pct = total ? Math.round((obtained / total) * 100) : 0;
+
+  const setOptions = state.gearsets.map(s =>
+    `<option value="${esc(s.id)}" ${s.id === gs.id ? "selected" : ""}>${esc(s.name)} (${s.items.filter(i => i.obtained).length}/${s.items.length})</option>`
+  ).join("");
+
+  const bookmarkValid = isUrl(gs.bookmarkUrl);
+
+  const visibleItems = gs.items.filter(item => {
+    if (gearSourceFilter && item.source !== gearSourceFilter) return false;
+    if (gearHideObtained && item.obtained) return false;
+    return true;
+  });
+
+  const rowsHtml = visibleItems.map(item => {
+    const isDungeon = item.source === "Dungeon";
+    const rowDungeons = sortedDungeons.slice();
+    if (item.dungeon && !dungeonCatalog.has(item.dungeon) && fullCatalog.has(item.dungeon)) {
+      rowDungeons.unshift(fullCatalog.get(item.dungeon));
+    }
+
+    const slotOpts = SLOTS.map(s => `<option value="${esc(s)}" ${item.slot === s ? "selected" : ""}>${esc(s)}</option>`).join("");
+    const sourceOpts = SOURCES.map(s => `<option value="${esc(s)}" ${item.source === s ? "selected" : ""}>${esc(s)}</option>`).join("");
+
+    let dungeonOpts = `<option value="">${isDungeon ? "Select dungeon…" : "—"}</option>`;
+    if (isDungeon) {
+      dungeonOpts += rowDungeons.map(d =>
+        `<option value="${esc(d.name)}" ${item.dungeon === d.name ? "selected" : ""}>${esc(d.name)} (${esc(d.level)})</option>`
+      ).join("");
+    }
+
+    let bossOpts = `<option value="">${isDungeon ? (item.dungeon ? "Select boss…" : "Pick dungeon first") : "—"}</option>`;
+    if (isDungeon && item.dungeon && fullCatalog.has(item.dungeon)) {
+      const d = fullCatalog.get(item.dungeon);
+      const hasWings = new Set(d.bosses.map(b => b.Wing)).size > 1;
+      bossOpts += d.bosses.map(b => {
+        const label = hasWings ? `${b.Wing} — ${b.Boss_Name}` : b.Boss_Name;
+        return `<option value="${esc(b.Boss_Name)}" ${item.boss === b.Boss_Name ? "selected" : ""}>${esc(label)}</option>`;
+      }).join("");
+    }
+
+    const itemIsUrl = isUrl(item.itemText);
+
+    return `
+      <tr class="${item.obtained ? "row-obtained" : ""}" data-item-id="${esc(item.id)}">
+        <td class="check-cell">
+          <input type="checkbox" data-gear-field="obtained" ${item.obtained ? "checked" : ""} title="Mark item obtained" />
+        </td>
+        <td class="col-slot">
+          <select data-gear-field="slot">${slotOpts}</select>
+        </td>
+        <td class="col-source">
+          <select data-gear-field="source">${sourceOpts}</select>
+        </td>
+        <td class="col-dungeon">
+          <select data-gear-field="dungeon" ${isDungeon ? "" : "disabled"}>${dungeonOpts}</select>
+        </td>
+        <td class="col-boss">
+          <select data-gear-field="boss" ${isDungeon && item.dungeon ? "" : "disabled"}>${bossOpts}</select>
+        </td>
+        <td>
+          <div class="item-cell-wrap">
+            <input type="text" data-gear-field="itemText" value="${esc(item.itemText)}" placeholder="Paste Wowhead link or item name (optional)" />
+            ${itemIsUrl ? `<a class="inline-link" href="${esc(item.itemText.trim())}" target="_blank" rel="noopener noreferrer" title="Open link in new tab">↗</a>` : ""}
+          </div>
+        </td>
+        <td style="width:36px;text-align:right">
+          <button type="button" class="remove-btn" data-delete-item="${esc(item.id)}" title="Delete row">✕</button>
+        </td>
+      </tr>
+    `;
+  }).join("");
+
+  els.gearView.innerHTML = `
+    <div class="panel">
+      <div class="gearset-bar">
+        <div class="inline-tools">
+          <strong style="color:var(--text-strong);font-size:0.86rem;">Gearset:</strong>
+          <select id="gearsetSelect" aria-label="Select gearset" style="min-width:210px;">${setOptions}</select>
+          <button id="btnNewSet" class="primary" type="button">+ New Set</button>
+          <button id="btnRenameSet" type="button">Rename</button>
+          <button id="btnDupSet" type="button">Duplicate</button>
+          ${state.gearsets.length > 1 ? `<button id="btnDeleteSet" class="danger" type="button">Delete</button>` : ""}
+        </div>
+        <div class="inline-tools">
+          <button id="btnShareSet" class="primary" type="button" title="Copy a shareable link for this gearset to send in Discord">Copy Share Link</button>
+          <button id="btnImportGearCsv" type="button" title="Import a gear CSV (Obtained,Slot,Dungeon,Boss,Source,Item)">Import Gear CSV…</button>
+        </div>
+      </div>
+
+      <div class="bookmark-row">
+        <label for="gearBookmarkInput">Gearset Source / SixtyUpgrades Bookmark:</label>
+        <input id="gearBookmarkInput" type="url" value="${esc(gs.bookmarkUrl || "")}" placeholder="https://sixtyupgrades.com/… or guide URL" />
+        ${bookmarkValid ? `<a id="bookmarkOpenLink" class="link-btn" href="${esc(gs.bookmarkUrl.trim())}" target="_blank" rel="noopener noreferrer">Open Bookmark ↗</a>` : ""}
+      </div>
+
+      <div class="stats">
+        <span class="stat-pill">Total Items: <strong>${total}</strong></span>
+        <span class="stat-pill done">Obtained: <strong>${obtained}</strong> / ${total} (${pct}%)</span>
+        <span class="stat-pill accent">Dungeon Targets Linked: <strong>${actionableAssigned.length}</strong> (${actionableRemaining} remaining)</span>
+        <span class="stat-pill">Non-Dungeon Items: <strong>${total - dungeonRows.length}</strong></span>
+      </div>
+    </div>
+
+    <div class="panel" style="padding:9px 12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;">
+      <div class="inline-tools">
+        <button id="btnAddGearRow" class="primary" type="button">+ Add Gear Slot Row</button>
+        <button id="btnAddStandardSlots" type="button" title="Append a standard set of Classic gear slots">+ Standard Slots</button>
+        <button id="btnGearEndgame" class="toggle-pill ${gearEndgameOnly ? "active" : ""}" type="button" title="Limit Dungeon dropdown to Sunken Temple (50+) and up">
+          Dungeon Dropdown: ${gearEndgameOnly ? "Endgame (50+)" : "All Dungeons"}
+        </button>
+      </div>
+      <div class="inline-tools">
+        <select id="gearSourceFilter" aria-label="Filter rows by source">
+          <option value="">All Sources</option>
+          ${SOURCES.map(s => `<option value="${esc(s)}" ${gearSourceFilter === s ? "selected" : ""}>${esc(s)}</option>`).join("")}
+        </select>
+        <label class="chk">
+          <input type="checkbox" id="chkGearHideObtained" ${gearHideObtained ? "checked" : ""} /> Hide obtained
+        </label>
+      </div>
+    </div>
+
+    ${visibleItems.length ? `
+      <div class="table-wrap">
+        <table class="gear-table">
+          <thead>
+            <tr>
+              <th class="check-cell">Got</th>
+              <th>Slot</th>
+              <th>Source</th>
+              <th>Dungeon</th>
+              <th>Boss</th>
+              <th>Item / Wowhead Link (User-managed)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+      </div>
+    ` : `
+      <div class="empty-state">
+        <h3>No gear rows shown</h3>
+        <p>Click <strong>+ Add Gear Slot Row</strong> or adjust your filter above.</p>
+      </div>
+    `}
+  `;
+}
+
+// ============================================================================
+// TAB 2: AUTO-POPULATED BOSS TO-DO LIST
+// ============================================================================
+function renderTodoTab() {
+  const targets = getDerivedTargets(todoScope);
+  const fullCatalog = getDungeonCatalog(false);
+
+  const scopeSets = todoScope === "all" ? state.gearsets : [getActiveSet()];
+  const nonDungeonRem = scopeSets.reduce((acc, s) => acc + s.items.filter(i => i.source !== "Dungeon" && !i.obtained).length, 0);
+  const unassignedDungeon = scopeSets.reduce((acc, s) => acc + s.items.filter(i => i.source === "Dungeon" && (!i.dungeon || !i.boss)).length, 0);
+
+  const dungeonGroups = new Map();
+  for (const t of targets) {
+    const dName = t.item.dungeon;
+    if (!dungeonGroups.has(dName)) dungeonGroups.set(dName, new Map());
+    const bossMap = dungeonGroups.get(dName);
+    if (!bossMap.has(t.item.boss)) {
+      bossMap.set(t.item.boss, {
+        bossName: t.item.boss,
+        bossRec: t.bossRec,
+        entries: [],
+      });
+    }
+    bossMap.get(t.item.boss).entries.push(t);
+  }
+
+  let totalBosses = 0;
+  let completedBosses = 0;
+  let totalDrops = targets.length;
+  let completedDrops = targets.filter(t => t.item.obtained).length;
+
+  for (const bossMap of dungeonGroups.values()) {
+    for (const b of bossMap.values()) {
+      totalBosses++;
+      if (b.entries.every(e => e.item.obtained)) completedBosses++;
+    }
+  }
+
+  const remainingBosses = totalBosses - completedBosses;
+  const pct = totalDrops ? Math.round((completedDrops / totalDrops) * 100) : 0;
+
+  const toolbarHtml = `
+    <div class="panel" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;">
+      <div class="inline-tools">
+        <div class="segmented" role="tablist">
+          <button id="scopeActive" class="${todoScope === "active" ? "active" : ""}" type="button">Active Gearset (${esc(getActiveSet().name)})</button>
+          <button id="scopeAll" class="${todoScope === "all" ? "active" : ""}" type="button">All Gearsets (${state.gearsets.length})</button>
+        </div>
+      </div>
+      <div class="inline-tools">
+        <select id="todoSortSelect" aria-label="Sort To-Do dungeons">
+          <option value="remaining_desc" ${todoSort === "remaining_desc" ? "selected" : ""}>Sort: Most Needed Bosses</option>
+          <option value="level_asc" ${todoSort === "level_asc" ? "selected" : ""}>Sort: Level (Low → High)</option>
+          <option value="level_desc" ${todoSort === "level_desc" ? "selected" : ""}>Sort: Level (High → Low)</option>
+          <option value="instance_asc" ${todoSort === "instance_asc" ? "selected" : ""}>Sort: Instance (A → Z)</option>
+        </select>
+        <label class="chk">
+          <input type="checkbox" id="chkTodoHideDone" ${todoHideDone ? "checked" : ""} /> Hide completed bosses
+        </label>
+      </div>
+    </div>
+  `;
+
+  if (!totalBosses) {
+    els.todoView.innerHTML = toolbarHtml + `
+      <div class="empty-state">
+        <h3>No dungeon bosses on your To-Do list yet</h3>
+        <p style="max-width:540px;margin:0 auto 14px;">
+          Your To-Do list is automatically built from the <strong>Gear Builder</strong>. Select <strong>Source = Dungeon</strong> and choose a <strong>Dungeon</strong> and <strong>Boss</strong> for any slot to populate your farm targets here.
+        </p>
+        ${unassignedDungeon ? `<p style="color:var(--forever-text);font-size:0.84rem;">You currently have <strong>${unassignedDungeon}</strong> Dungeon row(s) in your gearset without a Dungeon &amp; Boss selected.</p>` : ""}
+        <button id="btnGoGearBuilder" class="primary" type="button">Open Gear Builder</button>
+      </div>
+    `;
+    return;
+  }
+
+  const statsHtml = `
+    <div class="progress-wrap">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:0.82rem;color:var(--muted);margin-bottom:6px;">
+        <span>
+          Dungeon Bosses: <strong style="color:var(--text-strong)">${completedBosses} / ${totalBosses}</strong> done (${remainingBosses} remaining)
+          &nbsp;•&nbsp;
+          Targeted Drops: <strong style="color:var(--text-strong)">${completedDrops} / ${totalDrops}</strong>
+          ${nonDungeonRem ? `&nbsp;•&nbsp; Non-dungeon items remaining in Gear Builder: <strong style="color:var(--text-strong)">${nonDungeonRem}</strong>` : ""}
+        </span>
+        <strong style="color:${pct === 100 ? "var(--success)" : "var(--forever-text)"}">${pct}%</strong>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill ${pct === 100 ? "complete" : ""}" style="width:${pct}%"></div>
+      </div>
+    </div>
+  `;
+
+  const cardData = [];
+  for (const [dName, bossMap] of dungeonGroups.entries()) {
+    const meta = fullCatalog.get(dName);
+    let bosses = [...bossMap.values()].sort((a, b) =>
+      (a.bossRec?.Boss_Order ?? 999) - (b.bossRec?.Boss_Order ?? 999) || a.bossName.localeCompare(b.bossName)
+    );
+    const totalInInst = bosses.length;
+    const remInInst = bosses.filter(b => b.entries.some(e => !e.item.obtained)).length;
+    if (todoHideDone) {
+      bosses = bosses.filter(b => b.entries.some(e => !e.item.obtained));
+    }
+    if (!bosses.length) continue;
+    cardData.push({ name: dName, meta, bosses, totalInInst, remInInst });
+  }
+
+  cardData.sort((a, b) => {
+    if (todoSort === "remaining_desc") return b.remInInst - a.remInInst || (a.meta?.minLevel ?? 0) - (b.meta?.minLevel ?? 0) || a.name.localeCompare(b.name);
+    if (todoSort === "level_asc") return (a.meta?.minLevel ?? 0) - (b.meta?.minLevel ?? 0) || a.name.localeCompare(b.name);
+    if (todoSort === "level_desc") return (b.meta?.maxLevel ?? 0) - (a.meta?.maxLevel ?? 0) || a.name.localeCompare(b.name);
+    if (todoSort === "instance_asc") return a.name.localeCompare(b.name);
+    return 0;
+  });
+
+  if (!cardData.length) {
+    els.todoView.innerHTML = toolbarHtml + statsHtml + `
+      <div class="empty-state">
+        <h3>All dungeon farm targets are completed!</h3>
+        <p>Uncheck "Hide completed bosses" to review your completed targets.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const cardsHtml = cardData.map(g => {
+    const isForever = g.meta?.origin === "WoW Forever";
+    const rowsHtml = g.bosses.map(b => {
+      const allDone = b.entries.every(e => e.item.obtained);
+      const wing = b.bossRec?.Wing || "Main";
+      const bType = b.bossRec?.Boss_Type || "Main";
+      const order = b.bossRec?.Boss_Order ?? "—";
+      const bossNotes = b.bossRec?.Notes || "";
+
+      const dropsHtml = b.entries.map(e => {
+        const label = shortLabelForItem(e.item.itemText);
+        const link = isUrl(e.item.itemText);
+        return `
+          <div class="drop-chip ${e.item.obtained ? "done" : ""}">
+            <input type="checkbox" data-todo-item-id="${esc(e.item.id)}" data-todo-set-id="${esc(e.gearsetId)}" ${e.item.obtained ? "checked" : ""} title="Mark drop obtained (syncs with Gear Builder)" />
+            <span class="slot-tag">${esc(e.item.slot)}</span>
+            ${todoScope === "all" ? `<span class="set-tag">${esc(e.gearsetName)}</span>` : ""}
+            ${link
+              ? `<a href="${esc(e.item.itemText.trim())}" target="_blank" rel="noopener noreferrer" style="color:var(--forever-text);text-decoration:none;">${esc(label)} ↗</a>`
+              : `<span style="color:${label ? "var(--text)" : "var(--muted)"}">${esc(label || "Needed item")}</span>`
+            }
+          </div>
+        `;
+      }).join("");
+
+      return `
+        <tr class="${allDone ? "row-obtained" : ""}">
+          <td class="order-cell">${order}</td>
+          <td class="boss-name">
+            ${esc(b.bossName)}
+            ${allDone ? `<span class="badge done-tag" style="margin-left:6px;">✓ Done</span>` : ""}
+          </td>
+          <td style="color:var(--muted);white-space:nowrap">${esc(wing)}</td>
+          <td><span class="badge type-${esc(bType)}">${esc(bType)}</span></td>
+          <td class="notes-cell">${esc(bossNotes)}</td>
+          <td><div class="todo-drops">${dropsHtml}</div></td>
+        </tr>
+      `;
+    }).join("");
+
+    return `
+      <section class="instance-card open ${isForever ? "forever-card" : "classic-card"}">
+        <div class="instance-header" style="cursor:default">
+          <div class="inst-left">
+            <span class="inst-name">${esc(g.name)}</span>
+            ${g.meta ? `<span class="badge ${isForever ? "origin-forever" : "origin-classic"}">${esc(g.meta.origin)}</span>` : ""}
+          </div>
+          <div class="inst-meta">
+            ${g.meta ? `<span>Lv. ${esc(g.meta.level)}</span><span>•</span><span>${esc(g.meta.zone)}</span><span>•</span>` : ""}
+            <span><strong style="color:var(--forever-text)">${g.remInInst}</strong> / ${g.totalInInst} bosses remaining</span>
+          </div>
+        </div>
+        <div class="instance-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="order-cell">#</th>
+                  <th>Boss Name</th>
+                  <th>Wing</th>
+                  <th>Type</th>
+                  <th>Boss Notes</th>
+                  <th>Needed Slots / Items (check when obtained)</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    `;
+  }).join("");
+
+  els.todoView.innerHTML = toolbarHtml + statsHtml + cardsHtml;
+}
+
+// ============================================================================
+// TAB 3: DUNGEON COMPENDIUM (READ-ONLY REFERENCE)
+// ============================================================================
+function populateInstanceDropdown() {
+  const current = els.instance.value;
+  const catalog = getDungeonCatalog(endgameOnly);
+  const sorted = [...catalog.values()].sort((a, b) => a.name.localeCompare(b.name));
+  let html = `<option value="">All ${endgameOnly ? "Endgame " : ""}Instances (${sorted.length})</option>`;
+  html += sorted.map(d => `<option value="${esc(d.name)}">${esc(d.name)} (${esc(d.level)})</option>`).join("");
+  els.instance.innerHTML = html;
+  els.instance.value = catalog.has(current) ? current : "";
+}
+
+function getFilteredCompendiumRows() {
+  const q = els.search.value.trim().toLowerCase();
+  const inst = els.instance.value;
+  const type = els.type.value;
+  const coreOnly = els.coreOnly.checked;
+
+  return allBosses.filter(r => {
+    if (endgameOnly && !isEndgame(r)) return false;
+    if (inst && r.Instance !== inst) return false;
+    if (type && r.Boss_Type !== type) return false;
+    if (coreOnly && r.Boss_Type !== "Main" && r.Boss_Type !== "Final") return false;
+    if (q) {
+      const hay = `${r.Instance} ${r.Wing} ${r.Boss_Name} ${r.Boss_Type} ${r.Origin} ${r.Zone} ${r.Level_Range} ${r.Verification_Sources} ${r.Notes}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function getBossTargetCounts() {
+  const map = new Map();
+  for (const t of getDerivedTargets("all")) {
+    const k = `${t.item.dungeon}||${t.item.boss}`;
+    if (!map.has(k)) map.set(k, { total: 0, remaining: 0 });
+    const obj = map.get(k);
+    obj.total++;
+    if (!t.item.obtained) obj.remaining++;
+  }
+  return map;
+}
+
+function renderCompendiumInstanceTable(bosses, targetCounts) {
+  const rowsHtml = bosses.map(r => {
+    const tc = targetCounts.get(`${r.Instance}||${r.Boss_Name}`);
+    const statusBadge = tc
+      ? (tc.remaining > 0
+          ? `<span class="badge accent-badge" style="margin-left:6px;">${tc.remaining} needed</span>`
+          : `<span class="badge done-tag" style="margin-left:6px;">✓ Obtained</span>`)
+      : "";
+    return `
+      <tr class="${tc && tc.remaining > 0 ? "row-targeted" : ""}">
+        <td class="order-cell">${r.Boss_Order}</td>
+        <td class="boss-name">${esc(r.Boss_Name)}${statusBadge}</td>
+        <td><span class="badge type-${esc(r.Boss_Type)}">${esc(r.Boss_Type)}</span></td>
+        <td class="notes-cell">${esc(r.Notes)}</td>
+        <td class="sources-cell">${esc(r.Verification_Sources)}</td>
+      </tr>
+    `;
+  }).join("");
+
+  return `
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="order-cell">#</th>
+            <th>Boss Name</th>
+            <th>Type</th>
+            <th>Notes</th>
+            <th>Sources</th>
+          </tr>
+        </thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderCompendiumTab() {
+  const filtered = getFilteredCompendiumRows();
+  const targetCounts = getBossTargetCounts();
+  const instSet = new Set(filtered.map(r => r.Instance));
+  const targetedInView = filtered.filter(r => targetCounts.has(`${r.Instance}||${r.Boss_Name}`)).length;
+
+  els.stats.innerHTML = `
+    <span class="stat-pill">Showing <strong>${filtered.length}</strong> / ${allBosses.length} bosses</span>
+    <span class="stat-pill">Instances: <strong>${instSet.size}</strong>${endgameOnly ? " (Endgame 50+)" : ""}</span>
+    <span class="stat-pill accent">Targeted by Gearsets: <strong>${targetedInView}</strong> bosses</span>
+  `;
+
+  els.expandAll.classList.toggle("hidden", viewMode !== "grouped");
+  els.collapseAll.classList.toggle("hidden", viewMode !== "grouped");
+
+  if (!filtered.length) {
+    els.compendiumView.innerHTML = `<div class="empty-state"><h3>No matching bosses</h3>Try adjusting your search or filter settings.</div>`;
+    return;
+  }
+
+  if (viewMode === "grouped") {
+    const groups = new Map();
+    for (const r of filtered) {
+      if (!groups.has(r.Instance)) groups.set(r.Instance, []);
+      groups.get(r.Instance).push(r);
+    }
+    const groupArr = [...groups.entries()].map(([name, bosses]) => {
+      bosses.sort((a, b) => a.Boss_Order - b.Boss_Order);
+      return { name, bosses, sample: bosses[0], minLevel: bosses[0].Min_Level, maxLevel: bosses[0].Max_Level, count: bosses.length };
+    });
+    const sortMode = els.sort.value;
+    groupArr.sort((a, b) => {
+      if (sortMode === "instance_asc") return a.name.localeCompare(b.name);
+      if (sortMode === "instance_desc") return b.name.localeCompare(a.name);
+      if (sortMode === "level_asc") return a.minLevel - b.minLevel || a.maxLevel - b.maxLevel || a.name.localeCompare(b.name);
+      if (sortMode === "level_desc") return b.maxLevel - a.maxLevel || b.minLevel - a.minLevel || a.name.localeCompare(b.name);
+      if (sortMode === "bosses_desc") return b.count - a.count || a.name.localeCompare(b.name);
+      if (sortMode === "bosses_asc") return a.count - b.count || a.name.localeCompare(b.name);
+      return 0;
+    });
+
+    const autoOpen = Boolean(els.search.value.trim() || els.instance.value);
+    els.compendiumView.innerHTML = groupArr.map(g => {
+      const isOpen = autoOpen || openInstances.has(g.name);
+      const isForever = g.sample.Origin === "WoW Forever";
+      const wings = [...new Set(g.bosses.map(b => b.Wing))];
+      const hasMultipleWings = wings.length > 1 || (wings.length === 1 && wings[0] !== "Main");
+      const neededHere = g.bosses.filter(b => (targetCounts.get(`${b.Instance}||${b.Boss_Name}`)?.remaining || 0) > 0).length;
+
+      let bodyHtml = "";
+      if (hasMultipleWings) {
+        for (const w of wings) {
+          const wBosses = g.bosses.filter(b => b.Wing === w);
+          bodyHtml += `<div class="wing-banner">${esc(w)} (${wBosses.length})</div>`;
+          bodyHtml += renderCompendiumInstanceTable(wBosses, targetCounts);
+        }
+      } else {
+        bodyHtml = renderCompendiumInstanceTable(g.bosses, targetCounts);
+      }
+
+      return `
+        <section class="instance-card ${isForever ? "forever-card" : "classic-card"} ${isOpen ? "open" : ""}">
+          <button type="button" class="instance-header" data-toggle="${esc(g.name)}">
+            <div class="inst-left">
+              <span class="chevron">▶</span>
+              <span class="inst-name">${esc(g.name)}</span>
+              <span class="badge ${isForever ? "origin-forever" : "origin-classic"}">${esc(g.sample.Origin)}</span>
+              ${neededHere ? `<span class="badge accent-badge">${neededHere} boss(es) needed</span>` : ""}
+            </div>
+            <div class="inst-meta">
+              <span>Lv. ${esc(g.sample.Level_Range)}</span>
+              <span>•</span>
+              <span>${esc(g.sample.Zone)}</span>
+              <span>•</span>
+              <span><strong>${g.count}</strong> bosses</span>
+            </div>
+          </button>
+          <div class="instance-body">${bodyHtml}</div>
+        </section>
+      `;
+    }).join("");
+  } else {
+    const sorted = filtered.slice().sort((a, b) => {
+      const { col, dir } = tableSort;
+      let cmp = (col === "Boss_Order" || col === "Min_Level") ? (a[col] - b[col]) : String(a[col]).localeCompare(String(b[col]));
+      if (cmp === 0) cmp = a.Instance.localeCompare(b.Instance) || a.Boss_Order - b.Boss_Order;
+      return dir === "asc" ? cmp : -cmp;
+    });
+
+    const cols = [
+      ["Instance", "Instance"], ["Wing", "Wing"], ["Boss_Order", "#"],
+      ["Boss_Name", "Boss Name"], ["Boss_Type", "Type"], ["Min_Level", "Level"],
+      ["Zone", "Zone"], ["Notes", "Notes"]
+    ];
+    const thHtml = cols.map(([k, l]) => {
+      const active = tableSort.col === k;
+      return `<th class="sortable ${active ? "sorted" : ""}" data-sort-col="${k}">${l}${active ? (tableSort.dir === "asc" ? " ▲" : " ▼") : ""}</th>`;
+    }).join("");
+
+    const bodyHtml = sorted.map(r => {
+      const tc = targetCounts.get(`${r.Instance}||${r.Boss_Name}`);
+      const badge = tc ? (tc.remaining > 0 ? `<span class="badge accent-badge" style="margin-left:6px;">${tc.remaining} needed</span>` : `<span class="badge done-tag" style="margin-left:6px;">✓</span>`) : "";
+      return `
+        <tr class="${tc && tc.remaining > 0 ? "row-targeted" : ""}">
+          <td><strong>${esc(r.Instance)}</strong></td>
+          <td style="color:var(--muted)">${esc(r.Wing)}</td>
+          <td class="order-cell">${r.Boss_Order}</td>
+          <td class="boss-name">${esc(r.Boss_Name)}${badge}</td>
+          <td><span class="badge type-${esc(r.Boss_Type)}">${esc(r.Boss_Type)}</span></td>
+          <td style="white-space:nowrap">${esc(r.Level_Range)}</td>
+          <td>${esc(r.Zone)}</td>
+          <td class="notes-cell">${esc(r.Notes)}</td>
+        </tr>
+      `;
+    }).join("");
+
+    els.compendiumView.innerHTML = `<div class="table-wrap"><table><thead><tr>${thHtml}</tr></thead><tbody>${bodyHtml}</tbody></table></div>`;
+  }
+}
+
+function render() {
+  if (!state) return;
+  updateTabCounts();
+  els.tabGear.classList.toggle("active", activeTab === "gear");
+  els.tabTodo.classList.toggle("active", activeTab === "todo");
+  els.tabCompendium.classList.toggle("active", activeTab === "compendium");
+  els.tabGear.setAttribute("aria-selected", String(activeTab === "gear"));
+  els.tabTodo.setAttribute("aria-selected", String(activeTab === "todo"));
+  els.tabCompendium.setAttribute("aria-selected", String(activeTab === "compendium"));
+
+  els.gearView.classList.toggle("hidden", activeTab !== "gear");
+  els.todoView.classList.toggle("hidden", activeTab !== "todo");
+  els.compendiumControls.classList.toggle("hidden", activeTab !== "compendium");
+  els.compendiumView.classList.toggle("hidden", activeTab !== "compendium");
+
+  if (activeTab === "gear") renderGearTab();
+  else if (activeTab === "todo") renderTodoTab();
+  else renderCompendiumTab();
+}
+
+// ============================================================================
+// CSV / JSON IMPORT & EXPORT
+// ============================================================================
+function parseCsvRows(text) {
+  const rows = [];
+  let row = [], cell = "", inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i], next = text[i + 1];
+    if (inQuotes) {
+      if (ch === '"' && next === '"') { cell += '"'; i++; }
+      else if (ch === '"') { inQuotes = false; }
+      else { cell += ch; }
+    } else {
+      if (ch === '"') { inQuotes = true; }
+      else if (ch === ',') { row.push(cell); cell = ""; }
+      else if (ch === '\r' && next === '\n') { row.push(cell); rows.push(row); row = []; cell = ""; i++; }
+      else if (ch === '\n') { row.push(cell); rows.push(row); row = []; cell = ""; }
+      else { cell += ch; }
+    }
+  }
+  if (cell.length || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+
+function parseBossCsv(text) {
+  const rows = parseCsvRows(text);
+  const header = (rows.shift() || []).map(h => h.trim().replace(/^\uFEFF/, ""));
+  return rows.filter(r => r.length >= header.length && r.some(c => c.trim())).map(r => {
+    const obj = {};
+    header.forEach((h, idx) => obj[h] = (r[idx] ?? "").trim());
+    obj.Boss_Order = parseInt(obj.Boss_Order, 10) || 0;
+    const parts = String(obj.Level_Range || "0").replace("–", "-").split("-");
+    obj.Min_Level = parseInt(parts[0], 10) || 0;
+    obj.Max_Level = parseInt(parts[1] || parts[0], 10) || 0;
+    return obj;
+  });
+}
+
+function resolveDungeonAndBoss(rawDungeon, rawBoss) {
+  const dRaw = (rawDungeon || "").trim();
+  const bRaw = (rawBoss || "").trim();
+  if (!dRaw && !bRaw) return { dungeon: "", boss: "" };
+
+  const aliases = {
+    "brd": "Blackrock Depths",
+    "lbrs": "Blackrock Spire: Lower (LBRS)",
+    "lower blackrock spire": "Blackrock Spire: Lower (LBRS)",
+    "ubrs": "Blackrock Spire: Upper (UBRS)",
+    "upper blackrock spire": "Blackrock Spire: Upper (UBRS)",
+    "dm east": "Dire Maul: East",
+    "dire maul east": "Dire Maul: East",
+    "dme": "Dire Maul: East",
+    "dm west": "Dire Maul: West",
+    "dire maul west": "Dire Maul: West",
+    "dmw": "Dire Maul: West",
+    "dm north": "Dire Maul: North",
+    "dire maul north": "Dire Maul: North",
+    "dmn": "Dire Maul: North",
+    "strat live": "Stratholme",
+    "strat undead": "Stratholme",
+    "strat": "Stratholme",
+    "scholo": "Scholomance",
+    "st": "The Temple of Atal'Hakkar (Sunken Temple)",
+    "sunken temple": "The Temple of Atal'Hakkar (Sunken Temple)",
+    "zf": "Zul'Farrak",
+    "rfc": "Ragefire Chasm",
+    "wc": "Wailing Caverns",
+    "sfk": "Shadowfang Keep",
+    "bfd": "Blackfathom Deeps",
+    "rfk": "Razorfen Kraul",
+    "rfd": "Razorfen Downs",
+    "sm": "Scarlet Monastery",
+  };
+
+  const allInstNames = [...new Set(allBosses.map(b => b.Instance))];
+  let dungeon = aliases[dRaw.toLowerCase()] ||
+    allInstNames.find(n => n.toLowerCase() === dRaw.toLowerCase()) ||
+    allInstNames.find(n => n.toLowerCase().includes(dRaw.toLowerCase())) || "";
+
+  let boss = "";
+  if (dungeon && bRaw) {
+    const candidates = allBosses.filter(b => b.Instance === dungeon);
+    const exact = candidates.find(b => b.Boss_Name.toLowerCase() === bRaw.toLowerCase());
+    const partial = candidates.find(b => b.Boss_Name.toLowerCase().includes(bRaw.toLowerCase()));
+    boss = (exact || partial)?.Boss_Name || "";
+  }
+  return { dungeon, boss };
+}
+
+function importGearCsv(text, filename) {
+  const rawRows = parseCsvRows(text);
+  if (rawRows.length < 2) return;
+  const header = rawRows[0].map(h => h.trim().replace(/^\uFEFF/, "").toLowerCase());
+  const idxObt = header.findIndex(h => h === "" || h === "obtained" || h === "got" || h === "done");
+  const idxSlot = header.indexOf("slot");
+  const idxDung = header.indexOf("dungeon");
+  const idxBoss = header.indexOf("boss");
+  const idxSrc = header.indexOf("source");
+  const idxItem = header.findIndex(h => h === "item" || h === "link" || h === "item / link");
+
+  const items = [];
+  for (let i = 1; i < rawRows.length; i++) {
+    const r = rawRows[i];
+    const slotRaw = (r[idxSlot] || "").trim();
+    const srcRaw = (r[idxSrc] || "").trim();
+    const itemRaw = (r[idxItem] || "").trim();
+    if (!slotRaw && !srcRaw && !itemRaw) continue;
+
+    const slot = SLOTS.find(s => s.toLowerCase() === slotRaw.toLowerCase()) || "Head";
+    const source = SOURCES.find(s => s.toLowerCase() === srcRaw.toLowerCase()) || "Dungeon";
+    const obtained = String(r[idxObt] || "").trim().toUpperCase() === "TRUE" || String(r[idxObt] || "").trim().toLowerCase() === "yes";
+    const resolved = source === "Dungeon" ? resolveDungeonAndBoss(r[idxDung], r[idxBoss]) : { dungeon: "", boss: "" };
+
+    items.push({
+      id: uid(),
+      obtained,
+      slot,
+      source,
+      dungeon: resolved.dungeon,
+      boss: resolved.boss,
+      itemText: itemRaw,
+    });
+  }
+
+  if (!items.length) {
+    alert("No valid gear rows found in CSV.");
+    return;
+  }
+
+  const setName = filename.replace(/\.csv$/i, "").trim() || `Imported Set ${state.gearsets.length + 1}`;
+  const newSet = { id: uid(), name: setName, bookmarkUrl: "", items };
+  state.gearsets.push(newSet);
+  state.activeSetId = newSet.id;
+  saveState();
+  render();
+  showToast(`Imported "${setName}" (${items.length} items)`);
+}
+
+function downloadBlob(content, mime, filename) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function exportCsv() {
+  const csvCell = v => {
+    const s = String(v ?? "");
+    return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  let cols, dataRows, filename;
+
+  if (activeTab === "gear") {
+    const gs = getActiveSet();
+    cols = ["Obtained", "Slot", "Dungeon", "Boss", "Source", "Item"];
+    dataRows = gs.items.map(i => ({
+      Obtained: i.obtained ? "TRUE" : "FALSE",
+      Slot: i.slot,
+      Dungeon: i.source === "Dungeon" ? i.dungeon : "",
+      Boss: i.source === "Dungeon" ? i.boss : "",
+      Source: i.source,
+      Item: i.itemText,
+    }));
+    filename = `${gs.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}_gear.csv`;
+  } else if (activeTab === "todo") {
+    cols = ["Gearset", "Instance", "Wing", "Boss_Order", "Boss_Name", "Boss_Type", "Boss_Notes", "Slot", "Obtained", "Item"];
+    dataRows = getDerivedTargets(todoScope).map(t => ({
+      Gearset: t.gearsetName,
+      Instance: t.item.dungeon,
+      Wing: t.bossRec?.Wing || "Main",
+      Boss_Order: t.bossRec?.Boss_Order ?? "",
+      Boss_Name: t.item.boss,
+      Boss_Type: t.bossRec?.Boss_Type || "",
+      Boss_Notes: t.bossRec?.Notes || "",
+      Slot: t.item.slot,
+      Obtained: t.item.obtained ? "TRUE" : "FALSE",
+      Item: t.item.itemText,
+    }));
+    filename = "wow_forever_boss_todo.csv";
+  } else {
+    cols = ["Instance","Wing","Boss_Order","Boss_Name","Boss_Type","Origin","Zone","Continent","Level_Range","Verification_Sources","Notes"];
+    dataRows = getFilteredCompendiumRows();
+    filename = "wow_forever_dungeon_bosses_filtered.csv";
+  }
+
+  const lines = [cols.join(",")].concat(dataRows.map(r => cols.map(c => csvCell(r[c])).join(",")));
+  downloadBlob(lines.join("\r\n"), "text/csv;charset=utf-8;", filename);
+}
+
+function backupJson() {
+  const payload = JSON.stringify(state, null, 2);
+  const stamp = new Date().toISOString().slice(0, 10);
+  downloadBlob(payload, "application/json;charset=utf-8;", `wow_forever_gearsets_backup_${stamp}.json`);
+  showToast("Downloaded gearsets JSON backup");
+}
+
+function restoreJson(text) {
+  try {
+    const parsed = JSON.parse(text);
+    if (!parsed || !Array.isArray(parsed.gearsets) || !parsed.gearsets.length) {
+      throw new Error("Invalid backup structure");
+    }
+    if (!confirm(`Restore ${parsed.gearsets.length} gearset(s)? This replaces your current saved gearsets.`)) return;
+    state = parsed;
+    if (!state.gearsets.some(g => g.id === state.activeSetId)) {
+      state.activeSetId = state.gearsets[0].id;
+    }
+    saveState();
+    render();
+    showToast(`Restored ${state.gearsets.length} gearset(s)`);
+  } catch {
+    alert("Invalid gearsets backup JSON file.");
+  }
+}
+
+// ============================================================================
+// EVENT LISTENERS
+// ============================================================================
+els.tabGear.addEventListener("click", () => { activeTab = "gear"; render(); });
+els.tabTodo.addEventListener("click", () => { activeTab = "todo"; render(); });
+els.tabCompendium.addEventListener("click", () => { activeTab = "compendium"; render(); });
+
+els.exportBtn.addEventListener("click", exportCsv);
+els.backupJsonBtn.addEventListener("click", backupJson);
+els.restoreJsonBtn.addEventListener("click", () => els.jsonFileInput.click());
+
+els.gearFileInput.addEventListener("change", async (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+  importGearCsv(await file.text(), file.name);
+  e.target.value = "";
+});
+
+els.jsonFileInput.addEventListener("change", async (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+  restoreJson(await file.text());
+  e.target.value = "";
+});
+
+// Gear Builder delegated events
+els.gearView.addEventListener("click", (e) => {
+  const gs = getActiveSet();
+  if (e.target.id === "btnNewSet") {
+    const name = prompt("New gearset name:", `Pre-BiS Set ${state.gearsets.length + 1}`);
+    if (!name || !name.trim()) return;
+    const created = createDefaultGearset(name.trim());
+    state.gearsets.push(created);
+    state.activeSetId = created.id;
+    saveState();
+    render();
+    return;
+  }
+  if (e.target.id === "btnRenameSet") {
+    const name = prompt("Rename gearset:", gs.name);
+    if (!name || !name.trim()) return;
+    gs.name = name.trim();
+    saveState();
+    render();
+    return;
+  }
+  if (e.target.id === "btnDupSet") {
+    const copy = {
+      id: uid(),
+      name: `${gs.name} (Copy)`,
+      bookmarkUrl: gs.bookmarkUrl,
+      items: gs.items.map(i => ({ ...i, id: uid() })),
+    };
+    state.gearsets.push(copy);
+    state.activeSetId = copy.id;
+    saveState();
+    render();
+    return;
+  }
+  if (e.target.id === "btnDeleteSet") {
+    if (state.gearsets.length <= 1) return;
+    if (!confirm(`Delete gearset "${gs.name}"?`)) return;
+    state.gearsets = state.gearsets.filter(s => s.id !== gs.id);
+    state.activeSetId = state.gearsets[0].id;
+    saveState();
+    render();
+    return;
+  }
+  if (e.target.id === "btnShareSet") {
+    copyShareLink();
+    return;
+  }
+  if (e.target.id === "btnAddGearRow") {
+    gs.items.push({ id: uid(), obtained: false, slot: "Trinket", source: "Dungeon", dungeon: "", boss: "", itemText: "" });
+    saveState();
+    render();
+    return;
+  }
+  if (e.target.id === "btnAddStandardSlots") {
+    for (const slot of STANDARD_SLOTS) {
+      gs.items.push({ id: uid(), obtained: false, slot, source: "Dungeon", dungeon: "", boss: "", itemText: "" });
+    }
+    saveState();
+    render();
+    return;
+  }
+  if (e.target.id === "btnGearEndgame") {
+    gearEndgameOnly = !gearEndgameOnly;
+    renderGearTab();
+    return;
+  }
+  if (e.target.id === "btnImportGearCsv") {
+    els.gearFileInput.click();
+    return;
+  }
+  const delBtn = e.target.closest("[data-delete-item]");
+  if (delBtn) {
+    const id = delBtn.getAttribute("data-delete-item");
+    gs.items = gs.items.filter(i => i.id !== id);
+    saveState();
+    render();
+  }
+});
+
+els.gearView.addEventListener("change", (e) => {
+  const gs = getActiveSet();
+  if (e.target.id === "gearsetSelect") {
+    state.activeSetId = e.target.value;
+    saveState();
+    render();
+    return;
+  }
+  if (e.target.id === "gearSourceFilter") {
+    gearSourceFilter = e.target.value;
+    renderGearTab();
+    return;
+  }
+  if (e.target.id === "chkGearHideObtained") {
+    gearHideObtained = e.target.checked;
+    renderGearTab();
+    return;
+  }
+  const tr = e.target.closest("tr[data-item-id]");
+  const field = e.target.getAttribute("data-gear-field");
+  if (!tr || !field) return;
+  const item = gs.items.find(i => i.id === tr.getAttribute("data-item-id"));
+  if (!item) return;
+
+  if (field === "obtained") {
+    item.obtained = e.target.checked;
+  } else if (field === "source") {
+    item.source = e.target.value;
+    if (item.source !== "Dungeon") {
+      item.dungeon = "";
+      item.boss = "";
+    }
+  } else if (field === "dungeon") {
+    item.dungeon = e.target.value;
+    item.boss = "";
+  } else if (field === "boss") {
+    item.boss = e.target.value;
+  } else if (field === "slot") {
+    item.slot = e.target.value;
+  } else if (field === "itemText") {
+    item.itemText = e.target.value;
+  }
+  saveState();
+  render();
+});
+
+els.gearView.addEventListener("input", (e) => {
+  const gs = getActiveSet();
+  if (e.target.id === "gearBookmarkInput") {
+    gs.bookmarkUrl = e.target.value;
+    saveState();
+    const existing = document.getElementById("bookmarkOpenLink");
+    const valid = isUrl(gs.bookmarkUrl);
+    if (valid && existing) {
+      existing.href = gs.bookmarkUrl.trim();
+    } else if (valid !== Boolean(existing)) {
+      const row = e.target.parentElement;
+      if (valid) {
+        const a = document.createElement("a");
+        a.id = "bookmarkOpenLink";
+        a.className = "link-btn";
+        a.href = gs.bookmarkUrl.trim();
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = "Open Bookmark ↗";
+        row.appendChild(a);
+      } else if (existing) {
+        existing.remove();
+      }
+    }
+    return;
+  }
+  if (e.target.getAttribute("data-gear-field") === "itemText") {
+    const tr = e.target.closest("tr[data-item-id]");
+    const item = tr && gs.items.find(i => i.id === tr.getAttribute("data-item-id"));
+    if (item) {
+      item.itemText = e.target.value;
+      saveState();
+    }
+  }
+});
+
+// Boss To-Do Tab delegated events
+els.todoView.addEventListener("click", (e) => {
+  if (e.target.id === "btnGoGearBuilder") { activeTab = "gear"; render(); return; }
+  if (e.target.id === "scopeActive") { todoScope = "active"; render(); return; }
+  if (e.target.id === "scopeAll") { todoScope = "all"; render(); return; }
+});
+
+els.todoView.addEventListener("change", (e) => {
+  if (e.target.id === "todoSortSelect") { todoSort = e.target.value; renderTodoTab(); return; }
+  if (e.target.id === "chkTodoHideDone") { todoHideDone = e.target.checked; renderTodoTab(); return; }
+  const itemId = e.target.getAttribute("data-todo-item-id");
+  const setId = e.target.getAttribute("data-todo-set-id");
+  if (itemId && setId) {
+    const gs = state.gearsets.find(s => s.id === setId);
+    const item = gs?.items.find(i => i.id === itemId);
+    if (item) {
+      item.obtained = e.target.checked;
+      saveState();
+      render();
+    }
+  }
+});
+
+// Compendium events
+[els.search, els.instance, els.type, els.coreOnly].forEach(el => {
+  el.addEventListener("input", renderCompendiumTab);
+  el.addEventListener("change", renderCompendiumTab);
+});
+
+els.btnEndgame.addEventListener("click", () => {
+  endgameOnly = !endgameOnly;
+  els.btnEndgame.classList.toggle("active", endgameOnly);
+  populateInstanceDropdown();
+  renderCompendiumTab();
+});
+
+els.sort.addEventListener("change", () => {
+  const v = els.sort.value;
+  if (v === "instance_asc") tableSort = { col: "Instance", dir: "asc" };
+  else if (v === "instance_desc") tableSort = { col: "Instance", dir: "desc" };
+  else if (v === "level_asc") tableSort = { col: "Min_Level", dir: "asc" };
+  else if (v === "level_desc") tableSort = { col: "Min_Level", dir: "desc" };
+  renderCompendiumTab();
+});
+
+els.viewGrouped.addEventListener("click", () => {
+  viewMode = "grouped";
+  els.viewGrouped.classList.add("active");
+  els.viewTable.classList.remove("active");
+  renderCompendiumTab();
+});
+
+els.viewTable.addEventListener("click", () => {
+  viewMode = "table";
+  els.viewTable.classList.add("active");
+  els.viewGrouped.classList.remove("active");
+  renderCompendiumTab();
+});
+
+els.expandAll.addEventListener("click", () => {
+  getFilteredCompendiumRows().forEach(r => openInstances.add(r.Instance));
+  renderCompendiumTab();
+});
+
+els.collapseAll.addEventListener("click", () => {
+  openInstances.clear();
+  renderCompendiumTab();
+});
+
+els.resetFilters.addEventListener("click", () => {
+  els.search.value = "";
+  els.type.value = "";
+  els.sort.value = "instance_asc";
+  els.coreOnly.checked = false;
+  endgameOnly = false;
+  els.btnEndgame.classList.remove("active");
+  tableSort = { col: "Instance", dir: "asc" };
+  populateInstanceDropdown();
+  els.instance.value = "";
+  renderCompendiumTab();
+});
+
+els.compendiumView.addEventListener("click", (e) => {
+  const toggleBtn = e.target.closest("[data-toggle]");
+  if (toggleBtn) {
+    const name = toggleBtn.getAttribute("data-toggle");
+    if (openInstances.has(name)) openInstances.delete(name);
+    else openInstances.add(name);
+    toggleBtn.closest(".instance-card").classList.toggle("open");
+    return;
+  }
+  const sortTh = e.target.closest("th[data-sort-col]");
+  if (sortTh) {
+    const col = sortTh.getAttribute("data-sort-col");
+    if (tableSort.col === col) tableSort.dir = tableSort.dir === "asc" ? "desc" : "asc";
+    else tableSort = { col, dir: "asc" };
+    renderCompendiumTab();
+  }
+});
+
+// ============================================================================
+// BOOTSTRAP: FETCH LIVE CSV FROM SAME DIRECTORY (GITHUB PAGES / HTTP)
+// ============================================================================
+async function init() {
+  try {
+    const res = await fetch(BOSSES_CSV_URL, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    allBosses = parseBossCsv(await res.text());
+    if (!allBosses.length) throw new Error("CSV returned 0 rows");
+    state = loadState();
+    checkIncomingShareHash();
+    populateInstanceDropdown();
+    render();
+  } catch (err) {
+    console.error("Failed to load boss CSV:", err);
+    els.gearView.innerHTML = `
+      <div class="empty-state">
+        <h3>Could not load <code>wow_forever_dungeon_bosses.csv</code></h3>
+        <p style="max-width:540px;margin:0 auto;">
+          Make sure both <code>index.html</code> and <code>wow_forever_dungeon_bosses.csv</code> are in the same folder and served over HTTP/HTTPS (such as GitHub Pages).
+        </p>
+      </div>
+    `;
+  }
+}
+
+init();
+</script>
+</body>
+</html>

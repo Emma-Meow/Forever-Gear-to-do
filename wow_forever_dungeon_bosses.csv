@@ -1,0 +1,289 @@
+Instance,Wing,Boss_Order,Boss_Name,Boss_Type,Origin,Zone,Continent,Level_Range,Verification_Sources,Notes
+Alcaz Prison,Main,1,Tidemistress Ca'zass,Main,WoW Forever,Dustwallow Marsh,Kalimdor,48-53,MetaBot.GG (1.60.1); Mobalytics; ConquestCapped; WarcraftTavern,First boss encounter in Alcaz Prison.
+Alcaz Prison,Main,2,Overseer Wrex,Main,WoW Forever,Dustwallow Marsh,Kalimdor,48-53,MetaBot.GG (1.60.1); Mobalytics; ConquestCapped; WarcraftTavern,Drops Overseer's Keyring required to access lower prison areas.
+Alcaz Prison,Main,3,Katerina the Cleaner,Main,WoW Forever,Dustwallow Marsh,Kalimdor,48-53,MetaBot.GG (1.60.1); Mobalytics; ConquestCapped; WarcraftTavern,Mid-instance prison encounter.
+Alcaz Prison,Main,4,The Questioner,Optional,WoW Forever,Dustwallow Marsh,Kalimdor,48-53,MetaBot.GG (1.60.1); Mobalytics; ConquestCapped; WarcraftTavern,Tied to 'The Man in the Iron Chains' questline; can be skipped or deferred.
+Alcaz Prison,Main,5,Blazeroar,Final,WoW Forever,Dustwallow Marsh,Kalimdor,48-53,MetaBot.GG (1.60.1); Mobalytics; ConquestCapped; WarcraftTavern,Initially appears disguised as prisoner Zarla Ober before transforming into a red dragon.
+Blackfathom Deeps,Main,1,Ghamoo-ra,Main,Classic,Ashenvale,Kalimdor,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Giant turtle in the Pool of Ask'ar.
+Blackfathom Deeps,Main,2,Lady Sarevess,Main,Classic,Ashenvale,Kalimdor,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Naga caster in the Ruined Shrine.
+Blackfathom Deeps,Main,3,Gelihast,Main,Classic,Ashenvale,Kalimdor,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Murloc boss in the Shrine of Gelihast.
+Blackfathom Deeps,Main,4,Lorgus Jett,Optional,Classic,Ashenvale,Kalimdor,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Spawns in one of several locations; Horde quest target for 'Allegiance to the Old Gods'.
+Blackfathom Deeps,Main,5,Baron Aquanis,Summoned,Classic,Ashenvale,Kalimdor,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Water elemental summoned by looting the Strange Water Globe / Fathom Core.
+Blackfathom Deeps,Main,6,Old Serra'kis,Main,Classic,Ashenvale,Kalimdor,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Giant thresher patrolling the Moonshrine Ruins underwater passage.
+Blackfathom Deeps,Main,7,Twilight Lord Kelris,Main,Classic,Ashenvale,Kalimdor,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Lighting the four braziers around his altar opens the gate to Aku'mai.
+Blackfathom Deeps,Main,8,Aku'mai,Final,Classic,Ashenvale,Kalimdor,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Three-headed hydra final boss of Blackfathom Deeps.
+Blackmaw Hold,Main,1,Withermaw,Main,WoW Forever,Azshara,Kalimdor,55-60,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Furbolg hold encounter spawning Flesh Maggots.
+Blackmaw Hold,Main,2,Impaan the Imprisoner,Main,WoW Forever,Azshara,Kalimdor,55-60,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Gains heavy damage reduction while summoned imps remain active.
+Blackmaw Hold,Main,3,Elder Shaman Bloodmane,Main,WoW Forever,Azshara,Kalimdor,55-60,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Summons Feral Spirit wolves and casts Chain Lightning.
+Blackmaw Hold,Main,4,Bonesnout the Unbroken,Main,WoW Forever,Azshara,Kalimdor,55-60,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Protected by 4 Legashi Ritualists granting damage reduction until cleared.
+Blackmaw Hold,Main,5,Unbound Spirit,Main,WoW Forever,Azshara,Kalimdor,55-60,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Requires destroying Profane Totems channeled by Elder Bramblesnap.
+Blackmaw Hold,Main,6,Blackmaw Behemoth,Main,WoW Forever,Azshara,Kalimdor,55-60,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Fought alongside Clawbert; enrages after consuming Clawbert.
+Blackmaw Hold,Main,7,Moontouched Wanderer,Rare,WoW Forever,Azshara,Kalimdor,55-60,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Rare spawn encounter inside Blackmaw Hold.
+Blackmaw Hold,Main,8,Varrox Bleakhoof,Final,WoW Forever,Azshara,Kalimdor,55-60,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Final boss of Blackmaw Hold; uses Crimson Wrest and Nightmare Detonation.
+Blackrock Depths,Main,1,High Interrogator Gerstahn,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Located in the Detention Block; drops Prison Cell Key.
+Blackrock Depths,Main,2,Lord Roccor,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Patrols the Ring of the Law outer corridor.
+Blackrock Depths,Main,3,Houndmaster Grebmar,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Located in the kennels beneath the Arena.
+Blackrock Depths,Main,4,Gorosh the Dervish,Event,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Ring of Law random arena boss pool (1 of 6 regular challengers).
+Blackrock Depths,Main,5,Grizzle,Event,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Ring of Law random arena boss pool (1 of 6 regular challengers).
+Blackrock Depths,Main,6,Eviscerator,Event,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Ring of Law random arena boss pool (1 of 6 regular challengers).
+Blackrock Depths,Main,7,Ok'thor the Breaker,Event,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Ring of Law random arena boss pool (1 of 6 regular challengers).
+Blackrock Depths,Main,8,Anub'shiah,Event,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Ring of Law random arena boss pool (1 of 6 regular challengers).
+Blackrock Depths,Main,9,Hedrum the Creeper,Event,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Ring of Law random arena boss pool (1 of 6 regular challengers).
+Blackrock Depths,Main,10,Theldren,Summoned,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Ring of Law Tier 0.5 encounter summoned using Banner of Provocation.
+Blackrock Depths,Main,11,Pyromancer Loregrain,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Located in the Shrine of Thaurissan.
+Blackrock Depths,Main,12,Warder Stilgiss,Optional,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Located in the Black Vault alongside his hound Verek.
+Blackrock Depths,Main,13,Watchman Doomgrip,Summoned,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Spawns in the Black Vault after opening all 12 Relic Coffers.
+Blackrock Depths,Main,14,Fineous Darkvire,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Chief Architect in the Hall of Crafting; drops Ironfel for Shadowforge Key.
+Blackrock Depths,Main,15,Lord Incendius,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Guarding the Black Anvil.
+Blackrock Depths,Main,16,Bael'Gar,Optional,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Molten giant at the western end of the Dark Iron Highway.
+Blackrock Depths,Main,17,General Angerforge,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Located in the West Garrison.
+Blackrock Depths,Main,18,Golem Lord Argelmach,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Located in the Manufactory.
+Blackrock Depths,Main,19,Hurley Blackbreath,Optional,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Summoned in the Grim Guzzler by smashing Thunderbrew Lager kegs.
+Blackrock Depths,Main,20,Ribbly Screwspigot,Optional,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Located in the Grim Guzzler tavern.
+Blackrock Depths,Main,21,Plugger Spazzring,Optional,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Grim Guzzler bartender; turns hostile when provoked or looted.
+Blackrock Depths,Main,22,Phalanx,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Golem guarding the Grim Guzzler exit door.
+Blackrock Depths,Main,23,Panzor the Invincible,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Rare stone golem spawn in the Mold Foundry.
+Blackrock Depths,Main,24,Ambassador Flamelash,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Located in the Hall of the Seven / Chamber of Enchantment.
+Blackrock Depths,Main,25,The Seven,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,"Tomb of the Seven gauntlet: Anger'rel, Seeth'rel, Dope'rel, Gloome'rel, Vile'rel, Hate'rel, and Doom'rel."
+Blackrock Depths,Main,26,Magmus,Main,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Guards the gateway to the Imperial Seat past the Lyceum.
+Blackrock Depths,Main,27,Emperor Dagran Thaurissan,Final,Classic,Blackrock Mountain,Eastern Kingdoms,52-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,"Final boss in the Imperial Seat, accompanied by Princess Moira Bronzebeard."
+Blackrock Spire: Lower (LBRS),Main,1,Highlord Omokk,Main,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,First major boss of Lower Blackrock Spire (LBRS).
+Blackrock Spire: Lower (LBRS),Main,2,Spirestone Butcher,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rare ogre spawn near the Spirestone ogre camps in LBRS.
+Blackrock Spire: Lower (LBRS),Main,3,Spirestone Battle Lord,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rare ogre spawn near Highlord Omokk's area in LBRS.
+Blackrock Spire: Lower (LBRS),Main,4,Spirestone Lord Magus,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rare ogre caster spawn in LBRS.
+Blackrock Spire: Lower (LBRS),Main,5,Shadow Hunter Vosh'gajin,Main,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Troll boss in LBRS.
+Blackrock Spire: Lower (LBRS),Main,6,War Master Voone,Main,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Smolderthorn/Bloodaxe area boss in LBRS.
+Blackrock Spire: Lower (LBRS),Main,7,Mor Grayhoof,Summoned,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Tier 0.5 quest boss summoned in LBRS near War Master Voone's room.
+Blackrock Spire: Lower (LBRS),Main,8,Bannok Grimaxe,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rare orc spawn in LBRS; drops Plans: Arcanite Reaper.
+Blackrock Spire: Lower (LBRS),Main,9,Burning Felguard,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rare demon spawn in LBRS near the orc camps.
+Blackrock Spire: Lower (LBRS),Main,10,Mother Smolderweb,Main,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Giant spider boss in the Skitterweb Tunnels.
+Blackrock Spire: Lower (LBRS),Main,11,Crystal Fang,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rare spider spawn in the Skitterweb Tunnels.
+Blackrock Spire: Lower (LBRS),Main,12,Urok Doomhowl,Summoned,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Summoned in LBRS using Omokk's Head at Urok's Tribute Pile.
+Blackrock Spire: Lower (LBRS),Main,13,Quartermaster Zigris,Main,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Orc quartermaster patrolling the lower halls of LBRS.
+Blackrock Spire: Lower (LBRS),Main,14,Halycon,Main,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Worg matriarch in the Hordemar City / beast pits.
+Blackrock Spire: Lower (LBRS),Main,15,Gizrul the Slavener,Main,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Spawns immediately after defeating Halycon.
+Blackrock Spire: Lower (LBRS),Main,16,Ghok Bashguud,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rare orc spawn near Halycon and Overlord Wyrmthalak.
+Blackrock Spire: Lower (LBRS),Main,17,Overlord Wyrmthalak,Final,Classic,Blackrock Mountain,Eastern Kingdoms,55-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Final boss of Lower Blackrock Spire (LBRS).
+Blackrock Spire: Upper (UBRS),Main,1,Pyroguard Emberseer,Main,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,First boss of Upper Blackrock Spire (UBRS); requires Seal of Ascension to enter.
+Blackrock Spire: Upper (UBRS),Main,2,Solakar Flamewreath,Optional,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rookery wave-event dragonkin boss in UBRS.
+Blackrock Spire: Upper (UBRS),Main,3,Jed Runewatcher,Rare,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Rare orc spawn in UBRS; drops Briarwood Reed.
+Blackrock Spire: Upper (UBRS),Main,4,Goraluk Anvilcrack,Optional,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Blacksmith mini-boss in Blackhand's Forge in UBRS.
+Blackrock Spire: Upper (UBRS),Main,5,Gyth,Main,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Chromatic dragon mount fought during the Blackrock Stadium encounter before Rend dismounts.
+Blackrock Spire: Upper (UBRS),Main,6,Warchief Rend Blackhand,Main,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Blackrock Stadium wave encounter; dismounts from Gyth with a separate loot table.
+Blackrock Spire: Upper (UBRS),Main,7,The Beast,Main,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Giant core hound boss in UBRS.
+Blackrock Spire: Upper (UBRS),Main,8,General Drakkisath,Final,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Final boss of Upper Blackrock Spire (UBRS).
+Blackrock Spire: Upper (UBRS),Main,9,Lord Valthalak,Summoned,Classic,Blackrock Mountain,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; Icy Veins,Final Tier 0.5 quest boss summoned in UBRS at The Beast's chamber.
+City of Dalaran,Main,1,Atrexis the Grave Knight,Main,WoW Forever,Alterac Mountains,Eastern Kingdoms,28-33,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,First boss located in the Dalaran sewers (The Shadowside); requires Dalaran Sewer Key to enter dungeon.
+City of Dalaran,Main,2,Lyn the Ignored,Secret,WoW Forever,Alterac Mountains,Eastern Kingdoms,28-33,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Secret sewer boss summoned at the ritual circle using the Tome of Dalaran.
+City of Dalaran,Main,3,Arcane Anomaly,Main,WoW Forever,Alterac Mountains,Eastern Kingdoms,28-33,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Encountered upon ascending from the sewers into the city plazas.
+City of Dalaran,Main,4,Mana Devourer,Main,WoW Forever,Alterac Mountains,Eastern Kingdoms,28-33,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Arcane entity encountered in the upper city streets.
+City of Dalaran,Main,5,Fel Ancient,Main,WoW Forever,Alterac Mountains,Eastern Kingdoms,28-33,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Located near Runeweaver Square; tied to Fel Infused Blossom objective.
+City of Dalaran,Main,6,Unstable Sentinel,Main,WoW Forever,Alterac Mountains,Eastern Kingdoms,28-33,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Arcane construct boss in the upper city.
+City of Dalaran,Main,7,Arcanic Enigma,Main,WoW Forever,Alterac Mountains,Eastern Kingdoms,28-33,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Located near the southern garden/bank with Mana Phantoms; target of 'Power Overwhelming'.
+City of Dalaran,Main,8,Shade of the Archmage,Final,WoW Forever,Alterac Mountains,Eastern Kingdoms,28-33,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Final boss in the Violet Chamber; drops Arcane Mote for 'Heart of Disruption'.
+Dire Maul: East,Main,1,Pusillin,Optional,Classic,Feralas,Kalimdor,54-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Imp chase event in Dire Maul East; drops the Crescent Key.
+Dire Maul: East,Main,2,Zevrim Thornhoof,Main,Classic,Feralas,Kalimdor,54-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Satyr boss in the Warpwood Quarter.
+Dire Maul: East,Main,3,Hydrospawn,Main,Classic,Feralas,Kalimdor,54-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Water elemental boss in the central pool.
+Dire Maul: East,Main,4,Lethtendris,Main,Classic,Feralas,Kalimdor,54-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Blood elf caster fought alongside her imp Pimgib.
+Dire Maul: East,Main,5,Alzzin the Wildshaper,Final,Classic,Feralas,Kalimdor,54-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Final boss of Dire Maul East.
+Dire Maul: East,Main,6,Isalien,Summoned,Classic,Feralas,Kalimdor,54-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Tier 0.5 boss summoned in the Shrine of Eldretharr.
+Dire Maul: North,Main,1,Guard Mol'dar,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Ogre guard; left alive for a Gordok Tribute run.
+Dire Maul: North,Main,2,Stomper Kreeg,Optional,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Ogre vendor/boss in courtyard; left alive for Tribute run.
+Dire Maul: North,Main,3,Guard Fengus,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Ogre guard patrolling the courtyard; left alive for Tribute run.
+Dire Maul: North,Main,4,Guard Slip'kik,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Ogre guard; can be frozen in trap for Tribute run.
+Dire Maul: North,Main,5,Captain Kromcrush,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Ogre captain; can be bypassed with Gordok Ogre Suit for Tribute run.
+Dire Maul: North,Main,6,Cho'Rush the Observer,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Fights alongside King Gordok (becomes friendly if King Gordok falls in Tribute run).
+Dire Maul: North,Main,7,King Gordok,Final,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Final boss of Dire Maul North.
+Dire Maul: West,Main,1,Tendris Warpwood,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Ancient treant guarding the Dire Maul West courtyard.
+Dire Maul: West,Main,2,Illyanna Ravenoak,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Highborne hunter fought with her bear pet Ferra.
+Dire Maul: West,Main,3,Magister Kalendris,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Highborne spirit caster in the Capital Gardens.
+Dire Maul: West,Main,4,Tsu'zee,Rare,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Rare spirit spawn in Dire Maul West.
+Dire Maul: West,Main,5,Immol'thar,Main,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Demon unlocked by deactivating all 5 crystal pylons.
+Dire Maul: West,Main,6,Lord Hel'nurath,Summoned,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Warlock epic mount quest boss summoned in Immol'thar's prison.
+Dire Maul: West,Main,7,Prince Tortheldrin,Final,Classic,Feralas,Kalimdor,56-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Final boss of Dire Maul West in the Athenaeum.
+Excavation Site: Wetlands,Main,1,Saltspine,Main,WoW Forever,Wetlands,Eastern Kingdoms,24-29,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; MetaForge,Giant crocolisk boss above Whelgar's Excavation Site.
+Excavation Site: Wetlands,Main,2,Shadetooth,Main,WoW Forever,Wetlands,Eastern Kingdoms,24-29,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; MetaForge,Thicket Matriarch raptor boss with AoE fear and 30% enrage.
+Excavation Site: Wetlands,Main,3,Highland Horror,Optional,WoW Forever,Wetlands,Eastern Kingdoms,24-29,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; MetaForge,Optional quest boss inside the excavation site.
+Excavation Site: Wetlands,Main,4,Relic Guardian,Final,WoW Forever,Wetlands,Eastern Kingdoms,24-29,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; MetaForge,Final stone giant boss activated via the Archival Panel.
+Gnomeregan,Main,1,Grubbis,Optional,Classic,Dun Morogh,Eastern Kingdoms,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Summoned via Blastmaster Emi Shortfuse's cave-in event.
+Gnomeregan,Main,2,Viscous Fallout,Main,Classic,Dun Morogh,Eastern Kingdoms,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Irradiated slime patrolling the lower Hall of Gears water pit.
+Gnomeregan,Main,3,Electrocutioner 6000,Main,Classic,Dun Morogh,Eastern Kingdoms,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Mechanical boss dropping the Workshop Key.
+Gnomeregan,Main,4,Crowd Pummeler 9-60,Optional,Classic,Dun Morogh,Eastern Kingdoms,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Located in the Dormitory; drops Manual Crowd Pummeler.
+Gnomeregan,Main,5,Dark Iron Ambassador,Rare,Classic,Dun Morogh,Eastern Kingdoms,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Rare spawn in the Launch Bay tunnel.
+Gnomeregan,Main,6,Mekgineer Thermaplugg,Final,Classic,Dun Morogh,Eastern Kingdoms,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Final boss in the Tinkers' Court.
+Hall of Thanes,Main,1,Faldrim Anvilmar,Main,WoW Forever,Dun Morogh (Old Ironforge),Eastern Kingdoms,13-18,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; Method,First boss in the west wing; target of 'An Ancient Grudge'.
+Hall of Thanes,Main,2,Magmatus,Main,WoW Forever,Dun Morogh (Old Ironforge),Eastern Kingdoms,13-18,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; Method,Dark Iron fire summoner (referenced as Infurnus in early beta/client encounter data).
+Hall of Thanes,Main,3,Plunder,Main,WoW Forever,Dun Morogh (Old Ironforge),Eastern Kingdoms,13-18,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; Method,Third boss encountered in the dwarven vaults.
+Hall of Thanes,Main,4,Durgen Dirgehammer,Final,WoW Forever,Dun Morogh (Old Ironforge),Eastern Kingdoms,13-18,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; Method,Final boss accompanied by two Lesser Stone Golems.
+Krol'dok Stronghold,Main,1,Slavecrusher Grox,Main,WoW Forever,Riverglades,Eastern Kingdoms,40-45,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped; Method,Patrols the right-hand path near the stronghold entrance.
+Krol'dok Stronghold,Main,2,Twilight Commander Zarmok,Main,WoW Forever,Riverglades,Eastern Kingdoms,40-45,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped; Method,Located in the central stronghold area.
+Krol'dok Stronghold,Main,3,War Handler Ashka,Main,WoW Forever,Riverglades,Eastern Kingdoms,40-45,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped; Method,Found near the animal pens accompanied by wolves.
+Krol'dok Stronghold,Main,4,Nar'gurk,Main,WoW Forever,Riverglades,Eastern Kingdoms,40-45,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped; Method,Fought on a raised platform surrounded by caster adds.
+Krol'dok Stronghold,Main,5,Bossman Toof,Optional,WoW Forever,Riverglades,Eastern Kingdoms,40-45,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped; Method,Bridge gauntlet mini-boss accompanied by Krol'dok Shamans.
+Krol'dok Stronghold,Main,6,Overlord Mugg,Final,WoW Forever,Riverglades,Eastern Kingdoms,40-45,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped; Method,Final boss at the top of Krol'dok Stronghold.
+Maraudon,Purple (Wicked Grotto),1,Lord Vyletongue,Main,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Satyr boss in the Purple / Wicked Grotto wing.
+Maraudon,Purple (Wicked Grotto),2,Meshlok the Harvester,Rare,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Rare bog beast spawn in the Purple wing.
+Maraudon,Orange (Foulspore Cavern),3,Noxxion,Main,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Poison elemental boss in the Orange / Foulspore Cavern wing.
+Maraudon,Orange (Foulspore Cavern),4,Razorlash,Main,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Lasher boss in the Orange wing.
+Maraudon,Inner (Earth Song Falls),5,Celebras the Cursed,Main,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Defeating him allows crafting the Scepter of Celebras shortcut.
+Maraudon,Inner (Earth Song Falls),6,Landslide,Main,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Stone giant boss in Earth Song Falls.
+Maraudon,Inner (Earth Song Falls),7,Tinkerer Gizlock,Main,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Goblin boss overlooking the inner caverns.
+Maraudon,Inner (Earth Song Falls),8,Rotgrip,Optional,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Giant crocolisk patrolling the water below Earth Song Falls.
+Maraudon,Inner (Earth Song Falls),9,Princess Theradras,Final,Classic,Desolace,Kalimdor,46-55,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Final boss of Maraudon at Zaetar's Grave.
+Ragefire Chasm,Main,1,Oggleflint,Main,Classic,Orgrimmar,Kalimdor,13-18,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins,Trogg chieftain near the upper cavern.
+Ragefire Chasm,Main,2,Taragaman the Hungerer,Main,Classic,Orgrimmar,Kalimdor,13-18,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins,Felguard boss patrolling the lava bridge platform.
+Ragefire Chasm,Main,3,Jergosh the Invoker,Main,Classic,Orgrimmar,Kalimdor,13-18,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins,Searing Blade warlock in the lower ritual cavern.
+Ragefire Chasm,Main,4,Bazzalan,Final,Classic,Orgrimmar,Kalimdor,13-18,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins,Satyr final boss of Ragefire Chasm.
+Razorfen Downs,Main,1,Tuten'kash,Main,Classic,The Barrens,Kalimdor,37-46,Wowhead Classic; MetaBot.GG (1.60.1),Giant spider summoned by striking the gong after clearing waves.
+Razorfen Downs,Main,2,Plaguemaw the Rotting,Optional,Classic,The Barrens,Kalimdor,37-46,Wowhead Classic; MetaBot.GG (1.60.1),Spawns during Belnistrasz's Idol escort event.
+Razorfen Downs,Main,3,Mordresh Fire Eye,Main,Classic,The Barrens,Kalimdor,37-46,Wowhead Classic; MetaBot.GG (1.60.1),Skeleton mage atop the bone mound surrounded by undead.
+Razorfen Downs,Main,4,Glutton,Main,Classic,The Barrens,Kalimdor,37-46,Wowhead Classic; MetaBot.GG (1.60.1),Abomination patrolling the meat-pile corridor.
+Razorfen Downs,Main,5,Ragglesnout,Rare,Classic,The Barrens,Kalimdor,37-46,Wowhead Classic; MetaBot.GG (1.60.1),Rare quilboar boss spawn.
+Razorfen Downs,Main,6,Amnennar the Coldbringer,Final,Classic,The Barrens,Kalimdor,37-46,Wowhead Classic; MetaBot.GG (1.60.1),Lich final boss of Razorfen Downs.
+Razorfen Kraul,Main,1,Roogug,Optional,Classic,The Barrens,Kalimdor,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Quilboar geomancer in the early western alcove.
+Razorfen Kraul,Main,2,Aggem Thorncurse,Main,Classic,The Barrens,Kalimdor,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Quilboar shaman boss.
+Razorfen Kraul,Main,3,Death Speaker Jargba,Main,Classic,The Barrens,Kalimdor,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Quilboar priest with mind control.
+Razorfen Kraul,Main,4,Overlord Ramtusk,Main,Classic,The Barrens,Kalimdor,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Quilboar warlord atop the central ridge.
+Razorfen Kraul,Main,5,Blind Hunter,Rare,Classic,The Barrens,Kalimdor,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Rare bat boss in the side tunnel.
+Razorfen Kraul,Main,6,Earthcaller Halmgar,Rare,Classic,The Barrens,Kalimdor,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Rare quilboar geomancer spawn.
+Razorfen Kraul,Main,7,Agathelos the Raging,Main,Classic,The Barrens,Kalimdor,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Giant boar boss in the pens.
+Razorfen Kraul,Main,8,Charlga Razorflank,Final,Classic,The Barrens,Kalimdor,29-38,Wowhead Classic; MetaBot.GG (1.60.1),Final boss of Razorfen Kraul.
+Ruins of Lordaeron,Main,1,Witherfang,Main,WoW Forever,Tirisfal Glades,Eastern Kingdoms,15-20,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ExpCarry,First boss; patrols with spider adds and drops The Highly Toxic Strain.
+Ruins of Lordaeron,Main,2,The Baron,Main,WoW Forever,Tirisfal Glades,Eastern Kingdoms,15-20,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ExpCarry,Abomination boss (referenced as The Butcher in early beta/client data); drops Abominable Head.
+Ruins of Lordaeron,Main,3,The Abandoned,Secret,WoW Forever,Tirisfal Glades,Eastern Kingdoms,15-20,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ExpCarry,Hidden optional boss spawned by interacting with a specific statue.
+Ruins of Lordaeron,Main,4,Viktor the Vile,Secret,WoW Forever,Tirisfal Glades,Eastern Kingdoms,15-20,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ExpCarry,Hidden optional boss spawned via the fireplace wave event.
+Ruins of Lordaeron,Main,5,Bjork,Main,WoW Forever,Tirisfal Glades,Eastern Kingdoms,15-20,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ExpCarry,Heavy melee encounter with knockback.
+Ruins of Lordaeron,Main,6,Rath'mael,Final,WoW Forever,Tirisfal Glades,Eastern Kingdoms,15-20,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ExpCarry,Final boss; casts Flamestrike and AoE fire spells.
+Ruins of Lordaeron,Main,7,Lordaeron Captain,Rare,WoW Forever,Tirisfal Glades,Eastern Kingdoms,15-20,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ExpCarry,Rare elite with a chance to spawn on the western side after all 6 other bosses are defeated.
+Scarlet Monastery,Graveyard,1,Interrogator Vishas,Main,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,First boss of Scarlet Monastery: Graveyard.
+Scarlet Monastery,Graveyard,2,Azshir the Sleepless,Rare,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Rare undead spawn in the Graveyard catacombs.
+Scarlet Monastery,Graveyard,3,Fallen Champion,Rare,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Rare undead spawn in the Graveyard catacombs.
+Scarlet Monastery,Graveyard,4,Ironspine,Rare,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Rare skeleton spawn in the Graveyard catacombs.
+Scarlet Monastery,Graveyard,5,Bloodmage Thalnos,Final,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Final boss of Scarlet Monastery: Graveyard.
+Scarlet Monastery,Library,6,Houndmaster Loksey,Main,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,First boss of Scarlet Monastery: Library.
+Scarlet Monastery,Library,7,Arcanist Doan,Final,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Final boss of Scarlet Monastery: Library; chest contains The Scarlet Key.
+Scarlet Monastery,Armory,8,Herod,Final,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Sole and final boss of Scarlet Monastery: Armory (requires The Scarlet Key).
+Scarlet Monastery,Cathedral,9,High Inquisitor Fairbanks,Optional,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Hidden boss inside a secret chamber unlocked by a wall torch/lever.
+Scarlet Monastery,Cathedral,10,Scarlet Commander Mograine,Main,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Fought in the Cathedral nave; resurrected by High Inquisitor Whitemane.
+Scarlet Monastery,Cathedral,11,High Inquisitor Whitemane,Final,Classic,Tirisfal Glades,Eastern Kingdoms,30-46,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Final boss of Scarlet Monastery: Cathedral.
+Scholomance,Main,1,Blood Steward of Kirtonos,Optional,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Drops Blood of Innocents used to summon Kirtonos the Herald.
+Scholomance,Main,2,Kirtonos the Herald,Summoned,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Summoned at the Brazier of the Herald on the porch.
+Scholomance,Main,3,Jandice Barov,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Creates illusions in the Vault of the Ravenian.
+Scholomance,Main,4,Rattlegore,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Drops the Viewing Room Key in the lower vault.
+Scholomance,Main,5,Death Knight Darkreaver,Summoned,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Paladin epic mount quest boss summoned in the Vault.
+Scholomance,Main,6,Marduk Blackpool,Optional,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Located in the Viewing Room alongside Vectus.
+Scholomance,Main,7,Vectus,Optional,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Located in the Viewing Room alongside Marduk Blackpool.
+Scholomance,Main,8,Ras Frostwhisper,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Lich boss in the Chamber of Summoning.
+Scholomance,Main,9,Kormok,Summoned,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Tier 0.5 quest boss summoned in the Great Ossuary.
+Scholomance,Main,10,Instructor Malicia,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,1 of 6 wing bosses required to spawn Darkmaster Gandling.
+Scholomance,Main,11,Doctor Theolen Krastinov,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,1 of 6 wing bosses required to spawn Darkmaster Gandling.
+Scholomance,Main,12,Lorekeeper Polkelt,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,1 of 6 wing bosses required to spawn Darkmaster Gandling.
+Scholomance,Main,13,The Ravenian,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,1 of 6 wing bosses required to spawn Darkmaster Gandling.
+Scholomance,Main,14,Lord Alexei Barov,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,1 of 6 wing bosses required to spawn Darkmaster Gandling.
+Scholomance,Main,15,Lady Illucia Barov,Main,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,1 of 6 wing bosses required to spawn Darkmaster Gandling.
+Scholomance,Main,16,Darkmaster Gandling,Final,Classic,Western Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftTavern,Final boss of Scholomance; spawns after all 6 chamber bosses fall.
+Shadowfang Keep,Main,1,Rethilgore,Main,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Guards prisoner Deathstalker Adamant / Sorcerer Ashcrombe who opens the courtyard door.
+Shadowfang Keep,Main,2,Razorclaw the Butcher,Main,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Worgen boss in the dining hall.
+Shadowfang Keep,Main,3,Baron Silverlaine,Main,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Undead noble boss in the dining hall side chamber.
+Shadowfang Keep,Main,4,Commander Springvale,Main,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Paladin ghost boss in the council room.
+Shadowfang Keep,Main,5,Odo the Blindwatcher,Main,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Worgen boss along the upper battlements.
+Shadowfang Keep,Main,6,Deathsworn Captain,Rare,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Rare ghost spawn on the parapet walkway.
+Shadowfang Keep,Main,7,Fenrus the Devourer,Main,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Worg boss in the observatory tower.
+Shadowfang Keep,Main,8,Wolf Master Nandos,Main,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Defeating him unlocks the door to Archmage Arugal.
+Shadowfang Keep,Main,9,Archmage Arugal,Final,Classic,Silverpine Forest,Eastern Kingdoms,20-30,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics,Final boss of Shadowfang Keep.
+Shaper's Terrace,Main,1,Titanosaur,Main,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Open-air prehistoric titan terrace encounter.
+Shaper's Terrace,Main,2,Ravasaur Hunters,Main,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Patrolling raptor duo (Izha'Rel and Tor'Rel).
+Shaper's Terrace,Main,3,Thunderhoof,Main,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Prehistoric beast encounter in the terrace biomes.
+Shaper's Terrace,Main,4,Venomridge,Main,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Prehistoric creature encounter in Shaper's Terrace.
+Shaper's Terrace,Main,5,Direhorn Matriarch,Main,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Prehistoric beast encounter in Shaper's Terrace.
+Shaper's Terrace,Main,6,Cinder,Summoned,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Summoned via the Red Un'Goro Power Crystals Archival Console.
+Shaper's Terrace,Main,7,King Op,Rare,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Rare gorilla boss encounter in Shaper's Terrace.
+Shaper's Terrace,Main,8,Snowtalon,Summoned,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Summoned via the Blue Un'Goro Power Crystals Archival Console.
+Shaper's Terrace,Main,9,Bolt,Summoned,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Summoned via the Yellow Un'Goro Power Crystals Archival Console.
+Shaper's Terrace,Main,10,Vitrix,Summoned,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Summoned via the Green Un'Goro Power Crystals Archival Console.
+Shaper's Terrace,Main,11,Nanaya,Final,WoW Forever,Un'Goro Crater,Kalimdor,58-60,MetaBot.GG (1.60.1); Icy Veins; ConquestCapped; WarcraftTavern,Final boss awakened at the Pillar of Assimilation after console bosses are defeated.
+Stratholme,Main Gate (Live),1,Fras Siabi,Optional,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Located in King's Square near the Main Gate.
+Stratholme,Main Gate (Live),2,Skul,Rare,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Rare gargoyle-like undead spawn patrolling near the entrances.
+Stratholme,Main Gate (Live),3,Hearthsinger Forresten,Rare,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Rare spawn patrolling King's Square / Market Row.
+Stratholme,Main Gate (Live),4,The Unforgiven,Optional,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Ghost boss spawning in Festival Lane when approached.
+Stratholme,Main Gate (Live),5,Postmaster Malown,Summoned,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Spawns after opening three Stratholme Postboxes.
+Stratholme,Main Gate (Live),6,Timmy the Cruel,Main,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Spawns in the Scarlet Courtyard once Scarlet trash is cleared.
+Stratholme,Main Gate (Live),7,Malor the Zealous,Optional,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Scarlet Crusade boss inside the Scarlet Bastion.
+Stratholme,Main Gate (Live),8,Crimson Hammersmith,Summoned,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Spawned by interacting with Blacksmithing Plans in Scarlet Bastion.
+Stratholme,Main Gate (Live),9,Cannon Master Willey,Main,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Located in the Scarlet Bastion cannon room.
+Stratholme,Main Gate (Live),10,Archivist Galford,Main,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Located in the Scarlet Bastion library.
+Stratholme,Main Gate (Live),11,Balnazzar,Final,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Final boss of Stratholme Main Gate (Live); begins disguised as Grand Crusader Dathrohan.
+Stratholme,Main Gate (Live),12,Sothos and Jarien,Summoned,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Tier 0.5 dual-boss encounter summoned inside the Scarlet Bastion chapel.
+Stratholme,Service Gate (Undead),13,Stonespine,Rare,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Rare gargoyle boss patrolling the Gauntlet / Service Gate streets.
+Stratholme,Service Gate (Undead),14,Baroness Anastari,Main,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,1 of 3 Ziggurat bosses required to unlock Slaughter Square.
+Stratholme,Service Gate (Undead),15,Nerub'enkan,Main,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,1 of 3 Ziggurat bosses required to unlock Slaughter Square.
+Stratholme,Service Gate (Undead),16,Maleki the Pallid,Main,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,1 of 3 Ziggurat bosses required to unlock Slaughter Square.
+Stratholme,Service Gate (Undead),17,Black Guard Swordsmith,Summoned,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Spawned by interacting with Blacksmithing Plans near Slaughter Square.
+Stratholme,Service Gate (Undead),18,Magistrate Barthilas,Main,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Guards the Service Gate (flees to Slaughter Square if approached from Main Gate).
+Stratholme,Service Gate (Undead),19,Ramstein the Gorger,Main,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Spawns after clearing all Venom Belchers and Bile Spewers in Slaughter Square.
+Stratholme,Service Gate (Undead),20,Baron Rivendare,Final,Classic,Eastern Plaguelands,Eastern Kingdoms,58-60,Wowhead Classic; MetaBot.GG (1.60.1); Mobalytics; WarcraftTavern,Final boss of Stratholme Service Gate (Undead).
+The Deadmines,Main,1,Rhahk'Zor,Main,Classic,Westfall,Eastern Kingdoms,17-26,Wowhead Classic; MetaBot.GG (1.60.1),Ogre boss guarding the first door.
+The Deadmines,Main,2,Miner Johnson,Rare,Classic,Westfall,Eastern Kingdoms,17-26,Wowhead Classic; MetaBot.GG (1.60.1),Rare Defias miner spawn in the mining shafts.
+The Deadmines,Main,3,Sneed,Main,Classic,Westfall,Eastern Kingdoms,17-26,Wowhead Classic; MetaBot.GG (1.60.1),Goblin boss encountered inside Sneed's Shredder.
+The Deadmines,Main,4,Gilnid,Main,Classic,Westfall,Eastern Kingdoms,17-26,Wowhead Classic; MetaBot.GG (1.60.1),Goblin smelter boss in the Foundry.
+The Deadmines,Main,5,Mr. Smite,Main,Classic,Westfall,Eastern Kingdoms,17-26,Wowhead Classic; MetaBot.GG (1.60.1),Tauren first mate guarding the ship ramp.
+The Deadmines,Main,6,Captain Greenskin,Main,Classic,Westfall,Eastern Kingdoms,17-26,Wowhead Classic; MetaBot.GG (1.60.1),Goblin captain on the ship deck.
+The Deadmines,Main,7,Edwin VanCleef,Final,Classic,Westfall,Eastern Kingdoms,17-26,Wowhead Classic; MetaBot.GG (1.60.1),Defias Brotherhood leader and final boss atop the ship.
+The Deadmines,Main,8,Cookie,Optional,Classic,Westfall,Eastern Kingdoms,17-26,Wowhead Classic; MetaBot.GG (1.60.1),Murloc ship cook located near the stern.
+The Drowned City,Main,1,Zul'Alai,Main,WoW Forever,Stranglethorn Vale (Gillijim's Isle),Eastern Kingdoms,35-40,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,First mandatory troll boss in the risen Gurubashi ruins.
+The Drowned City,Main,2,Gill,Rare,WoW Forever,Stranglethorn Vale (Gillijim's Isle),Eastern Kingdoms,35-40,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Rare spawn boss near the flooded pool / Deep Archives area.
+The Drowned City,Main,3,Var'Taka,Main,WoW Forever,Stranglethorn Vale (Gillijim's Isle),Eastern Kingdoms,35-40,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Naga boss; interact with nearby Glowing Pearl to lower interior barrier.
+The Drowned City,Main,4,Captain Dreadrise,Main,WoW Forever,Stranglethorn Vale (Gillijim's Isle),Eastern Kingdoms,35-40,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Saltseer pirate boss; interact with nearby Glowing Pearl to lower interior barrier.
+The Drowned City,Main,5,Deathless Marrow,Main,WoW Forever,Stranglethorn Vale (Gillijim's Isle),Eastern Kingdoms,35-40,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Blood elemental boss with troll/naga adds (referenced as Deathless Guardians in client data).
+The Drowned City,Main,6,Primeval Elemental,Secret,WoW Forever,Stranglethorn Vale (Gillijim's Isle),Eastern Kingdoms,35-40,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Hidden underwater boss summoned in the Deep Archives after clearing Undying Offerings.
+The Drowned City,Main,7,Min'loth the Serpent,Final,WoW Forever,Stranglethorn Vale (Gillijim's Isle),Eastern Kingdoms,35-40,MetaBot.GG (1.60.1); Mobalytics; Icy Veins; ConquestCapped,Two-phase final boss transforming from troll form into a giant serpent.
+The Stockade,Main,1,Targorr the Dread,Main,Classic,Stormwind City,Eastern Kingdoms,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Method,Gnoll boss in the western cell wing.
+The Stockade,Main,2,Kam Deepfury,Main,Classic,Stormwind City,Eastern Kingdoms,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Method,Dark Iron dwarf boss in the northern wing.
+The Stockade,Main,3,Hamhock,Main,Classic,Stormwind City,Eastern Kingdoms,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Method,Ogre boss in the northern wing.
+The Stockade,Main,4,Bruegal Ironknuckle,Rare,Classic,Stormwind City,Eastern Kingdoms,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Method,Rare dwarf boss spawn.
+The Stockade,Main,5,Bazil Thredd,Final,Classic,Stormwind City,Eastern Kingdoms,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Method,Defias leader and final boss in the eastern wing.
+The Stockade,Main,6,Dextren Ward,Optional,Classic,Stormwind City,Eastern Kingdoms,24-32,Wowhead Classic; MetaBot.GG (1.60.1); Method,Human prisoner boss in the eastern wing.
+The Temple of Atal'Hakkar (Sunken Temple),Main,1,Atal'alarion,Optional,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Stone giant summoned in the Pit of Sacrifice by activating the 6 Atal'ai statues in order.
+The Temple of Atal'Hakkar (Sunken Temple),Main,2,Zolo,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,1 of 6 Atal'ai Defenders on the upper balconies required to break Jammal'an's barrier.
+The Temple of Atal'Hakkar (Sunken Temple),Main,3,Zul'Lor,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,1 of 6 Atal'ai Defenders on the upper balconies required to break Jammal'an's barrier.
+The Temple of Atal'Hakkar (Sunken Temple),Main,4,Mijan,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,1 of 6 Atal'ai Defenders on the upper balconies required to break Jammal'an's barrier.
+The Temple of Atal'Hakkar (Sunken Temple),Main,5,Hukku,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,1 of 6 Atal'ai Defenders on the upper balconies required to break Jammal'an's barrier.
+The Temple of Atal'Hakkar (Sunken Temple),Main,6,Gasher,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,1 of 6 Atal'ai Defenders on the upper balconies required to break Jammal'an's barrier.
+The Temple of Atal'Hakkar (Sunken Temple),Main,7,Loro,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,1 of 6 Atal'ai Defenders on the upper balconies required to break Jammal'an's barrier.
+The Temple of Atal'Hakkar (Sunken Temple),Main,8,Ogom the Wretched,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Fought alongside Jammal'an the Prophet; has an independent loot table.
+The Temple of Atal'Hakkar (Sunken Temple),Main,9,Jammal'an the Prophet,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Prophet of Hakkar in the inner chamber unlocked after clearing the 6 Atal'ai Defenders.
+The Temple of Atal'Hakkar (Sunken Temple),Main,10,Dreamscythe,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Green drake patrolling the upper dragon hall.
+The Temple of Atal'Hakkar (Sunken Temple),Main,11,Weaver,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Green drake patrolling the upper dragon hall.
+The Temple of Atal'Hakkar (Sunken Temple),Main,12,Morphaz,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Green drake guarding the lower dragon wing alongside Hazzas.
+The Temple of Atal'Hakkar (Sunken Temple),Main,13,Hazzas,Main,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Green drake guarding the lower dragon wing alongside Morphaz.
+The Temple of Atal'Hakkar (Sunken Temple),Main,14,Avatar of Hakkar,Summoned,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Summoned in the Hall of Ritual using the Egg of Hakkar and 4 Hakkari Bloods.
+The Temple of Atal'Hakkar (Sunken Temple),Main,15,Shade of Eranikus,Final,Classic,Swamp of Sorrows,Eastern Kingdoms,50-60,Wowhead Classic; MetaBot.GG (1.60.1); Icy Veins; WarcraftTavern,Final boss of Sunken Temple in the Sanctum of Eranikus.
+Uldaman,Main,1,Revelosh,Main,Classic,Badlands,Eastern Kingdoms,41-51,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftDB,Trogg boss dropping The Shaft of Tsol for the Staff of Prehistoria.
+Uldaman,Main,2,The Lost Dwarves,Main,Classic,Badlands,Eastern Kingdoms,41-51,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftDB,"Baelog, Eric 'The Swift', and Olaf; Baelog's Chest holds Gni'kiv Medallion."
+Uldaman,Main,3,Ironaya,Summoned,Classic,Badlands,Eastern Kingdoms,41-51,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftDB,Titan watcher summoned in the Map Chamber using Staff of Prehistoria.
+Uldaman,Main,4,Obsidian Sentinel,Optional,Classic,Badlands,Eastern Kingdoms,41-51,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftDB,Stone construct in the deeper titan corridors.
+Uldaman,Main,5,Ancient Stone Keeper,Main,Classic,Badlands,Eastern Kingdoms,41-51,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftDB,Titan construct casting Harsh Winds.
+Uldaman,Main,6,Galgann Firehammer,Main,Classic,Badlands,Eastern Kingdoms,41-51,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftDB,Dark Iron boss accompanied by two guards.
+Uldaman,Main,7,Grimlok,Main,Classic,Badlands,Eastern Kingdoms,41-51,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftDB,Trogg chieftain in the lower ruins.
+Uldaman,Main,8,Archaedas,Final,Classic,Badlands,Eastern Kingdoms,41-51,Wowhead Classic; MetaBot.GG (1.60.1); WarcraftDB,Final boss guarding the Discs of Norgannon.
+Wailing Caverns,Main,1,Lady Anacondra,Main,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),1 of 4 Fanglords required to begin the Naralex escort event.
+Wailing Caverns,Main,2,Lord Cobrahn,Main,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),1 of 4 Fanglords required to begin the Naralex escort event.
+Wailing Caverns,Main,3,Kresh,Optional,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),Giant turtle patrolling the central water basin.
+Wailing Caverns,Main,4,Lord Pythas,Main,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),1 of 4 Fanglords required to begin the Naralex escort event.
+Wailing Caverns,Main,5,Skum,Optional,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),Thunder lizard boss in the southern cavern.
+Wailing Caverns,Main,6,Deviate Faerie Dragon,Rare,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),Rare spawn in the upper caverns.
+Wailing Caverns,Main,7,Lord Serpentis,Main,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),1 of 4 Fanglords required to begin the Naralex escort event.
+Wailing Caverns,Main,8,Verdan the Everliving,Main,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),Giant bog beast atop the ledge past Lord Serpentis.
+Wailing Caverns,Main,9,Mutanus the Devourer,Final,Classic,The Barrens,Kalimdor,15-24,Wowhead Classic; MetaBot.GG (1.60.1),Final boss summoned at the end of Disciple of Naralex's escort event.
+Zul'Farrak,Main,1,Antu'sul,Main,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Basilisk-taming troll boss in the southern cave.
+Zul'Farrak,Main,2,Theka the Martyr,Main,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Undead troll boss surrounded by scarabs.
+Zul'Farrak,Main,3,Witch Doctor Zum'rah,Main,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Troll necromancer in the zombie graveyard.
+Zul'Farrak,Main,4,Nekrum Gutchewer,Main,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Pyramid event boss.
+Zul'Farrak,Main,5,Shadowpriest Sezz'ziz,Main,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Pyramid event boss.
+Zul'Farrak,Main,6,Sergeant Bly,Optional,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Pyramid NPC who can optionally be engaged after the pyramid event.
+Zul'Farrak,Main,7,Sandarr Dunereaver,Rare,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Rare troll spawn.
+Zul'Farrak,Main,8,Dustwraith,Rare,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Rare troll spawn near the zombie graves.
+Zul'Farrak,Main,9,Hydromancer Velratha,Main,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Guards the Sacred Pool of Gahz'rilla.
+Zul'Farrak,Main,10,Gahz'rilla,Summoned,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Hydra summoned at the Sacred Pool using the Mallet of Zul'Farrak.
+Zul'Farrak,Main,11,Zerillis,Rare,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),Rare troll spawn patrolling the upper ruins.
+Zul'Farrak,Main,12,Chief Ukorz Sandscalp,Final,Classic,Tanaris,Kalimdor,44-54,Wowhead Classic; MetaBot.GG (1.60.1),"Final boss of Zul'Farrak, accompanied by Ruuzlu."
