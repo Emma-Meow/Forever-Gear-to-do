@@ -63,7 +63,7 @@
   header {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 14px 20px 0;
+    padding: 12px 20px 0;
   }
 
   .wrap {
@@ -104,7 +104,7 @@
 
   h1 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.22rem;
     font-weight: 700;
     color: var(--text-strong);
     letter-spacing: -0.1px;
@@ -112,14 +112,57 @@
 
   .subtitle {
     color: var(--muted);
-    font-size: 0.82rem;
-    margin-top: 4px;
+    font-size: 0.81rem;
+    margin-top: 3px;
   }
 
   .header-actions {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 6px;
+  }
+
+  /* Compact Character Switcher in Header */
+  .char-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 7px 10px;
+    background: var(--surface-deep);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .char-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+  }
+
+  .faction-btn {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+  }
+
+  .faction-btn.horde {
+    color: #e88388;
+    background: rgba(217, 83, 79, 0.14);
+    border-color: rgba(217, 83, 79, 0.38);
+  }
+
+  .faction-btn.alliance {
+    color: var(--forever-text);
+    background: var(--forever-tint);
+    border-color: var(--forever-border);
   }
 
   /* Top-level Tabs */
@@ -127,7 +170,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin-top: 14px;
+    margin-top: 12px;
   }
 
   .tab-btn {
@@ -254,6 +297,35 @@
 
   button.toggle-pill.active:hover {
     background: var(--forever-hover);
+  }
+
+  /* 3-State T0.5 Status Pill in Gear Builder */
+  .t05-state-btn {
+    padding: 3px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    min-width: 62px;
+    text-align: center;
+  }
+
+  .t05-state-btn.need_t0 {
+    background: var(--surface-deep);
+    color: var(--muted);
+    border-color: var(--border-strong);
+  }
+
+  .t05-state-btn.have_t0 {
+    background: var(--forever-tint);
+    color: var(--forever-text);
+    border-color: var(--forever-border);
+  }
+
+  .t05-state-btn.t05 {
+    background: var(--success-tint);
+    color: var(--success);
+    border-color: rgba(63, 185, 80, 0.45);
   }
 
   /* Sticky Compendium Controls */
@@ -399,6 +471,26 @@
     border-color: rgba(63, 185, 80, 0.35);
   }
 
+  .t05-quest-tag {
+    background: rgba(78, 194, 180, 0.16);
+    color: var(--type-summoned);
+    border: 1px solid rgba(78, 194, 180, 0.38);
+    border-radius: 2px;
+    padding: 0 5px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .base-t0-tag {
+    background: var(--surface-2);
+    color: var(--forever-text);
+    border: 1px solid var(--forever-border);
+    border-radius: 2px;
+    padding: 0 5px;
+    font-size: 10.5px;
+    font-weight: 600;
+  }
+
   /* Panels */
   .panel {
     background: var(--surface);
@@ -514,15 +606,15 @@
     padding: 5px 7px;
     font-size: 0.82rem;
     width: 100%;
-    min-width: 114px;
+    min-width: 110px;
   }
 
   .gear-table td.col-dungeon select { min-width: 175px; }
   .gear-table td.col-boss select { min-width: 185px; }
-  .gear-table td.col-source select { min-width: 112px; }
-  .gear-table td.col-slot select { min-width: 112px; }
+  .gear-table td.col-source select { min-width: 108px; }
+  .gear-table td.col-slot select { min-width: 108px; }
 
-  /* Dungeon Cards */
+  /* Dungeon & Stage Cards */
   .instance-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -605,6 +697,164 @@
     border-bottom: 1px solid var(--border);
   }
 
+  /* T0.5 Chain Specific Styles */
+  .t05-stage-body {
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .t05-turnin-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--surface-deep);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .t05-turnin-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.45px;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+
+  .t05-piece-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 0.8rem;
+  }
+
+  .t05-piece-chip.ready {
+    border-color: var(--forever-border);
+    background: var(--forever-tint-soft);
+  }
+
+  .t05-piece-chip.upgraded {
+    border-color: rgba(63, 185, 80, 0.4);
+    background: var(--success-tint);
+    color: var(--success);
+  }
+
+  .t05-piece-chip input[type="checkbox"] {
+    accent-color: var(--forever);
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .t05-milestones {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .t05-milestone-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    background: var(--surface-deep);
+    border: 1px solid #242424;
+    border-radius: var(--radius-sm);
+    font-size: 0.84rem;
+  }
+
+  .t05-milestone-row.done {
+    opacity: 0.52;
+  }
+
+  .t05-milestone-row.done .ms-title {
+    text-decoration: line-through;
+  }
+
+  .t05-milestone-row input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--forever);
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .ms-title {
+    font-weight: 600;
+    color: var(--text-strong);
+  }
+
+  .ms-detail {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .t05-amulet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--surface-deep);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  @media (max-width: 720px) {
+    .t05-amulet-grid { grid-template-columns: 1fr; }
+  }
+
+  .t05-amulet-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .t05-amulet-picker label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: 0.4px;
+  }
+
+  details.t05-mats {
+    background: var(--surface-deep);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+  }
+
+  details.t05-mats summary {
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--forever-text);
+    user-select: none;
+  }
+
+  details.t05-mats ul {
+    margin: 8px 0 4px;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 0.81rem;
+  }
+
+  details.t05-mats li {
+    margin-bottom: 3px;
+  }
+
+  details.t05-mats strong {
+    color: var(--text);
+  }
+
   /* Tables */
   .table-wrap {
     overflow-x: auto;
@@ -662,7 +912,7 @@
   }
 
   .check-cell {
-    width: 44px;
+    width: 72px;
     text-align: center;
   }
 
@@ -820,16 +1070,18 @@
           <span class="forever-pill">FOREVER 1.60.1</span>
           <h1>Pre-BiS &amp; Dungeon Boss Tracker</h1>
         </div>
-        <div class="subtitle">Assign dungeon bosses per gear slot — your farm To-Do list updates automatically.</div>
+        <div class="subtitle">Assign dungeon bosses per gear slot — your farm To-Do list and optional T0.5 Chain update automatically.</div>
       </div>
       <div class="header-actions">
         <button id="btnExport" class="primary" title="Export the active tab as CSV">Export CSV</button>
-        <button id="btnBackupJson" title="Download all gearsets as a JSON backup">Backup JSON</button>
-        <button id="btnRestoreJson" title="Restore gearsets from a JSON backup">Restore JSON…</button>
+        <button id="btnBackupJson" title="Download all characters &amp; gearsets as a JSON backup">Backup JSON</button>
+        <button id="btnRestoreJson" title="Restore characters &amp; gearsets from a JSON backup">Restore JSON…</button>
         <input id="gearFileInput" type="file" accept=".csv,text/csv" class="hidden" />
         <input id="jsonFileInput" type="file" accept=".json,application/json" class="hidden" />
       </div>
     </div>
+
+    <div class="char-bar" id="charBar"></div>
 
     <nav class="main-tabs" role="tablist">
       <button id="tabGear" class="tab-btn active" role="tab" aria-selected="true">
@@ -837,6 +1089,9 @@
       </button>
       <button id="tabTodo" class="tab-btn" role="tab" aria-selected="false">
         Boss To-Do List <span class="tab-count" id="countTodo">0</span>
+      </button>
+      <button id="tabT05" class="tab-btn hidden" role="tab" aria-selected="false">
+        T0.5 Chain <span class="tab-count" id="countT05">0</span>
       </button>
       <button id="tabCompendium" class="tab-btn" role="tab" aria-selected="false">
         Dungeon Compendium <span class="tab-count" id="countCompendium">0</span>
@@ -897,6 +1152,7 @@
   <div class="wrap">
     <div id="gearView"><div class="empty-state"><h3>Loading boss database…</h3></div></div>
     <div id="todoView" class="hidden"></div>
+    <div id="t05View" class="hidden"></div>
     <div id="compendiumView" class="hidden"></div>
   </div>
 </main>
@@ -905,6 +1161,7 @@
 
 <script>
 const BOSSES_CSV_URL = "./wow_forever_dungeon_bosses.csv";
+const T05_GUIDE_URL = "https://www.wowhead.com/classic/guide/dungeon-sets-1-2-quests-wow-classic";
 
 const SLOTS = [
   "Head", "Neck", "Shoulder", "Back", "Chest", "Wrist",
@@ -919,15 +1176,269 @@ const STANDARD_SLOTS = [
 ];
 
 const SOURCES = [
-  "Dungeon", "Raid", "BoE", "Quest", "Honor",
+  "Dungeon", "T0.5", "Raid", "BoE", "Quest", "Honor",
   "Rank", "Reputation", "Reals", "Profession"
 ];
 
-const STORAGE_KEY = "wow_forever_1601_gearsets_v1";
+const T05_SLOT_STAGE = {
+  Wrist: 1,
+  Waist: 2,
+  Hands: 2,
+  Feet: 3,
+  Legs: 3,
+  Shoulder: 3,
+  Head: 4,
+  Chest: 4,
+};
+
+const T05_AMULET_BRANCHES = [
+  {
+    id: "stratholme",
+    boss: "Sothos and Jarien",
+    dungeon: "Stratholme",
+    room: "Balnazzar's room (Live Side)",
+    bossLabel: "Stratholme (Live) — Sothos and Jarien",
+    component: "Brilliant Sword of Zealotry",
+    zone: "Tyr's Hand, Eastern Plaguelands",
+    mobs: "Scarlet Praetorians in Tyr's Hand (EPL).",
+    componentLabel: "Tyr's Hand (EPL) — Brilliant Sword of Zealotry",
+  },
+  {
+    id: "scholomance",
+    boss: "Kormok",
+    dungeon: "Scholomance",
+    room: "Ras Frostwhisper's room",
+    bossLabel: "Scholomance — Kormok",
+    component: "Soul Ashes of the Banished",
+    zone: "Purgation Isle, Hillsbrad Foothills",
+    mobs: "Cursed Paladins, Justicars & Writhing Mages on Purgation Isle.",
+    componentLabel: "Purgation Isle (Hillsbrad) — Soul Ashes of the Banished",
+  },
+  {
+    id: "lbrs",
+    boss: "Mor Grayhoof",
+    dungeon: "Blackrock Spire: Lower (LBRS)",
+    room: "War Master Voone's room",
+    bossLabel: "Lower Blackrock Spire (LBRS) — Mor Grayhoof",
+    component: "Druidical Remains",
+    zone: "Hive'Regal, Silithus",
+    mobs: "Elite Silithid in Hive'Regal (southern Silithus).",
+    componentLabel: "Hive'Regal (Silithus) — Druidical Remains",
+  },
+  {
+    id: "dme",
+    boss: "Isalien",
+    dungeon: "Dire Maul: East",
+    room: "Alzzin the Wildshaper's room",
+    bossLabel: "Dire Maul: East — Isalien",
+    component: "Starbreeze Village Relic",
+    zone: "Frostwhisper Gorge, Winterspring",
+    mobs: "Frostmaul Giants & Preservers in Frostwhisper Gorge (Winterspring).",
+    componentLabel: "Frostwhisper Gorge (Winterspring) — Starbreeze Village Relic",
+  },
+];
+
+function findBranchByBoss(bossName, fallbackId) {
+  return T05_AMULET_BRANCHES.find(b => b.boss === bossName) || T05_AMULET_BRANCHES.find(b => b.id === fallbackId) || T05_AMULET_BRANCHES[0];
+}
+
+function findBranchById(id, fallbackId) {
+  return T05_AMULET_BRANCHES.find(b => b.id === id) || T05_AMULET_BRANCHES.find(b => b.id === fallbackId) || T05_AMULET_BRANCHES[0];
+}
+
+function buildT05Stages(char) {
+  const isAlly = char.faction === "Alliance";
+  const comp1 = findBranchById(char.t05.componentsFirst, "scholomance");
+  const leftOpt = findBranchByBoss(char.t05.leftAmuletBoss, comp1.id);
+  const comp2 = findBranchById(char.t05.componentsSecond, "dme");
+  const rightOpt = findBranchByBoss(char.t05.rightAmuletBoss, comp2.id);
+
+  return [
+    {
+      stage: 1,
+      title: "Stage 1 — Bracers (An Earnest Proposition)",
+      slots: ["Wrist"],
+      summary: isAlly
+        ? "Deliana (Ironforge) • 20g + 15 Winterspring Blood Samples"
+        : "Mokvar (Orgrimmar) • 20g + 15 Silithus Venom Samples",
+      milestones: [
+        {
+          id: "s1_samples",
+          title: isAlly ? "Collect 15x Winterspring Blood Samples" : "Collect 15x Silithus Venom Samples",
+          detail: isAlly ? "Drops from bears & frostsabers in Winterspring." : "Drops from spiders & scorpions in Silithus.",
+        },
+        {
+          id: "s1_turnin",
+          title: "Turn in 'An Earnest Proposition' (Upgrade Wrist)",
+          detail: isAlly ? "Hand in T0 Bracers + 20g + samples to Deliana (Ironforge)." : "Hand in T0 Bracers + 20g + samples to Mokvar (Orgrimmar).",
+        },
+      ],
+      materials: [
+        "<strong>20 Gold</strong> (direct quest fee)",
+        isAlly
+          ? "<strong>15x Winterspring Blood Sample</strong> (Winterspring beasts)"
+          : "<strong>15x Silithus Venom Sample</strong> (Silithus spiders/scorpions)",
+        "<strong>Tier 0 Wrist (BoE)</strong> — farmable or bought on Auction House",
+      ],
+    },
+    {
+      stage: 2,
+      title: "Stage 2 — Belt & Gloves (Just Compensation)",
+      slots: ["Waist", "Hands"],
+      summary: "Mux Manascrambler (Gadgetzan) • ~80g + Distiller mats + 36 Ectoplasm",
+      milestones: [
+        {
+          id: "s2_distiller",
+          title: "Craft Ectoplasmic Distiller (Mux Manascrambler, Gadgetzan)",
+          detail: "Requires 1x Delicate Arcanite Converter, 4x Greater Eternal Essence, 10x Stonescale Oil, 25x Volcanic Ash.",
+        },
+        {
+          id: "s2_ectoplasm",
+          title: "Harvest 36x Ectoplasm (12 Scorched, 12 Frozen, 12 Stable)",
+          detail: "Use Distiller on ghosts in Silithus, Winterspring, and Eastern Plaguelands.",
+        },
+        {
+          id: "s2_turnin",
+          title: "Turn in 'Just Compensation' (Upgrade Waist & Hands)",
+          detail: "Hand in T0 Belt & Gloves + gold fees (~80g total across Stage 2).",
+        },
+      ],
+      materials: [
+        "<strong>~80 Gold</strong> (cumulative Stage 2 quest/goblin fees)",
+        "<strong>1x Delicate Arcanite Converter</strong> (Engineering)",
+        "<strong>4x Greater Eternal Essence</strong> (Enchanting)",
+        "<strong>10x Stonescale Oil</strong> (Alchemy)",
+        "<strong>25x Volcanic Ash</strong> (ground nodes near lava in Burning Steppes)",
+        "<strong>Tier 0 Waist &amp; Hands (BoE)</strong>",
+      ],
+    },
+    {
+      stage: 3,
+      title: "Stage 3 — Boots, Legs & Shoulders (Anthion's Parting Words)",
+      slots: ["Feet", "Legs", "Shoulder"],
+      summary: "Anthion Harmon (Stratholme) • 45-Min Baron, Crafting Mats, Dire Maul, BRD Theldren",
+      milestones: [
+        {
+          id: "s3_baron45",
+          title: "Dead Man's Plea — 45-Minute Timed Baron Run",
+          detail: "Save Ysida Harmon by defeating Baron Rivendare within 45 minutes of opening the Service Gate.",
+          dungeon: "Stratholme",
+          boss: "Baron Rivendare",
+        },
+        {
+          id: "s3_mats",
+          title: "Complete 'Anthion's Strange Request' (Crafting Materials)",
+          detail: "Hand in 3x Dark Iron Bar, 20x Enchanted Leather, 3x Mooncloth, 4x Cured Rugged Hide.",
+        },
+        {
+          id: "s3_falrin",
+          title: "Complete 'Falrin's Vendetta' (Dire Maul Ogres)",
+          detail: "Clear Dire Maul ogres to obtain the Banner of Provocation.",
+        },
+        {
+          id: "s3_theldren",
+          title: "The Challenge — Defeat Theldren in Ring of Law",
+          detail: "Plant the Banner of Provocation in the BRD Arena to summon Theldren's team.",
+          dungeon: "Blackrock Depths",
+          boss: "Theldren",
+        },
+        {
+          id: "s3_turnin",
+          title: "Turn in 'Anthion's Parting Words' (Upgrade Feet, Legs & Shoulder)",
+          detail: "Hand in T0 Boots, Legs, and Shoulders for their T0.5 upgrades.",
+        },
+      ],
+      materials: [
+        "<strong>3x Dark Iron Bar</strong> (Mining/Smelting)",
+        "<strong>20x Enchanted Leather</strong> (Enchanting/Leatherworking)",
+        "<strong>3x Mooncloth</strong> (Tailoring)",
+        "<strong>4x Cured Rugged Hide</strong> (Leatherworking)",
+        "<strong>Tier 0 Feet, Legs &amp; Shoulder (BoP dungeon drops)</strong>",
+      ],
+    },
+    {
+      stage: 4,
+      title: "Stage 4 — Helm & Chest (Saving the Best for Last)",
+      slots: ["Head", "Chest"],
+      summary: "Bodley (Blackrock Mountain) • 120g Brazier, Three Kings, 2 Amulet Bosses, Lord Valthalak",
+      hasAmuletPickers: true,
+      milestones: [
+        {
+          id: "s4_incendius",
+          title: "Three Kings of Flame — Incendicite of Incendius",
+          detail: "Defeat Lord Incendius in Blackrock Depths.",
+          dungeon: "Blackrock Depths",
+          boss: "Lord Incendius",
+        },
+        {
+          id: "s4_emberseer",
+          title: "Three Kings of Flame — Ember of Emberseer",
+          detail: "Defeat Pyroguard Emberseer in Upper Blackrock Spire.",
+          dungeon: "Blackrock Spire: Upper (UBRS)",
+          boss: "Pyroguard Emberseer",
+        },
+        {
+          id: "s4_cynders_brazier",
+          title: "Cinder of Cynders (Silithus Wind Stone) + Hallowed Brazier (120g)",
+          detail: "Summon The Duke of Cynders in Silithus; purchase Hallowed Brazier (120g, Argent Dawn Honored).",
+        },
+        {
+          id: "s4_comp1",
+          title: `Components of Importance — ${comp1.component}`,
+          detail: `${comp1.zone}: ${comp1.mobs}`,
+        },
+        {
+          id: "s4_left_amulet",
+          title: `The Left Piece of Lord Valthalak's Amulet (${leftOpt.boss})`,
+          detail: `Summon ${leftOpt.boss} using Brazier of Beckoning in ${leftOpt.room} (${leftOpt.dungeon}).`,
+          dungeon: leftOpt.dungeon,
+          boss: leftOpt.boss,
+        },
+        {
+          id: "s4_alcaz",
+          title: "I See Alcaz Island In Your Future… (20x Bloodkelp)",
+          detail: "Collect 20x Bloodkelp from Alcaz Island (Dustwallow Marsh) and return to Bodley.",
+        },
+        {
+          id: "s4_comp2",
+          title: `More Components of Importance — ${comp2.component}`,
+          detail: `${comp2.zone}: ${comp2.mobs}`,
+        },
+        {
+          id: "s4_right_amulet",
+          title: `The Right Piece of Lord Valthalak's Amulet (${rightOpt.boss})`,
+          detail: `Summon ${rightOpt.boss} using Brazier of Beckoning in ${rightOpt.room} (${rightOpt.dungeon}).`,
+          dungeon: rightOpt.dungeon,
+          boss: rightOpt.boss,
+        },
+        {
+          id: "s4_valthalak",
+          title: "Mea Culpa, Lord Valthalak — Final Summoned Boss",
+          detail: "Use the assembled Amulet at The Beast's room in UBRS to summon and defeat Lord Valthalak.",
+          dungeon: "Blackrock Spire: Upper (UBRS)",
+          boss: "Lord Valthalak",
+        },
+        {
+          id: "s4_turnin",
+          title: "Turn in 'Saving the Best for Last' (Upgrade Head & Chest)",
+          detail: "Hand in T0 Helm & Chest to complete your T0.5 set.",
+        },
+      ],
+      materials: [
+        "<strong>120 Gold</strong> — <strong>Hallowed Brazier</strong> (Argent Dawn Quartermaster, requires Honored)",
+        "<strong>Twilight Cultist Set + Signet</strong> (for summoning The Duke of Cynders in Silithus)",
+        "<strong>Tier 0 Head &amp; Chest (BoP dungeon drops)</strong>",
+      ],
+    },
+  ];
+}
+
+const STORAGE_KEY_V2 = "wow_forever_1601_state_v2";
+const STORAGE_KEY_V1 = "wow_forever_1601_gearsets_v1";
 
 let allBosses = [];
 let state = null;
-let activeTab = "gear";          // "gear" | "todo" | "compendium"
+let activeTab = "gear";          // "gear" | "todo" | "t05" | "compendium"
 let viewMode = "grouped";        // Compendium: "grouped" | "table"
 let endgameOnly = false;
 let gearEndgameOnly = true;
@@ -936,21 +1447,26 @@ let gearHideObtained = false;
 let todoScope = "active";        // "active" | "all"
 let todoSort = "remaining_desc";
 let todoHideDone = false;
+let showT05QuestBosses = true;
 let openInstances = new Set(["The Temple of Atal'Hakkar (Sunken Temple)"]);
 let tableSort = { col: "Instance", dir: "asc" };
 let editingItemId = null;
 let toastTimer = null;
 
 const els = {
+  charBar: document.getElementById("charBar"),
   tabGear: document.getElementById("tabGear"),
   tabTodo: document.getElementById("tabTodo"),
+  tabT05: document.getElementById("tabT05"),
   tabCompendium: document.getElementById("tabCompendium"),
   countGear: document.getElementById("countGear"),
   countTodo: document.getElementById("countTodo"),
+  countT05: document.getElementById("countT05"),
   countCompendium: document.getElementById("countCompendium"),
   compendiumControls: document.getElementById("compendiumControls"),
   gearView: document.getElementById("gearView"),
   todoView: document.getElementById("todoView"),
+  t05View: document.getElementById("t05View"),
   compendiumView: document.getElementById("compendiumView"),
   search: document.getElementById("searchInput"),
   instance: document.getElementById("instanceFilter"),
@@ -983,6 +1499,18 @@ function uid() {
   return "id_" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
 }
 
+function createDefaultT05State() {
+  return {
+    milestones: {},
+    prereqT0Owned: {},
+    componentsFirst: "scholomance",
+    leftAmuletBoss: "Kormok",
+    componentsSecond: "dme",
+    rightAmuletBoss: "Isalien",
+    showAllStages: false,
+  };
+}
+
 function createDefaultGearset(name = "Pre-BiS Set 1") {
   return {
     id: uid(),
@@ -991,6 +1519,7 @@ function createDefaultGearset(name = "Pre-BiS Set 1") {
     items: STANDARD_SLOTS.map(slot => ({
       id: uid(),
       obtained: false,
+      t05Status: "need_t0",
       slot,
       source: "Dungeon",
       dungeon: "",
@@ -1000,34 +1529,117 @@ function createDefaultGearset(name = "Pre-BiS Set 1") {
   };
 }
 
+function createCharacter(name = "Main", faction = "Horde", gearsets = null) {
+  const sets = gearsets && gearsets.length ? gearsets : [createDefaultGearset("Pre-BiS Set 1")];
+  return {
+    id: uid(),
+    name,
+    faction: faction === "Alliance" ? "Alliance" : "Horde",
+    activeSetId: sets[0].id,
+    gearsets: sets,
+    t05: createDefaultT05State(),
+  };
+}
+
+function normalizeItem(item) {
+  const src = SOURCES.includes(item.source) ? item.source : "Dungeon";
+  let t05Status = item.t05Status;
+  if (!["need_t0", "have_t0", "t05"].includes(t05Status)) {
+    t05Status = item.obtained ? "t05" : "need_t0";
+  }
+  const obtained = src === "T0.5" ? t05Status === "t05" : Boolean(item.obtained);
+  let dungeon = String(item.dungeon || "");
+  const boss = String(item.boss || "");
+  if ((dungeon === "Blackrock Spire" || dungeon === "Dire Maul") && boss && allBosses.length) {
+    const match = allBosses.find(b => b.Boss_Name === boss && b.Instance.startsWith(dungeon + ":"));
+    if (match) dungeon = match.Instance;
+  }
+  return {
+    id: item.id || uid(),
+    obtained,
+    t05Status,
+    slot: SLOTS.includes(item.slot) ? item.slot : "Head",
+    source: src,
+    dungeon,
+    boss,
+    itemText: String(item.itemText || ""),
+  };
+}
+
+function normalizeCharacter(c) {
+  const gearsets = (Array.isArray(c.gearsets) && c.gearsets.length ? c.gearsets : [createDefaultGearset()]).map(gs => ({
+    id: gs.id || uid(),
+    name: String(gs.name || "Pre-BiS Set"),
+    bookmarkUrl: String(gs.bookmarkUrl || ""),
+    items: (Array.isArray(gs.items) ? gs.items : []).map(normalizeItem),
+  }));
+  const activeSetId = gearsets.some(g => g.id === c.activeSetId) ? c.activeSetId : gearsets[0].id;
+  const t05Raw = c.t05 || {};
+  const leftBranch = findBranchByBoss(t05Raw.leftAmuletBoss, "scholomance");
+  const rightBranch = findBranchByBoss(t05Raw.rightAmuletBoss, "dme");
+  return {
+    id: c.id || uid(),
+    name: String(c.name || "Main"),
+    faction: c.faction === "Alliance" ? "Alliance" : "Horde",
+    activeSetId,
+    gearsets,
+    t05: {
+      milestones: t05Raw.milestones && typeof t05Raw.milestones === "object" ? { ...t05Raw.milestones } : {},
+      prereqT0Owned: t05Raw.prereqT0Owned && typeof t05Raw.prereqT0Owned === "object" ? { ...t05Raw.prereqT0Owned } : {},
+      componentsFirst: T05_AMULET_BRANCHES.some(b => b.id === t05Raw.componentsFirst) ? t05Raw.componentsFirst : leftBranch.id,
+      leftAmuletBoss: leftBranch.boss,
+      componentsSecond: T05_AMULET_BRANCHES.some(b => b.id === t05Raw.componentsSecond) ? t05Raw.componentsSecond : rightBranch.id,
+      rightAmuletBoss: rightBranch.boss,
+      showAllStages: Boolean(t05Raw.showAllStages),
+    },
+  };
+}
+
+function migrateToV2(raw) {
+  if (raw && raw.version === 2 && Array.isArray(raw.characters) && raw.characters.length) {
+    const characters = raw.characters.map(normalizeCharacter);
+    const activeCharId = characters.some(c => c.id === raw.activeCharId) ? raw.activeCharId : characters[0].id;
+    return { version: 2, activeCharId, characters };
+  }
+  if (raw && Array.isArray(raw.gearsets) && raw.gearsets.length) {
+    const migratedChar = normalizeCharacter({
+      id: uid(),
+      name: "Main",
+      faction: "Horde",
+      activeSetId: raw.activeSetId,
+      gearsets: raw.gearsets,
+    });
+    return { version: 2, activeCharId: migratedChar.id, characters: [migratedChar] };
+  }
+  const first = createCharacter("Main", "Horde");
+  return { version: 2, activeCharId: first.id, characters: [first] };
+}
+
 function loadState() {
   try {
-    const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-    if (raw && Array.isArray(raw.gearsets) && raw.gearsets.length) {
-      if (!raw.gearsets.some(g => g.id === raw.activeSetId)) {
-        raw.activeSetId = raw.gearsets[0].id;
-      }
-      for (const gs of raw.gearsets) {
-        for (const item of gs.items || []) {
-          if (item.dungeon === "Blackrock Spire" || item.dungeon === "Dire Maul") {
-            const match = allBosses.find(b => b.Boss_Name === item.boss && b.Instance.startsWith(item.dungeon + ":"));
-            if (match) item.dungeon = match.Instance;
-          }
-        }
-      }
-      return raw;
+    const v2 = JSON.parse(localStorage.getItem(STORAGE_KEY_V2) || "null");
+    if (v2) return migrateToV2(v2);
+    const v1 = JSON.parse(localStorage.getItem(STORAGE_KEY_V1) || "null");
+    if (v1) {
+      const migrated = migrateToV2(v1);
+      localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(migrated));
+      return migrated;
     }
   } catch {}
-  const first = createDefaultGearset("Pre-BiS Set 1");
-  return { activeSetId: first.id, gearsets: [first] };
+  return migrateToV2(null);
 }
 
 function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(state));
+}
+
+function getActiveChar() {
+  return state.characters.find(c => c.id === state.activeCharId) || state.characters[0];
 }
 
 function getActiveSet() {
-  return state.gearsets.find(g => g.id === state.activeSetId) || state.gearsets[0];
+  const ch = getActiveChar();
+  return ch.gearsets.find(g => g.id === ch.activeSetId) || ch.gearsets[0];
 }
 
 function esc(str) {
@@ -1060,7 +1672,6 @@ function parseWowheadItemUrl(str) {
   const host = parsed.hostname.toLowerCase();
   if (host !== "wowhead.com" && !host.endsWith(".wowhead.com")) return null;
 
-  // Match /item=12345 or /forever/item=12345/living-crown or /classic/item=16670/boots-of-elements
   const m = parsed.pathname.match(/\/item=(\d+)(?:\/([^/?#]+))?/i);
   if (!m) return null;
 
@@ -1085,6 +1696,34 @@ function shortLabelForItem(str) {
   if (wh) return wh;
   if (isUrl(s)) return "Item Link";
   return s;
+}
+
+function isItemDoneForBossTodo(item) {
+  if (item.source === "T0.5") {
+    return item.t05Status === "have_t0" || item.t05Status === "t05";
+  }
+  return Boolean(item.obtained);
+}
+
+function getCharacterT05Items(char) {
+  const list = [];
+  for (const gs of char.gearsets) {
+    for (const item of gs.items) {
+      if (item.source === "T0.5") list.push({ gearset: gs, item });
+    }
+  }
+  return list;
+}
+
+function getMaxRequiredT05Stage(char) {
+  const t05Items = getCharacterT05Items(char);
+  if (!t05Items.length) return 0;
+  let maxStage = 1;
+  for (const { item } of t05Items) {
+    const st = T05_SLOT_STAGE[item.slot];
+    if (st && st > maxStage) maxStage = st;
+  }
+  return maxStage;
 }
 
 function getDungeonCatalog(onlyEndgame) {
@@ -1114,41 +1753,111 @@ function getBossRecord(dungeon, bossName) {
   return allBosses.find(b => b.Instance === dungeon && b.Boss_Name === bossName) || null;
 }
 
-function getDerivedTargets(scope) {
-  const sets = scope === "all" ? state.gearsets : [getActiveSet()];
+// Collect actionable dungeon boss targets (regular Dungeon drops + T0.5 base-T0 drops + optional T0.5 quest bosses)
+function getDerivedTargets(scope, includeT05Quests = true) {
+  const ch = getActiveChar();
+  const sets = scope === "all" ? ch.gearsets : [getActiveSet()];
   const entries = [];
+
   for (const gs of sets) {
     for (const item of gs.items) {
-      if (item.source === "Dungeon" && item.dungeon && item.boss) {
-        const bossRec = getBossRecord(item.dungeon, item.boss);
+      if ((item.source === "Dungeon" || item.source === "T0.5") && item.dungeon && item.boss) {
         entries.push({
+          kind: "item",
           gearsetId: gs.id,
           gearsetName: gs.name,
+          dungeon: item.dungeon,
+          boss: item.boss,
+          done: isItemDoneForBossTodo(item),
           item,
-          bossRec,
+          bossRec: getBossRecord(item.dungeon, item.boss),
         });
       }
     }
   }
+
+  const maxStage = getMaxRequiredT05Stage(ch);
+  if (includeT05Quests && maxStage > 0) {
+    const stages = buildT05Stages(ch).filter(s => s.stage <= maxStage);
+    for (const st of stages) {
+      for (const ms of st.milestones) {
+        if (ms.dungeon && ms.boss) {
+          entries.push({
+            kind: "t05_quest",
+            stage: st.stage,
+            milestoneId: ms.id,
+            title: ms.title,
+            dungeon: ms.dungeon,
+            boss: ms.boss,
+            done: Boolean(ch.t05.milestones[ms.id]),
+            bossRec: getBossRecord(ms.dungeon, ms.boss),
+          });
+        }
+      }
+    }
+  }
+
   return entries;
 }
 
 function updateTabCounts() {
+  const ch = getActiveChar();
   const activeSet = getActiveSet();
   const totalItems = activeSet.items.length;
   const gotItems = activeSet.items.filter(i => i.obtained).length;
   els.countGear.textContent = `${gotItems}/${totalItems}`;
 
-  const targets = getDerivedTargets(todoScope);
+  const targets = getDerivedTargets(todoScope, showT05QuestBosses);
   const bossKeys = new Set();
   const remainingBossKeys = new Set();
   for (const t of targets) {
-    const k = `${t.item.dungeon}||${t.item.boss}`;
+    const k = `${t.dungeon}||${t.boss}`;
     bossKeys.add(k);
-    if (!t.item.obtained) remainingBossKeys.add(k);
+    if (!t.done) remainingBossKeys.add(k);
   }
   els.countTodo.textContent = bossKeys.size ? `${remainingBossKeys.size}/${bossKeys.size}` : "0";
+
+  const maxStage = getMaxRequiredT05Stage(ch);
+  els.tabT05.classList.toggle("hidden", maxStage === 0);
+  if (maxStage > 0) {
+    const reqStages = buildT05Stages(ch).filter(s => s.stage <= maxStage);
+    const allMs = reqStages.flatMap(s => s.milestones);
+    const doneMs = allMs.filter(m => ch.t05.milestones[m.id]).length;
+    els.countT05.textContent = `${doneMs}/${allMs.length}`;
+  } else if (activeTab === "t05") {
+    activeTab = "gear";
+  }
+
   els.countCompendium.textContent = allBosses.length;
+}
+
+// ============================================================================
+// HEADER CHARACTER BAR
+// ============================================================================
+function renderCharBar() {
+  const ch = getActiveChar();
+  const charOpts = state.characters.map(c =>
+    `<option value="${esc(c.id)}" ${c.id === ch.id ? "selected" : ""}>${esc(c.name)} (${esc(c.faction)} • ${c.gearsets.length} set${c.gearsets.length === 1 ? "" : "s"})</option>`
+  ).join("");
+
+  const maxStage = getMaxRequiredT05Stage(ch);
+
+  els.charBar.innerHTML = `
+    <div class="inline-tools">
+      <span class="char-label">Character</span>
+      <select id="charSelect" aria-label="Select character" style="min-width:205px;padding:4px 8px;font-size:0.82rem;">${charOpts}</select>
+      <button id="btnToggleFaction" type="button" class="faction-btn ${ch.faction.toLowerCase()}" title="Click to toggle Horde / Alliance (affects T0.5 Stage 1)">${esc(ch.faction)}</button>
+      <button id="btnNewChar" type="button" style="padding:4px 8px;">+ Character</button>
+      <button id="btnRenameChar" type="button" style="padding:4px 8px;">Rename</button>
+      ${state.characters.length > 1 ? `<button id="btnDeleteChar" type="button" class="danger" style="padding:4px 8px;">Delete</button>` : ""}
+    </div>
+    <div class="inline-tools" style="font-size:0.78rem;color:var(--muted);">
+      ${maxStage > 0
+        ? `<span class="badge accent-badge">T0.5 Active (up to Stage ${maxStage})</span>`
+        : `<span>Mark any slot <strong>Source = T0.5</strong> to unlock the T0.5 Chain tab</span>`
+      }
+    </div>
+  `;
 }
 
 // ============================================================================
@@ -1162,9 +1871,10 @@ function encodeSharePayload(gs) {
       x.obtained ? 1 : 0,
       x.slot,
       x.source,
-      x.source === "Dungeon" ? x.dungeon : "",
-      x.source === "Dungeon" ? x.boss : "",
+      (x.source === "Dungeon" || x.source === "T0.5") ? x.dungeon : "",
+      (x.source === "Dungeon" || x.source === "T0.5") ? x.boss : "",
       x.itemText || "",
+      x.source === "T0.5" ? x.t05Status : "",
     ]),
   };
   const bytes = new TextEncoder().encode(JSON.stringify(payload));
@@ -1185,14 +1895,15 @@ function decodeSharePayload(encoded) {
     id: uid(),
     name: String(payload.n || "Shared Gearset").trim(),
     bookmarkUrl: String(payload.u || ""),
-    items: payload.i.map(arr => ({
+    items: payload.i.map(arr => normalizeItem({
       id: uid(),
       obtained: Boolean(arr[0]),
-      slot: SLOTS.includes(arr[1]) ? arr[1] : "Head",
-      source: SOURCES.includes(arr[2]) ? arr[2] : "Dungeon",
-      dungeon: String(arr[3] || ""),
-      boss: String(arr[4] || ""),
-      itemText: String(arr[5] || ""),
+      slot: arr[1],
+      source: arr[2],
+      dungeon: arr[3],
+      boss: arr[4],
+      itemText: arr[5],
+      t05Status: arr[6] || (arr[0] ? "t05" : "need_t0"),
     })),
   };
 }
@@ -1203,9 +1914,10 @@ function checkIncomingShareHash() {
   const code = hash.slice("#share=".length);
   try {
     const imported = decodeSharePayload(code);
-    if (confirm(`Import shared gearset "${imported.name}" (${imported.items.length} items)?`)) {
-      state.gearsets.push(imported);
-      state.activeSetId = imported.id;
+    const ch = getActiveChar();
+    if (confirm(`Import shared gearset "${imported.name}" (${imported.items.length} items) into character "${ch.name}"?`)) {
+      ch.gearsets.push(imported);
+      ch.activeSetId = imported.id;
       saveState();
       showToast(`Imported "${imported.name}"`);
     }
@@ -1233,6 +1945,7 @@ async function copyShareLink() {
 // TAB 1: GEAR BUILDER
 // ============================================================================
 function renderGearTab() {
+  const ch = getActiveChar();
   const gs = getActiveSet();
   const dungeonCatalog = getDungeonCatalog(gearEndgameOnly);
   const fullCatalog = getDungeonCatalog(false);
@@ -1240,12 +1953,13 @@ function renderGearTab() {
 
   const total = gs.items.length;
   const obtained = gs.items.filter(i => i.obtained).length;
-  const dungeonRows = gs.items.filter(i => i.source === "Dungeon");
-  const actionableAssigned = dungeonRows.filter(i => i.dungeon && i.boss);
-  const actionableRemaining = actionableAssigned.filter(i => !i.obtained).length;
+  const bossRows = gs.items.filter(i => i.source === "Dungeon" || i.source === "T0.5");
+  const actionableAssigned = bossRows.filter(i => i.dungeon && i.boss);
+  const actionableRemaining = actionableAssigned.filter(i => !isItemDoneForBossTodo(i)).length;
+  const t05Rows = gs.items.filter(i => i.source === "T0.5");
   const pct = total ? Math.round((obtained / total) * 100) : 0;
 
-  const setOptions = state.gearsets.map(s =>
+  const setOptions = ch.gearsets.map(s =>
     `<option value="${esc(s.id)}" ${s.id === gs.id ? "selected" : ""}>${esc(s.name)} (${s.items.filter(i => i.obtained).length}/${s.items.length})</option>`
   ).join("");
 
@@ -1258,7 +1972,8 @@ function renderGearTab() {
   });
 
   const rowsHtml = visibleItems.map(item => {
-    const isDungeon = item.source === "Dungeon";
+    const canPickBoss = item.source === "Dungeon" || item.source === "T0.5";
+    const isT05 = item.source === "T0.5";
     const rowDungeons = sortedDungeons.slice();
     if (item.dungeon && !dungeonCatalog.has(item.dungeon) && fullCatalog.has(item.dungeon)) {
       rowDungeons.unshift(fullCatalog.get(item.dungeon));
@@ -1267,15 +1982,19 @@ function renderGearTab() {
     const slotOpts = SLOTS.map(s => `<option value="${esc(s)}" ${item.slot === s ? "selected" : ""}>${esc(s)}</option>`).join("");
     const sourceOpts = SOURCES.map(s => `<option value="${esc(s)}" ${item.source === s ? "selected" : ""}>${esc(s)}</option>`).join("");
 
-    let dungeonOpts = `<option value="">${isDungeon ? "Select dungeon…" : "—"}</option>`;
-    if (isDungeon) {
+    const dungeonPlaceholder = isT05
+      ? "Base T0 dungeon (or blank if BoE)…"
+      : (canPickBoss ? "Select dungeon…" : "—");
+
+    let dungeonOpts = `<option value="">${dungeonPlaceholder}</option>`;
+    if (canPickBoss) {
       dungeonOpts += rowDungeons.map(d =>
         `<option value="${esc(d.name)}" ${item.dungeon === d.name ? "selected" : ""}>${esc(d.name)} (${esc(d.level)})</option>`
       ).join("");
     }
 
-    let bossOpts = `<option value="">${isDungeon ? (item.dungeon ? "Select boss…" : "Pick dungeon first") : "—"}</option>`;
-    if (isDungeon && item.dungeon && fullCatalog.has(item.dungeon)) {
+    let bossOpts = `<option value="">${canPickBoss ? (item.dungeon ? "Select boss…" : (isT05 ? "BoE / pick dungeon" : "Pick dungeon first")) : "—"}</option>`;
+    if (canPickBoss && item.dungeon && fullCatalog.has(item.dungeon)) {
       const d = fullCatalog.get(item.dungeon);
       const hasWings = new Set(d.bosses.map(b => b.Wing)).size > 1;
       bossOpts += d.bosses.map(b => {
@@ -1288,11 +2007,14 @@ function renderGearTab() {
     const wowheadName = parseWowheadItemUrl(item.itemText);
     const showDisplayMode = Boolean(wowheadName) && editingItemId !== item.id;
 
+    const statusLabel = item.t05Status === "t05" ? "T0.5 ✓" : (item.t05Status === "have_t0" ? "Have T0" : "Need T0");
+    const statusControl = isT05
+      ? `<button type="button" class="t05-state-btn ${esc(item.t05Status)}" data-cycle-t05="${esc(item.id)}" title="Click to cycle: Need T0 → Have T0 (clears T0 boss) → T0.5 ✓">${statusLabel}</button>`
+      : `<input type="checkbox" data-gear-field="obtained" ${item.obtained ? "checked" : ""} title="Mark item obtained" />`;
+
     return `
       <tr class="${item.obtained ? "row-obtained" : ""}" data-item-id="${esc(item.id)}">
-        <td class="check-cell">
-          <input type="checkbox" data-gear-field="obtained" ${item.obtained ? "checked" : ""} title="Mark item obtained" />
-        </td>
+        <td class="check-cell">${statusControl}</td>
         <td class="col-slot">
           <select data-gear-field="slot">${slotOpts}</select>
         </td>
@@ -1300,10 +2022,10 @@ function renderGearTab() {
           <select data-gear-field="source">${sourceOpts}</select>
         </td>
         <td class="col-dungeon">
-          <select data-gear-field="dungeon" ${isDungeon ? "" : "disabled"}>${dungeonOpts}</select>
+          <select data-gear-field="dungeon" ${canPickBoss ? "" : "disabled"}>${dungeonOpts}</select>
         </td>
         <td class="col-boss">
-          <select data-gear-field="boss" ${isDungeon && item.dungeon ? "" : "disabled"}>${bossOpts}</select>
+          <select data-gear-field="boss" ${canPickBoss && item.dungeon ? "" : "disabled"}>${bossOpts}</select>
         </td>
         <td>
           <div class="item-cell-wrap">
@@ -1332,7 +2054,7 @@ function renderGearTab() {
           <button id="btnNewSet" class="primary" type="button">+ New Set</button>
           <button id="btnRenameSet" type="button">Rename</button>
           <button id="btnDupSet" type="button">Duplicate</button>
-          ${state.gearsets.length > 1 ? `<button id="btnDeleteSet" class="danger" type="button">Delete</button>` : ""}
+          ${ch.gearsets.length > 1 ? `<button id="btnDeleteSet" class="danger" type="button">Delete</button>` : ""}
         </div>
         <div class="inline-tools">
           <button id="btnShareSet" class="primary" type="button" title="Copy a shareable link for this gearset to send in Discord">Copy Share Link</button>
@@ -1349,8 +2071,8 @@ function renderGearTab() {
       <div class="stats">
         <span class="stat-pill">Total Items: <strong>${total}</strong></span>
         <span class="stat-pill done">Obtained: <strong>${obtained}</strong> / ${total} (${pct}%)</span>
-        <span class="stat-pill accent">Dungeon Targets Linked: <strong>${actionableAssigned.length}</strong> (${actionableRemaining} remaining)</span>
-        <span class="stat-pill">Non-Dungeon Items: <strong>${total - dungeonRows.length}</strong></span>
+        <span class="stat-pill accent">Boss Drops Linked: <strong>${actionableAssigned.length}</strong> (${actionableRemaining} remaining)</span>
+        ${t05Rows.length ? `<span class="stat-pill accent">T0.5 Pieces: <strong>${t05Rows.filter(i => i.t05Status === "t05").length}</strong> / ${t05Rows.length} upgraded</span>` : ""}
       </div>
     </div>
 
@@ -1378,7 +2100,7 @@ function renderGearTab() {
         <table class="gear-table">
           <thead>
             <tr>
-              <th class="check-cell">Got</th>
+              <th class="check-cell">Status</th>
               <th>Slot</th>
               <th>Source</th>
               <th>Dungeon</th>
@@ -1403,50 +2125,56 @@ function renderGearTab() {
 // TAB 2: AUTO-POPULATED BOSS TO-DO LIST
 // ============================================================================
 function renderTodoTab() {
-  const targets = getDerivedTargets(todoScope);
+  const ch = getActiveChar();
+  const maxT05Stage = getMaxRequiredT05Stage(ch);
+  const targets = getDerivedTargets(todoScope, showT05QuestBosses);
   const fullCatalog = getDungeonCatalog(false);
 
-  const scopeSets = todoScope === "all" ? state.gearsets : [getActiveSet()];
-  const nonDungeonRem = scopeSets.reduce((acc, s) => acc + s.items.filter(i => i.source !== "Dungeon" && !i.obtained).length, 0);
+  const scopeSets = todoScope === "all" ? ch.gearsets : [getActiveSet()];
+  const nonDungeonRem = scopeSets.reduce((acc, s) => acc + s.items.filter(i => i.source !== "Dungeon" && i.source !== "T0.5" && !i.obtained).length, 0);
   const unassignedDungeon = scopeSets.reduce((acc, s) => acc + s.items.filter(i => i.source === "Dungeon" && (!i.dungeon || !i.boss)).length, 0);
 
   const dungeonGroups = new Map();
   for (const t of targets) {
-    const dName = t.item.dungeon;
-    if (!dungeonGroups.has(dName)) dungeonGroups.set(dName, new Map());
-    const bossMap = dungeonGroups.get(dName);
-    if (!bossMap.has(t.item.boss)) {
-      bossMap.set(t.item.boss, {
-        bossName: t.item.boss,
+    if (!dungeonGroups.has(t.dungeon)) dungeonGroups.set(t.dungeon, new Map());
+    const bossMap = dungeonGroups.get(t.dungeon);
+    if (!bossMap.has(t.boss)) {
+      bossMap.set(t.boss, {
+        bossName: t.boss,
         bossRec: t.bossRec,
         entries: [],
       });
     }
-    bossMap.get(t.item.boss).entries.push(t);
+    bossMap.get(t.boss).entries.push(t);
   }
 
   let totalBosses = 0;
   let completedBosses = 0;
-  let totalDrops = targets.length;
-  let completedDrops = targets.filter(t => t.item.obtained).length;
+  let totalObjectives = targets.length;
+  let completedObjectives = targets.filter(t => t.done).length;
 
   for (const bossMap of dungeonGroups.values()) {
     for (const b of bossMap.values()) {
       totalBosses++;
-      if (b.entries.every(e => e.item.obtained)) completedBosses++;
+      if (b.entries.every(e => e.done)) completedBosses++;
     }
   }
 
   const remainingBosses = totalBosses - completedBosses;
-  const pct = totalDrops ? Math.round((completedDrops / totalDrops) * 100) : 0;
+  const pct = totalObjectives ? Math.round((completedObjectives / totalObjectives) * 100) : 0;
 
   const toolbarHtml = `
     <div class="panel" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;">
       <div class="inline-tools">
         <div class="segmented" role="tablist">
           <button id="scopeActive" class="${todoScope === "active" ? "active" : ""}" type="button">Active Gearset (${esc(getActiveSet().name)})</button>
-          <button id="scopeAll" class="${todoScope === "all" ? "active" : ""}" type="button">All Gearsets (${state.gearsets.length})</button>
+          <button id="scopeAll" class="${todoScope === "all" ? "active" : ""}" type="button">All Sets on ${esc(ch.name)} (${ch.gearsets.length})</button>
         </div>
+        ${maxT05Stage > 0 ? `
+          <label class="chk" title="Include T0.5 questline bosses up to Stage ${maxT05Stage}">
+            <input type="checkbox" id="chkShowT05Quests" ${showT05QuestBosses ? "checked" : ""} /> Show T0.5 quest bosses
+          </label>
+        ` : ""}
       </div>
       <div class="inline-tools">
         <select id="todoSortSelect" aria-label="Sort To-Do dungeons">
@@ -1465,11 +2193,11 @@ function renderTodoTab() {
   if (!totalBosses) {
     els.todoView.innerHTML = toolbarHtml + `
       <div class="empty-state">
-        <h3>No dungeon bosses on your To-Do list yet</h3>
+        <h3>No dungeon bosses on ${esc(ch.name)}'s To-Do list yet</h3>
         <p style="max-width:540px;margin:0 auto 14px;">
-          Your To-Do list is automatically built from the <strong>Gear Builder</strong>. Select <strong>Source = Dungeon</strong> and choose a <strong>Dungeon</strong> and <strong>Boss</strong> for any slot to populate your farm targets here.
+          Your To-Do list is automatically built from the <strong>Gear Builder</strong> (Dungeon &amp; T0.5 rows) and your character's <strong>T0.5 Chain</strong> milestones.
         </p>
-        ${unassignedDungeon ? `<p style="color:var(--forever-text);font-size:0.84rem;">You currently have <strong>${unassignedDungeon}</strong> Dungeon row(s) in your gearset without a Dungeon &amp; Boss selected.</p>` : ""}
+        ${unassignedDungeon ? `<p style="color:var(--forever-text);font-size:0.84rem;">You currently have <strong>${unassignedDungeon}</strong> Dungeon row(s) without a Dungeon &amp; Boss selected.</p>` : ""}
         <button id="btnGoGearBuilder" class="primary" type="button">Open Gear Builder</button>
       </div>
     `;
@@ -1482,8 +2210,8 @@ function renderTodoTab() {
         <span>
           Dungeon Bosses: <strong style="color:var(--text-strong)">${completedBosses} / ${totalBosses}</strong> done (${remainingBosses} remaining)
           &nbsp;•&nbsp;
-          Targeted Drops: <strong style="color:var(--text-strong)">${completedDrops} / ${totalDrops}</strong>
-          ${nonDungeonRem ? `&nbsp;•&nbsp; Non-dungeon items remaining in Gear Builder: <strong style="color:var(--text-strong)">${nonDungeonRem}</strong>` : ""}
+          Objectives: <strong style="color:var(--text-strong)">${completedObjectives} / ${totalObjectives}</strong>
+          ${nonDungeonRem ? `&nbsp;•&nbsp; Non-dungeon items remaining: <strong style="color:var(--text-strong)">${nonDungeonRem}</strong>` : ""}
         </span>
         <strong style="color:${pct === 100 ? "var(--success)" : "var(--forever-text)"}">${pct}%</strong>
       </div>
@@ -1500,9 +2228,9 @@ function renderTodoTab() {
       (a.bossRec?.Boss_Order ?? 999) - (b.bossRec?.Boss_Order ?? 999) || a.bossName.localeCompare(b.bossName)
     );
     const totalInInst = bosses.length;
-    const remInInst = bosses.filter(b => b.entries.some(e => !e.item.obtained)).length;
+    const remInInst = bosses.filter(b => b.entries.some(e => !e.done)).length;
     if (todoHideDone) {
-      bosses = bosses.filter(b => b.entries.some(e => !e.item.obtained));
+      bosses = bosses.filter(b => b.entries.some(e => !e.done));
     }
     if (!bosses.length) continue;
     cardData.push({ name: dName, meta, bosses, totalInInst, remInInst });
@@ -1529,23 +2257,34 @@ function renderTodoTab() {
   const cardsHtml = cardData.map(g => {
     const isForever = g.meta?.origin === "WoW Forever";
     const rowsHtml = g.bosses.map(b => {
-      const allDone = b.entries.every(e => e.item.obtained);
+      const allDone = b.entries.every(e => e.done);
       const wing = b.bossRec?.Wing || "Main";
       const bType = b.bossRec?.Boss_Type || "Main";
       const order = b.bossRec?.Boss_Order ?? "—";
       const bossNotes = b.bossRec?.Notes || "";
 
       const dropsHtml = b.entries.map(e => {
+        if (e.kind === "t05_quest") {
+          return `
+            <div class="drop-chip ${e.done ? "done" : ""}">
+              <input type="checkbox" data-todo-t05-ms="${esc(e.milestoneId)}" ${e.done ? "checked" : ""} title="Mark T0.5 quest milestone complete (syncs with T0.5 Chain tab)" />
+              <span class="t05-quest-tag">T0.5 Stage ${e.stage}</span>
+              <span style="color:var(--text)">${esc(e.title)}</span>
+            </div>
+          `;
+        }
         const label = shortLabelForItem(e.item.itemText);
         const link = isUrl(e.item.itemText);
+        const isT05 = e.item.source === "T0.5";
         return `
-          <div class="drop-chip ${e.item.obtained ? "done" : ""}">
-            <input type="checkbox" data-todo-item-id="${esc(e.item.id)}" data-todo-set-id="${esc(e.gearsetId)}" ${e.item.obtained ? "checked" : ""} title="Mark drop obtained (syncs with Gear Builder)" />
+          <div class="drop-chip ${e.done ? "done" : ""}">
+            <input type="checkbox" data-todo-item-id="${esc(e.item.id)}" data-todo-set-id="${esc(e.gearsetId)}" ${e.done ? "checked" : ""} title="${isT05 ? "Mark Base T0 drop obtained (advances Need T0 ↔ Have T0)" : "Mark drop obtained (syncs with Gear Builder)"}" />
             <span class="slot-tag">${esc(e.item.slot)}</span>
+            ${isT05 ? `<span class="base-t0-tag">${e.item.t05Status === "t05" ? "T0.5 ✓" : "Base T0"}</span>` : ""}
             ${todoScope === "all" ? `<span class="set-tag">${esc(e.gearsetName)}</span>` : ""}
             ${link
               ? `<a href="${esc(e.item.itemText.trim())}" target="_blank" rel="noopener noreferrer" style="color:var(--forever-text);text-decoration:none;">${esc(label)} ↗</a>`
-              : `<span style="color:${label ? "var(--text)" : "var(--muted)"}">${esc(label || "Needed item")}</span>`
+              : `<span style="color:${label ? "var(--text)" : "var(--muted)"}">${esc(label || (isT05 ? "Base T0 drop" : "Needed item"))}</span>`
             }
           </div>
         `;
@@ -1588,7 +2327,7 @@ function renderTodoTab() {
                   <th>Wing</th>
                   <th>Type</th>
                   <th>Boss Notes</th>
-                  <th>Needed Slots / Items (check when obtained)</th>
+                  <th>Needed Drops &amp; T0.5 Quests</th>
                 </tr>
               </thead>
               <tbody>${rowsHtml}</tbody>
@@ -1603,7 +2342,179 @@ function renderTodoTab() {
 }
 
 // ============================================================================
-// TAB 3: DUNGEON COMPENDIUM (READ-ONLY REFERENCE)
+// TAB 3: AUTO-UNLOCKING T0.5 CHAIN TAB
+// ============================================================================
+function renderT05Tab() {
+  const ch = getActiveChar();
+  const maxStage = getMaxRequiredT05Stage(ch);
+  if (maxStage === 0) {
+    els.t05View.innerHTML = `
+      <div class="empty-state">
+        <h3>No T0.5 pieces configured for ${esc(ch.name)}</h3>
+        <p>Set any slot's Source to <strong>T0.5</strong> in the Gear Builder to activate the T0.5 Chain tracker.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const allT05Items = getCharacterT05Items(ch);
+  const trackedSlots = new Set(allT05Items.map(x => x.item.slot));
+  const stages = buildT05Stages(ch);
+  const visibleStages = ch.t05.showAllStages ? stages : stages.filter(s => s.stage <= maxStage);
+
+  const reqMilestones = stages.filter(s => s.stage <= maxStage).flatMap(s => s.milestones);
+  const doneMilestones = reqMilestones.filter(m => ch.t05.milestones[m.id]).length;
+  const pct = reqMilestones.length ? Math.round((doneMilestones / reqMilestones.length) * 100) : 0;
+
+  const neededSlotList = [...trackedSlots].join(", ");
+
+  const summaryHtml = `
+    <div class="panel">
+      <div class="gearset-bar">
+        <div class="inline-tools">
+          <strong style="color:var(--text-strong);font-size:0.94rem;">${esc(ch.name)} — Dungeon Set 2 (T0.5) Progression</strong>
+          <span class="badge accent-badge">Required up to Stage ${maxStage}</span>
+          <span style="color:var(--muted);font-size:0.8rem;">Tracked T0.5 slots: <strong style="color:var(--text)">${esc(neededSlotList)}</strong></span>
+        </div>
+        <div class="inline-tools">
+          ${maxStage < 4 ? `
+            <label class="chk">
+              <input type="checkbox" id="chkT05ShowAll" ${ch.t05.showAllStages ? "checked" : ""} /> Show all 4 stages
+            </label>
+          ` : ""}
+          <a class="link-btn" href="${T05_GUIDE_URL}" target="_blank" rel="noopener noreferrer">Wowhead T0.5 Guide ↗</a>
+        </div>
+      </div>
+
+      <div class="progress-wrap" style="margin-top:12px;margin-bottom:0;">
+        <div style="display:flex;justify-content:space-between;font-size:0.81rem;color:var(--muted);margin-bottom:5px;">
+          <span>Questline Milestones (Stages 1–${maxStage}): <strong style="color:var(--text-strong)">${doneMilestones} / ${reqMilestones.length}</strong></span>
+          <strong style="color:${pct === 100 ? "var(--success)" : "var(--forever-text)"}">${pct}%</strong>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill ${pct === 100 ? "complete" : ""}" style="width:${pct}%"></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const cardsHtml = visibleStages.map(st => {
+    const stageDoneCount = st.milestones.filter(m => ch.t05.milestones[m.id]).length;
+    const stageComplete = stageDoneCount === st.milestones.length;
+    const hasTargetSlot = st.slots.some(sl => trackedSlots.has(sl));
+    const roleTag = st.stage > maxStage
+      ? `<span class="badge origin-classic">Optional (Stage ${st.stage})</span>`
+      : (hasTargetSlot
+          ? `<span class="badge accent-badge">Target Stage</span>`
+          : `<span class="badge origin-classic">Prerequisite Stage</span>`);
+
+    // Check if any character gear rows in this stage can be bulk-upgraded to T0.5 ✓
+    const stageGearItems = allT05Items.filter(x => st.slots.includes(x.item.slot));
+    const upgradableCount = stageGearItems.filter(x => x.item.t05Status !== "t05").length;
+
+    const piecesHtml = st.slots.map(slot => {
+      const matching = allT05Items.filter(x => x.item.slot === slot);
+      if (matching.length) {
+        const allUpgraded = matching.every(x => x.item.t05Status === "t05");
+        const allHaveT0 = matching.every(x => x.item.t05Status === "have_t0" || x.item.t05Status === "t05");
+        const cls = allUpgraded ? "upgraded" : (allHaveT0 ? "ready" : "");
+        const statusTxt = allUpgraded ? "T0.5 ✓" : (allHaveT0 ? "Have T0" : "Need T0");
+        return `
+          <span class="t05-piece-chip ${cls}" title="Synced with your Gear Builder ${esc(slot)} row(s)">
+            <strong>${esc(slot)}</strong>
+            <span style="font-size:11px;color:${allUpgraded ? "var(--success)" : (allHaveT0 ? "var(--forever-text)" : "var(--muted)")}">${statusTxt}</span>
+          </span>
+        `;
+      } else {
+        const owned = Boolean(ch.t05.prereqT0Owned[slot]);
+        return `
+          <label class="t05-piece-chip ${owned ? "ready" : ""}" style="cursor:pointer;" title="Sequential questline prerequisite (not in your final Pre-BiS gearset)">
+            <input type="checkbox" data-t05-prereq="${esc(slot)}" ${owned ? "checked" : ""} />
+            <span>T0 ${esc(slot)} <span style="color:var(--muted);font-size:11px;">(prereq)</span></span>
+          </label>
+        `;
+      }
+    }).join("");
+
+    const amuletHtml = st.hasAmuletPickers ? `
+      <div class="t05-amulet-grid">
+        <div class="t05-amulet-picker">
+          <label for="selComp1">1. Components of Importance (1 of 4)</label>
+          <select id="selComp1">
+            ${T05_AMULET_BRANCHES.map(b => `<option value="${esc(b.id)}" ${ch.t05.componentsFirst === b.id ? "selected" : ""}>${esc(b.componentLabel)}</option>`).join("")}
+          </select>
+        </div>
+        <div class="t05-amulet-picker">
+          <label for="selLeftAmulet">2. Left Piece Boss (1 of 4 → Boss To-Do)</label>
+          <select id="selLeftAmulet">
+            ${T05_AMULET_BRANCHES.map(b => `<option value="${esc(b.boss)}" ${ch.t05.leftAmuletBoss === b.boss ? "selected" : ""}>${esc(b.bossLabel)}</option>`).join("")}
+          </select>
+        </div>
+        <div class="t05-amulet-picker">
+          <label for="selComp2">3. More Components of Importance (1 of 4)</label>
+          <select id="selComp2">
+            ${T05_AMULET_BRANCHES.map(b => `<option value="${esc(b.id)}" ${ch.t05.componentsSecond === b.id ? "selected" : ""}>${esc(b.componentLabel)}</option>`).join("")}
+          </select>
+        </div>
+        <div class="t05-amulet-picker">
+          <label for="selRightAmulet">4. Right Piece Boss (1 of 4 → Boss To-Do)</label>
+          <select id="selRightAmulet">
+            ${T05_AMULET_BRANCHES.map(b => `<option value="${esc(b.boss)}" ${ch.t05.rightAmuletBoss === b.boss ? "selected" : ""}>${esc(b.bossLabel)}</option>`).join("")}
+          </select>
+        </div>
+      </div>
+    ` : "";
+
+    const milestonesHtml = st.milestones.map(ms => {
+      const done = Boolean(ch.t05.milestones[ms.id]);
+      return `
+        <label class="t05-milestone-row ${done ? "done" : ""}" style="cursor:pointer;">
+          <input type="checkbox" data-t05-ms="${esc(ms.id)}" ${done ? "checked" : ""} />
+          <span class="ms-title">${esc(ms.title)}</span>
+          ${ms.dungeon && ms.boss ? `<span class="t05-quest-tag">${esc(ms.dungeon)} → ${esc(ms.boss)}</span>` : ""}
+          <span class="ms-detail">${esc(ms.detail)}</span>
+        </label>
+      `;
+    }).join("");
+
+    return `
+      <section class="instance-card open ${stageComplete ? "classic-card" : "forever-card"}">
+        <div class="instance-header" style="cursor:default">
+          <div class="inst-left">
+            <span class="inst-name">${esc(st.title)}</span>
+            ${roleTag}
+            ${stageComplete ? `<span class="badge done-tag">✓ Complete</span>` : ""}
+          </div>
+          <div class="inst-meta">
+            <span>${esc(st.summary)}</span>
+            <span>•</span>
+            <span><strong style="color:var(--forever-text)">${stageDoneCount}/${st.milestones.length}</strong> steps</span>
+            ${upgradableCount > 0 ? `<button type="button" class="primary" style="padding:3px 8px;font-size:11px;" data-upgrade-stage="${st.stage}">Mark Stage Pieces T0.5 ✓</button>` : ""}
+          </div>
+        </div>
+        <div class="instance-body">
+          <div class="t05-stage-body">
+            <div class="t05-turnin-strip">
+              <span class="t05-turnin-label">T0 Turn-In Pieces:</span>
+              ${piecesHtml}
+            </div>
+            ${amuletHtml}
+            <div class="t05-milestones">${milestonesHtml}</div>
+            <details class="t05-mats">
+              <summary>Materials &amp; Gold Shopping List (Stage ${st.stage})</summary>
+              <ul>${st.materials.map(m => `<li>${m}</li>`).join("")}</ul>
+            </details>
+          </div>
+        </div>
+      </section>
+    `;
+  }).join("");
+
+  els.t05View.innerHTML = summaryHtml + cardsHtml;
+}
+
+// ============================================================================
+// TAB 4: DUNGEON COMPENDIUM (READ-ONLY REFERENCE)
 // ============================================================================
 function populateInstanceDropdown() {
   const current = els.instance.value;
@@ -1636,12 +2547,12 @@ function getFilteredCompendiumRows() {
 
 function getBossTargetCounts() {
   const map = new Map();
-  for (const t of getDerivedTargets("all")) {
-    const k = `${t.item.dungeon}||${t.item.boss}`;
+  for (const t of getDerivedTargets("all", true)) {
+    const k = `${t.dungeon}||${t.boss}`;
     if (!map.has(k)) map.set(k, { total: 0, remaining: 0 });
     const obj = map.get(k);
     obj.total++;
-    if (!t.item.obtained) obj.remaining++;
+    if (!t.done) obj.remaining++;
   }
   return map;
 }
@@ -1652,7 +2563,7 @@ function renderCompendiumInstanceTable(bosses, targetCounts) {
     const statusBadge = tc
       ? (tc.remaining > 0
           ? `<span class="badge accent-badge" style="margin-left:6px;">${tc.remaining} needed</span>`
-          : `<span class="badge done-tag" style="margin-left:6px;">✓ Obtained</span>`)
+          : `<span class="badge done-tag" style="margin-left:6px;">✓ Done</span>`)
       : "";
     return `
       <tr class="${tc && tc.remaining > 0 ? "row-targeted" : ""}">
@@ -1692,7 +2603,7 @@ function renderCompendiumTab() {
   els.stats.innerHTML = `
     <span class="stat-pill">Showing <strong>${filtered.length}</strong> / ${allBosses.length} bosses</span>
     <span class="stat-pill">Instances: <strong>${instSet.size}</strong>${endgameOnly ? " (Endgame 50+)" : ""}</span>
-    <span class="stat-pill accent">Targeted by Gearsets: <strong>${targetedInView}</strong> bosses</span>
+    <span class="stat-pill accent">Targeted on ${esc(getActiveChar().name)}: <strong>${targetedInView}</strong> bosses</span>
   `;
 
   els.expandAll.classList.toggle("hidden", viewMode !== "grouped");
@@ -1805,21 +2716,27 @@ function renderCompendiumTab() {
 
 function render() {
   if (!state) return;
+  renderCharBar();
   updateTabCounts();
+
   els.tabGear.classList.toggle("active", activeTab === "gear");
   els.tabTodo.classList.toggle("active", activeTab === "todo");
+  els.tabT05.classList.toggle("active", activeTab === "t05");
   els.tabCompendium.classList.toggle("active", activeTab === "compendium");
   els.tabGear.setAttribute("aria-selected", String(activeTab === "gear"));
   els.tabTodo.setAttribute("aria-selected", String(activeTab === "todo"));
+  els.tabT05.setAttribute("aria-selected", String(activeTab === "t05"));
   els.tabCompendium.setAttribute("aria-selected", String(activeTab === "compendium"));
 
   els.gearView.classList.toggle("hidden", activeTab !== "gear");
   els.todoView.classList.toggle("hidden", activeTab !== "todo");
+  els.t05View.classList.toggle("hidden", activeTab !== "t05");
   els.compendiumControls.classList.toggle("hidden", activeTab !== "compendium");
   els.compendiumView.classList.toggle("hidden", activeTab !== "compendium");
 
   if (activeTab === "gear") renderGearTab();
   else if (activeTab === "todo") renderTodoTab();
+  else if (activeTab === "t05") renderT05Tab();
   else renderCompendiumTab();
 }
 
@@ -1916,7 +2833,8 @@ function importGearCsv(text, filename) {
   const rawRows = parseCsvRows(text);
   if (rawRows.length < 2) return;
   const header = rawRows[0].map(h => h.trim().replace(/^\uFEFF/, "").toLowerCase());
-  const idxObt = header.findIndex(h => h === "" || h === "obtained" || h === "got" || h === "done");
+  const idxObt = header.findIndex(h => h === "" || h === "obtained" || h === "got" || h === "done" || h === "status");
+  const idxT05 = header.indexOf("t05_status");
   const idxSlot = header.indexOf("slot");
   const idxDung = header.indexOf("dungeon");
   const idxBoss = header.indexOf("boss");
@@ -1934,17 +2852,19 @@ function importGearCsv(text, filename) {
     const slot = SLOTS.find(s => s.toLowerCase() === slotRaw.toLowerCase()) || "Head";
     const source = SOURCES.find(s => s.toLowerCase() === srcRaw.toLowerCase()) || "Dungeon";
     const obtained = String(r[idxObt] || "").trim().toUpperCase() === "TRUE" || String(r[idxObt] || "").trim().toLowerCase() === "yes";
-    const resolved = source === "Dungeon" ? resolveDungeonAndBoss(r[idxDung], r[idxBoss]) : { dungeon: "", boss: "" };
+    const t05Status = idxT05 >= 0 && r[idxT05] ? r[idxT05].trim() : (obtained ? "t05" : "need_t0");
+    const resolved = (source === "Dungeon" || source === "T0.5") ? resolveDungeonAndBoss(r[idxDung], r[idxBoss]) : { dungeon: "", boss: "" };
 
-    items.push({
+    items.push(normalizeItem({
       id: uid(),
       obtained,
+      t05Status,
       slot,
       source,
       dungeon: resolved.dungeon,
       boss: resolved.boss,
       itemText: itemRaw,
-    });
+    }));
   }
 
   if (!items.length) {
@@ -1952,10 +2872,11 @@ function importGearCsv(text, filename) {
     return;
   }
 
-  const setName = filename.replace(/\.csv$/i, "").trim() || `Imported Set ${state.gearsets.length + 1}`;
+  const ch = getActiveChar();
+  const setName = filename.replace(/\.csv$/i, "").trim() || `Imported Set ${ch.gearsets.length + 1}`;
   const newSet = { id: uid(), name: setName, bookmarkUrl: "", items };
-  state.gearsets.push(newSet);
-  state.activeSetId = newSet.id;
+  ch.gearsets.push(newSet);
+  ch.activeSetId = newSet.id;
   saveState();
   render();
   showToast(`Imported "${setName}" (${items.length} items)`);
@@ -1976,35 +2897,53 @@ function exportCsv() {
     const s = String(v ?? "");
     return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   };
+  const ch = getActiveChar();
   let cols, dataRows, filename;
 
   if (activeTab === "gear") {
     const gs = getActiveSet();
-    cols = ["Obtained", "Slot", "Dungeon", "Boss", "Source", "Item"];
+    cols = ["Obtained", "T05_Status", "Slot", "Dungeon", "Boss", "Source", "Item"];
     dataRows = gs.items.map(i => ({
       Obtained: i.obtained ? "TRUE" : "FALSE",
+      T05_Status: i.source === "T0.5" ? i.t05Status : "",
       Slot: i.slot,
-      Dungeon: i.source === "Dungeon" ? i.dungeon : "",
-      Boss: i.source === "Dungeon" ? i.boss : "",
+      Dungeon: (i.source === "Dungeon" || i.source === "T0.5") ? i.dungeon : "",
+      Boss: (i.source === "Dungeon" || i.source === "T0.5") ? i.boss : "",
       Source: i.source,
       Item: i.itemText,
     }));
-    filename = `${gs.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}_gear.csv`;
+    filename = `${ch.name}_${gs.name}_gear.csv`.toLowerCase().replace(/[^a-z0-9_.]+/g, "_");
   } else if (activeTab === "todo") {
-    cols = ["Gearset", "Instance", "Wing", "Boss_Order", "Boss_Name", "Boss_Type", "Boss_Notes", "Slot", "Obtained", "Item"];
-    dataRows = getDerivedTargets(todoScope).map(t => ({
-      Gearset: t.gearsetName,
-      Instance: t.item.dungeon,
+    cols = ["Character", "Kind", "Gearset_or_Stage", "Instance", "Wing", "Boss_Order", "Boss_Name", "Boss_Type", "Boss_Notes", "Slot", "Done", "Item_or_Quest"];
+    dataRows = getDerivedTargets(todoScope, showT05QuestBosses).map(t => ({
+      Character: ch.name,
+      Kind: t.kind === "t05_quest" ? "T0.5 Quest" : (t.item.source === "T0.5" ? "Base T0" : "Gear Drop"),
+      Gearset_or_Stage: t.kind === "t05_quest" ? `Stage ${t.stage}` : t.gearsetName,
+      Instance: t.dungeon,
       Wing: t.bossRec?.Wing || "Main",
       Boss_Order: t.bossRec?.Boss_Order ?? "",
-      Boss_Name: t.item.boss,
+      Boss_Name: t.boss,
       Boss_Type: t.bossRec?.Boss_Type || "",
       Boss_Notes: t.bossRec?.Notes || "",
-      Slot: t.item.slot,
-      Obtained: t.item.obtained ? "TRUE" : "FALSE",
-      Item: t.item.itemText,
+      Slot: t.kind === "t05_quest" ? "T0.5" : t.item.slot,
+      Done: t.done ? "TRUE" : "FALSE",
+      Item_or_Quest: t.kind === "t05_quest" ? t.title : t.item.itemText,
     }));
-    filename = "wow_forever_boss_todo.csv";
+    filename = `${ch.name}_boss_todo.csv`.toLowerCase().replace(/[^a-z0-9_.]+/g, "_");
+  } else if (activeTab === "t05") {
+    const maxStage = getMaxRequiredT05Stage(ch);
+    const stages = buildT05Stages(ch).filter(s => ch.t05.showAllStages || s.stage <= maxStage);
+    cols = ["Character", "Faction", "Stage", "Milestone", "Dungeon", "Boss", "Completed"];
+    dataRows = stages.flatMap(st => st.milestones.map(ms => ({
+      Character: ch.name,
+      Faction: ch.faction,
+      Stage: st.stage,
+      Milestone: ms.title,
+      Dungeon: ms.dungeon || "",
+      Boss: ms.boss || "",
+      Completed: ch.t05.milestones[ms.id] ? "TRUE" : "FALSE",
+    })));
+    filename = `${ch.name}_t05_chain.csv`.toLowerCase().replace(/[^a-z0-9_.]+/g, "_");
   } else {
     cols = ["Instance","Wing","Boss_Order","Boss_Name","Boss_Type","Origin","Zone","Continent","Level_Range","Verification_Sources","Notes"];
     dataRows = getFilteredCompendiumRows();
@@ -2018,26 +2957,28 @@ function exportCsv() {
 function backupJson() {
   const payload = JSON.stringify(state, null, 2);
   const stamp = new Date().toISOString().slice(0, 10);
-  downloadBlob(payload, "application/json;charset=utf-8;", `wow_forever_gearsets_backup_${stamp}.json`);
-  showToast("Downloaded gearsets JSON backup");
+  downloadBlob(payload, "application/json;charset=utf-8;", `wow_forever_tracker_backup_${stamp}.json`);
+  showToast("Downloaded full JSON backup");
 }
 
 function restoreJson(text) {
   try {
     const parsed = JSON.parse(text);
-    if (!parsed || !Array.isArray(parsed.gearsets) || !parsed.gearsets.length) {
-      throw new Error("Invalid backup structure");
-    }
-    if (!confirm(`Restore ${parsed.gearsets.length} gearset(s)? This replaces your current saved gearsets.`)) return;
-    state = parsed;
-    if (!state.gearsets.some(g => g.id === state.activeSetId)) {
-      state.activeSetId = state.gearsets[0].id;
-    }
+    const isV2 = parsed && parsed.version === 2 && Array.isArray(parsed.characters) && parsed.characters.length;
+    const isV1 = parsed && Array.isArray(parsed.gearsets) && parsed.gearsets.length;
+    if (!isV2 && !isV1) throw new Error("Invalid backup");
+
+    const msg = isV2
+      ? `Restore ${parsed.characters.length} character(s)? This replaces your current saved data.`
+      : `Restore v1 backup (${parsed.gearsets.length} gearset(s)) as a character? This replaces your current saved data.`;
+    if (!confirm(msg)) return;
+
+    state = migrateToV2(parsed);
     saveState();
     render();
-    showToast(`Restored ${state.gearsets.length} gearset(s)`);
+    showToast(`Restored ${state.characters.length} character(s)`);
   } catch {
-    alert("Invalid gearsets backup JSON file.");
+    alert("Invalid backup JSON file.");
   }
 }
 
@@ -2046,6 +2987,7 @@ function restoreJson(text) {
 // ============================================================================
 els.tabGear.addEventListener("click", () => { activeTab = "gear"; render(); });
 els.tabTodo.addEventListener("click", () => { activeTab = "todo"; render(); });
+els.tabT05.addEventListener("click", () => { activeTab = "t05"; render(); });
 els.tabCompendium.addEventListener("click", () => { activeTab = "compendium"; render(); });
 
 els.exportBtn.addEventListener("click", exportCsv);
@@ -2066,15 +3008,64 @@ els.jsonFileInput.addEventListener("change", async (e) => {
   e.target.value = "";
 });
 
+// Character Bar events
+els.charBar.addEventListener("change", (e) => {
+  if (e.target.id === "charSelect") {
+    state.activeCharId = e.target.value;
+    saveState();
+    render();
+  }
+});
+
+els.charBar.addEventListener("click", (e) => {
+  const ch = getActiveChar();
+  if (e.target.id === "btnToggleFaction") {
+    ch.faction = ch.faction === "Horde" ? "Alliance" : "Horde";
+    saveState();
+    render();
+    showToast(`${ch.name} set to ${ch.faction}`);
+    return;
+  }
+  if (e.target.id === "btnNewChar") {
+    const name = prompt("New character name:", `Alt ${state.characters.length}`);
+    if (!name || !name.trim()) return;
+    const isAlly = confirm("Click OK for Alliance, or Cancel for Horde.");
+    const created = createCharacter(name.trim(), isAlly ? "Alliance" : "Horde");
+    state.characters.push(created);
+    state.activeCharId = created.id;
+    saveState();
+    render();
+    showToast(`Created character "${created.name}" (${created.faction})`);
+    return;
+  }
+  if (e.target.id === "btnRenameChar") {
+    const name = prompt("Rename character:", ch.name);
+    if (!name || !name.trim()) return;
+    ch.name = name.trim();
+    saveState();
+    render();
+    return;
+  }
+  if (e.target.id === "btnDeleteChar") {
+    if (state.characters.length <= 1) return;
+    if (!confirm(`Delete character "${ch.name}" and all ${ch.gearsets.length} of its gearset(s)?`)) return;
+    state.characters = state.characters.filter(c => c.id !== ch.id);
+    state.activeCharId = state.characters[0].id;
+    saveState();
+    render();
+  }
+});
+
 // Gear Builder delegated events
 els.gearView.addEventListener("click", (e) => {
+  const ch = getActiveChar();
   const gs = getActiveSet();
   if (e.target.id === "btnNewSet") {
-    const name = prompt("New gearset name:", `Pre-BiS Set ${state.gearsets.length + 1}`);
+    const name = prompt("New gearset name:", `Pre-BiS Set ${ch.gearsets.length + 1}`);
     if (!name || !name.trim()) return;
     const created = createDefaultGearset(name.trim());
-    state.gearsets.push(created);
-    state.activeSetId = created.id;
+    ch.gearsets.push(created);
+    ch.activeSetId = created.id;
     saveState();
     render();
     return;
@@ -2094,17 +3085,17 @@ els.gearView.addEventListener("click", (e) => {
       bookmarkUrl: gs.bookmarkUrl,
       items: gs.items.map(i => ({ ...i, id: uid() })),
     };
-    state.gearsets.push(copy);
-    state.activeSetId = copy.id;
+    ch.gearsets.push(copy);
+    ch.activeSetId = copy.id;
     saveState();
     render();
     return;
   }
   if (e.target.id === "btnDeleteSet") {
-    if (state.gearsets.length <= 1) return;
+    if (ch.gearsets.length <= 1) return;
     if (!confirm(`Delete gearset "${gs.name}"?`)) return;
-    state.gearsets = state.gearsets.filter(s => s.id !== gs.id);
-    state.activeSetId = state.gearsets[0].id;
+    ch.gearsets = ch.gearsets.filter(s => s.id !== gs.id);
+    ch.activeSetId = ch.gearsets[0].id;
     saveState();
     render();
     return;
@@ -2114,14 +3105,14 @@ els.gearView.addEventListener("click", (e) => {
     return;
   }
   if (e.target.id === "btnAddGearRow") {
-    gs.items.push({ id: uid(), obtained: false, slot: "Trinket", source: "Dungeon", dungeon: "", boss: "", itemText: "" });
+    gs.items.push({ id: uid(), obtained: false, t05Status: "need_t0", slot: "Trinket", source: "Dungeon", dungeon: "", boss: "", itemText: "" });
     saveState();
     render();
     return;
   }
   if (e.target.id === "btnAddStandardSlots") {
     for (const slot of STANDARD_SLOTS) {
-      gs.items.push({ id: uid(), obtained: false, slot, source: "Dungeon", dungeon: "", boss: "", itemText: "" });
+      gs.items.push({ id: uid(), obtained: false, t05Status: "need_t0", slot, source: "Dungeon", dungeon: "", boss: "", itemText: "" });
     }
     saveState();
     render();
@@ -2136,6 +3127,22 @@ els.gearView.addEventListener("click", (e) => {
     els.gearFileInput.click();
     return;
   }
+
+  const cycleBtn = e.target.closest("[data-cycle-t05]");
+  if (cycleBtn) {
+    const id = cycleBtn.getAttribute("data-cycle-t05");
+    const item = gs.items.find(i => i.id === id);
+    if (item && item.source === "T0.5") {
+      const order = ["need_t0", "have_t0", "t05"];
+      const next = order[(order.indexOf(item.t05Status) + 1) % order.length];
+      item.t05Status = next;
+      item.obtained = next === "t05";
+      saveState();
+      render();
+    }
+    return;
+  }
+
   const editItemBtn = e.target.closest("[data-edit-item]");
   if (editItemBtn) {
     const id = editItemBtn.getAttribute("data-edit-item");
@@ -2151,6 +3158,7 @@ els.gearView.addEventListener("click", (e) => {
     }
     return;
   }
+
   const delBtn = e.target.closest("[data-delete-item]");
   if (delBtn) {
     const id = delBtn.getAttribute("data-delete-item");
@@ -2161,9 +3169,10 @@ els.gearView.addEventListener("click", (e) => {
 });
 
 els.gearView.addEventListener("change", (e) => {
+  const ch = getActiveChar();
   const gs = getActiveSet();
   if (e.target.id === "gearsetSelect") {
-    state.activeSetId = e.target.value;
+    ch.activeSetId = e.target.value;
     saveState();
     render();
     return;
@@ -2187,10 +3196,17 @@ els.gearView.addEventListener("change", (e) => {
   if (field === "obtained") {
     item.obtained = e.target.checked;
   } else if (field === "source") {
+    const prevSource = item.source;
     item.source = e.target.value;
-    if (item.source !== "Dungeon") {
-      item.dungeon = "";
-      item.boss = "";
+    if (item.source === "T0.5") {
+      item.t05Status = item.obtained ? "t05" : "need_t0";
+      item.obtained = item.t05Status === "t05";
+    } else {
+      if (prevSource === "T0.5") item.obtained = item.t05Status === "t05";
+      if (item.source !== "Dungeon") {
+        item.dungeon = "";
+        item.boss = "";
+      }
     }
   } else if (field === "dungeon") {
     item.dungeon = e.target.value;
@@ -2236,7 +3252,6 @@ els.gearView.addEventListener("input", (e) => {
     if (item) {
       item.itemText = e.target.value;
       saveState();
-      // Keep the sibling ↗ open-URL button synced live while typing/pasting
       const linkEl = tr.querySelector("[data-item-open-link]");
       if (linkEl) {
         const valid = isUrl(item.itemText);
@@ -2247,7 +3262,6 @@ els.gearView.addEventListener("input", (e) => {
   }
 });
 
-// Convert valid Wowhead URLs into readable item names on blur (without disturbing sibling ↗ link clicks)
 els.gearView.addEventListener("focusout", (e) => {
   if (e.target.getAttribute("data-gear-field") !== "itemText") return;
   const gs = getActiveSet();
@@ -2287,18 +3301,114 @@ els.todoView.addEventListener("click", (e) => {
 });
 
 els.todoView.addEventListener("change", (e) => {
+  const ch = getActiveChar();
   if (e.target.id === "todoSortSelect") { todoSort = e.target.value; renderTodoTab(); return; }
   if (e.target.id === "chkTodoHideDone") { todoHideDone = e.target.checked; renderTodoTab(); return; }
+  if (e.target.id === "chkShowT05Quests") { showT05QuestBosses = e.target.checked; render(); return; }
+
+  const msId = e.target.getAttribute("data-todo-t05-ms");
+  if (msId) {
+    ch.t05.milestones[msId] = e.target.checked;
+    saveState();
+    render();
+    return;
+  }
+
   const itemId = e.target.getAttribute("data-todo-item-id");
   const setId = e.target.getAttribute("data-todo-set-id");
   if (itemId && setId) {
-    const gs = state.gearsets.find(s => s.id === setId);
+    const gs = ch.gearsets.find(s => s.id === setId);
     const item = gs?.items.find(i => i.id === itemId);
     if (item) {
-      item.obtained = e.target.checked;
+      if (item.source === "T0.5") {
+        item.t05Status = e.target.checked ? "have_t0" : "need_t0";
+        item.obtained = false;
+      } else {
+        item.obtained = e.target.checked;
+      }
       saveState();
       render();
     }
+  }
+});
+
+// T0.5 Chain Tab delegated events
+els.t05View.addEventListener("click", (e) => {
+  const ch = getActiveChar();
+  const upgBtn = e.target.closest("[data-upgrade-stage]");
+  if (upgBtn) {
+    const stageNum = parseInt(upgBtn.getAttribute("data-upgrade-stage"), 10);
+    const stageObj = buildT05Stages(ch).find(s => s.stage === stageNum);
+    if (stageObj) {
+      let count = 0;
+      for (const { item } of getCharacterT05Items(ch)) {
+        if (stageObj.slots.includes(item.slot) && item.t05Status !== "t05") {
+          item.t05Status = "t05";
+          item.obtained = true;
+          count++;
+        }
+      }
+      const turninMs = stageObj.milestones[stageObj.milestones.length - 1];
+      if (turninMs) ch.t05.milestones[turninMs.id] = true;
+      saveState();
+      render();
+      showToast(`Marked ${count} Stage ${stageNum} piece(s) as T0.5 ✓`);
+    }
+  }
+});
+
+els.t05View.addEventListener("change", (e) => {
+  const ch = getActiveChar();
+  if (e.target.id === "chkT05ShowAll") {
+    ch.t05.showAllStages = e.target.checked;
+    saveState();
+    renderT05Tab();
+    return;
+  }
+  if (e.target.id === "selComp1") {
+    ch.t05.componentsFirst = e.target.value;
+    const match = findBranchById(ch.t05.componentsFirst);
+    ch.t05.leftAmuletBoss = match.boss;
+    saveState();
+    render();
+    showToast(`Components #1 & Left Piece set to ${match.boss}`);
+    return;
+  }
+  if (e.target.id === "selLeftAmulet") {
+    ch.t05.leftAmuletBoss = e.target.value;
+    saveState();
+    render();
+    showToast(`Left Piece boss set to ${ch.t05.leftAmuletBoss}`);
+    return;
+  }
+  if (e.target.id === "selComp2") {
+    ch.t05.componentsSecond = e.target.value;
+    const match = findBranchById(ch.t05.componentsSecond);
+    ch.t05.rightAmuletBoss = match.boss;
+    saveState();
+    render();
+    showToast(`More Components & Right Piece set to ${match.boss}`);
+    return;
+  }
+  if (e.target.id === "selRightAmulet") {
+    ch.t05.rightAmuletBoss = e.target.value;
+    saveState();
+    render();
+    showToast(`Right Piece boss set to ${ch.t05.rightAmuletBoss}`);
+    return;
+  }
+  const msId = e.target.getAttribute("data-t05-ms");
+  if (msId) {
+    ch.t05.milestones[msId] = e.target.checked;
+    saveState();
+    render();
+    return;
+  }
+  const prereqSlot = e.target.getAttribute("data-t05-prereq");
+  if (prereqSlot) {
+    ch.t05.prereqT0Owned[prereqSlot] = e.target.checked;
+    saveState();
+    renderT05Tab();
   }
 });
 
