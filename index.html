@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WoW Forever (1.60.1) — Pre-BiS &amp; Dungeon Tracker</title>
+<title>Dungeon To-Do</title>
 <style>
   :root {
     /* Wowhead-sampled neutral dark grays */
@@ -79,41 +79,12 @@
     gap: 12px;
   }
 
-  .brand-line {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .forever-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--forever);
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.9px;
-    text-transform: uppercase;
-    padding: 4px 9px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--forever-border);
-    user-select: none;
-  }
-
   h1 {
     margin: 0;
-    font-size: 1.22rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--text-strong);
     letter-spacing: -0.1px;
-  }
-
-  .subtitle {
-    color: var(--muted);
-    font-size: 0.81rem;
-    margin-top: 3px;
   }
 
   .header-actions {
@@ -123,7 +94,7 @@
     gap: 6px;
   }
 
-  /* Compact Character Switcher in Header */
+  /* Prominent Character Bar */
   .char-bar {
     display: flex;
     flex-wrap: wrap;
@@ -131,9 +102,10 @@
     justify-content: space-between;
     gap: 8px;
     margin-top: 10px;
-    padding: 7px 10px;
-    background: var(--surface-deep);
-    border: 1px solid var(--border);
+    padding: 8px 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--forever);
     border-radius: var(--radius-sm);
   }
 
@@ -141,8 +113,8 @@
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--muted);
+    letter-spacing: 0.6px;
+    color: var(--forever-text);
   }
 
   .faction-btn {
@@ -178,13 +150,12 @@
     border: 1px solid var(--border);
     border-bottom: none;
     border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-    padding: 8px 15px;
+    padding: 8px 16px;
     font-size: 0.86rem;
     font-weight: 600;
     color: var(--muted);
     display: inline-flex;
     align-items: center;
-    gap: 8px;
     position: relative;
     bottom: -1px;
     cursor: pointer;
@@ -201,22 +172,6 @@
     color: var(--text-strong);
     border-color: var(--border);
     box-shadow: inset 0 2px 0 var(--forever);
-  }
-
-  .tab-count {
-    background: var(--surface-2);
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 700;
-    padding: 1px 6px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-  }
-
-  .tab-btn.active .tab-count {
-    background: var(--forever);
-    color: #ffffff;
-    border-color: var(--forever-border);
   }
 
   /* Form controls */
@@ -340,7 +295,7 @@
 
   .controls-grid {
     display: grid;
-    grid-template-columns: minmax(220px, 2.2fr) minmax(190px, 1.3fr) minmax(150px, 1fr) minmax(185px, 1.1fr);
+    grid-template-columns: minmax(220px, 2.2fr) minmax(190px, 1.3fr) minmax(150px, 1fr) minmax(170px, 1fr);
     gap: 6px;
     align-items: center;
   }
@@ -389,25 +344,16 @@
     gap: 6px;
   }
 
-  .stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
-  }
-
-  .stat-pill {
-    background: var(--surface-deep);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 3px 9px;
-    font-size: 0.78rem;
+  .item-count-tag {
+    font-size: 0.8rem;
     color: var(--muted);
+    white-space: nowrap;
+    margin-right: 4px;
   }
 
-  .stat-pill strong { color: var(--text-strong); }
-  .stat-pill.accent strong { color: var(--forever-text); }
-  .stat-pill.done strong { color: var(--success); }
+  .item-count-tag strong {
+    color: var(--text-strong);
+  }
 
   label.chk {
     display: inline-flex;
@@ -427,28 +373,16 @@
     padding: 14px 20px 48px;
   }
 
-  /* Utilitarian rectangular tags */
+  /* Utilitarian tags */
   .badge {
     display: inline-block;
     font-size: 11px;
     font-weight: 600;
-    padding: 2px 6px;
+    padding: 1px 6px;
     border-radius: var(--radius-sm);
     letter-spacing: 0.2px;
     white-space: nowrap;
     border: 1px solid transparent;
-  }
-
-  .origin-forever {
-    background: var(--forever-tint);
-    color: var(--forever-text);
-    border-color: var(--forever-border);
-  }
-
-  .origin-classic {
-    background: var(--surface-2);
-    color: var(--muted);
-    border-color: var(--border-strong);
   }
 
   .type-Main { background: var(--surface-2); color: var(--type-main); border-color: var(--border); }
@@ -463,6 +397,12 @@
     background: var(--forever-tint);
     color: var(--forever-text);
     border-color: var(--forever-border);
+  }
+
+  .muted-badge {
+    background: var(--surface-deep);
+    color: var(--muted);
+    border-color: var(--border);
   }
 
   .done-tag {
@@ -496,8 +436,8 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 12px 14px;
-    margin-bottom: 12px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
   }
 
   .gearset-bar {
@@ -513,8 +453,8 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 9px;
+    padding-top: 9px;
     border-top: 1px solid var(--border);
   }
 
@@ -623,8 +563,7 @@
     overflow: hidden;
   }
 
-  .instance-card.forever-card { border-left: 3px solid var(--forever); }
-  .instance-card.classic-card { border-left: 3px solid var(--border-strong); }
+  .instance-card.has-active { border-left: 3px solid var(--forever); }
 
   .instance-header {
     width: 100%;
@@ -632,7 +571,7 @@
     background: var(--surface-2);
     border: none;
     border-radius: 0;
-    padding: 9px 14px;
+    padding: 8px 14px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -642,6 +581,15 @@
   }
 
   .instance-header:hover { background: var(--hover); }
+
+  .instance-header.static {
+    cursor: default;
+    background: var(--surface-deep);
+  }
+
+  .instance-header.static:hover {
+    background: var(--surface-deep);
+  }
 
   .inst-left {
     display: flex;
@@ -664,7 +612,7 @@
   }
 
   .inst-name {
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--text-strong);
   }
@@ -710,7 +658,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
-    padding: 8px 10px;
+    padding: 7px 10px;
     background: var(--surface-deep);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
@@ -729,7 +677,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 4px 8px;
+    padding: 3px 8px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     background: var(--surface);
@@ -761,9 +709,8 @@
 
   .t05-milestone-row {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 10px;
     padding: 7px 10px;
     background: var(--surface-deep);
     border: 1px solid #242424;
@@ -771,31 +718,29 @@
     font-size: 0.84rem;
   }
 
-  .t05-milestone-row.done {
-    opacity: 0.52;
-  }
-
-  .t05-milestone-row.done .ms-title {
-    text-decoration: line-through;
-  }
+  .t05-milestone-row.done { opacity: 0.52; }
+  .t05-milestone-row.done .ms-title { text-decoration: line-through; }
 
   .t05-milestone-row input[type="checkbox"] {
     width: 15px;
     height: 15px;
     accent-color: var(--forever);
     cursor: pointer;
-    margin: 0;
+    margin: 2px 0 0;
+    flex-shrink: 0;
   }
 
-  .ms-title {
-    font-weight: 600;
-    color: var(--text-strong);
+  .ms-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
-  .ms-detail {
-    color: var(--muted);
-    font-size: 0.8rem;
-  }
+  .ms-title { font-weight: 600; color: var(--text-strong); }
+  .ms-detail { color: var(--muted); font-size: 0.8rem; }
 
   .t05-amulet-grid {
     display: grid;
@@ -847,13 +792,8 @@
     font-size: 0.81rem;
   }
 
-  details.t05-mats li {
-    margin-bottom: 3px;
-  }
-
-  details.t05-mats strong {
-    color: var(--text);
-  }
+  details.t05-mats li { margin-bottom: 3px; }
+  details.t05-mats strong { color: var(--text); }
 
   /* Tables */
   .table-wrap {
@@ -904,15 +844,8 @@
   tbody tr.row-targeted { background: var(--forever-tint-soft); }
   tbody tr.row-targeted:hover { background: var(--forever-tint); }
 
-  .order-cell {
-    color: var(--subtle);
-    font-variant-numeric: tabular-nums;
-    width: 36px;
-    text-align: right;
-  }
-
   .check-cell {
-    width: 72px;
+    width: 78px;
     text-align: center;
   }
 
@@ -922,24 +855,27 @@
     accent-color: var(--forever);
     cursor: pointer;
     vertical-align: middle;
+    margin: 0;
   }
 
   .boss-name {
     font-weight: 600;
     color: var(--text-strong);
-    white-space: nowrap;
+  }
+
+  .todo-table, .comp-table {
+    table-layout: fixed;
+    min-width: 780px;
+  }
+
+  .todo-table th, .todo-table td,
+  .comp-table th, .comp-table td {
+    text-align: left;
   }
 
   .notes-cell {
     color: var(--muted);
     font-size: 0.8rem;
-    min-width: 220px;
-  }
-
-  .sources-cell {
-    color: var(--subtle);
-    font-size: 0.75rem;
-    min-width: 155px;
   }
 
   .remove-btn {
@@ -965,14 +901,22 @@
 
   .drop-chip {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 7px;
+    align-items: flex-start;
+    gap: 8px;
     background: var(--surface-deep);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    padding: 4px 8px;
+    padding: 5px 8px;
     font-size: 0.8rem;
+  }
+
+  .drop-chip-body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .drop-chip.done {
@@ -985,6 +929,8 @@
     height: 14px;
     accent-color: var(--forever);
     cursor: pointer;
+    margin: 2px 0 0;
+    flex-shrink: 0;
   }
 
   .slot-tag {
@@ -1007,21 +953,6 @@
     font-weight: 600;
   }
 
-  .progress-wrap { margin-bottom: 12px; }
-  .progress-bar-bg {
-    height: 6px;
-    background: var(--surface-2);
-    border-radius: 2px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background: var(--forever);
-    transition: width 0.2s ease;
-  }
-  .progress-bar-fill.complete { background: var(--success); }
-
   .empty-state {
     text-align: center;
     padding: 42px 20px;
@@ -1032,6 +963,156 @@
   }
 
   .empty-state h3 { margin: 0 0 8px; color: var(--text-strong); font-size: 1rem; }
+
+  /* Party Planner & Incoming Share Modal */
+  .party-paste-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .party-paste-row input {
+    flex: 1 1 280px;
+    font-size: 0.82rem;
+    background: var(--surface-deep);
+  }
+
+  .roster-wrap {
+    margin-top: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .roster-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+  }
+
+  .roster-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #242424;
+    vertical-align: middle;
+  }
+
+  .roster-table tr:last-child td { border-bottom: none; }
+
+  .roster-chk-cell {
+    width: 38px;
+    text-align: center;
+  }
+
+  .roster-chk-cell input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--forever);
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 0;
+  }
+
+  .roster-row-off { opacity: 0.45; }
+
+  .player-tag {
+    background: var(--surface-2);
+    color: var(--text-strong);
+    border: 1px solid var(--border-strong);
+    border-radius: 2px;
+    padding: 0 5px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .player-tag.self {
+    background: var(--forever-tint);
+    color: var(--forever-text);
+    border-color: var(--forever-border);
+  }
+
+  .overlap-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .overlap-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  .overlap-contested {
+    background: var(--danger-tint);
+    color: #ef8a87;
+    border-color: rgba(217, 83, 79, 0.38);
+  }
+
+  .overlap-slot {
+    background: var(--surface-2);
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+
+  .overlap-t05 {
+    background: rgba(78, 194, 180, 0.14);
+    color: var(--type-summoned);
+    border-color: rgba(78, 194, 180, 0.35);
+  }
+
+  .danger-badge {
+    background: var(--danger-tint);
+    color: #ef8a87;
+    border-color: rgba(217, 83, 79, 0.38);
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .modal-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+
+  .modal-card h3 {
+    margin: 0 0 8px;
+    font-size: 0.98rem;
+    color: var(--text-strong);
+  }
+
+  .modal-summary {
+    margin: 0 0 14px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .modal-summary strong { color: var(--text-strong); }
+
+  .modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+  }
 
   .toast {
     position: fixed;
@@ -1065,17 +1146,11 @@
 <header>
   <div class="wrap">
     <div class="title-row">
-      <div>
-        <div class="brand-line">
-          <span class="forever-pill">FOREVER 1.60.1</span>
-          <h1>Pre-BiS &amp; Dungeon Boss Tracker</h1>
-        </div>
-        <div class="subtitle">Assign dungeon bosses per gear slot — your farm To-Do list and optional T0.5 Chain update automatically.</div>
-      </div>
+      <h1>Dungeon To-Do</h1>
       <div class="header-actions">
-        <button id="btnExport" class="primary" title="Export the active tab as CSV">Export CSV</button>
-        <button id="btnBackupJson" title="Download all characters &amp; gearsets as a JSON backup">Backup JSON</button>
-        <button id="btnRestoreJson" title="Restore characters &amp; gearsets from a JSON backup">Restore JSON…</button>
+        <button id="btnExport" class="primary" title="Export active tab as CSV">Export CSV</button>
+        <button id="btnBackupJson" title="Backup all characters as JSON">Backup JSON</button>
+        <button id="btnRestoreJson" title="Restore characters from JSON">Restore JSON…</button>
         <input id="gearFileInput" type="file" accept=".csv,text/csv" class="hidden" />
         <input id="jsonFileInput" type="file" accept=".json,application/json" class="hidden" />
       </div>
@@ -1084,18 +1159,11 @@
     <div class="char-bar" id="charBar"></div>
 
     <nav class="main-tabs" role="tablist">
-      <button id="tabGear" class="tab-btn active" role="tab" aria-selected="true">
-        Gear Builder <span class="tab-count" id="countGear">0</span>
-      </button>
-      <button id="tabTodo" class="tab-btn" role="tab" aria-selected="false">
-        Boss To-Do List <span class="tab-count" id="countTodo">0</span>
-      </button>
-      <button id="tabT05" class="tab-btn hidden" role="tab" aria-selected="false">
-        T0.5 Chain <span class="tab-count" id="countT05">0</span>
-      </button>
-      <button id="tabCompendium" class="tab-btn" role="tab" aria-selected="false">
-        Dungeon Compendium <span class="tab-count" id="countCompendium">0</span>
-      </button>
+      <button id="tabGear" class="tab-btn active" role="tab" aria-selected="true">Gear Builder</button>
+      <button id="tabTodo" class="tab-btn" role="tab" aria-selected="false">Boss To-Do</button>
+      <button id="tabT05" class="tab-btn hidden" role="tab" aria-selected="false">T0.5 Chain</button>
+      <button id="tabParty" class="tab-btn" role="tab" aria-selected="false">Party</button>
+      <button id="tabCompendium" class="tab-btn" role="tab" aria-selected="false">Compendium</button>
     </nav>
   </div>
 </header>
@@ -1104,10 +1172,10 @@
 <div class="controls-bar hidden" id="compendiumControls">
   <div class="wrap">
     <div class="controls-grid">
-      <input id="searchInput" type="search" placeholder="Search boss, instance, zone, notes…" autocomplete="off" />
+      <input id="searchInput" type="search" placeholder="Search boss, instance, notes…" autocomplete="off" />
       <select id="instanceFilter" aria-label="Filter by instance"></select>
       <select id="typeFilter" aria-label="Filter by boss type">
-        <option value="">All Boss Types</option>
+        <option value="">All Types</option>
         <option value="Main">Main</option>
         <option value="Final">Final</option>
         <option value="Optional">Optional</option>
@@ -1117,45 +1185,54 @@
         <option value="Event">Event</option>
       </select>
       <select id="sortSelect" aria-label="Sort order">
-        <option value="instance_asc">Sort: Instance (A → Z)</option>
-        <option value="instance_desc">Sort: Instance (Z → A)</option>
-        <option value="level_asc">Sort: Level (Low → High)</option>
-        <option value="level_desc">Sort: Level (High → Low)</option>
-        <option value="bosses_desc">Sort: Boss Count (Most)</option>
-        <option value="bosses_asc">Sort: Boss Count (Fewest)</option>
+        <option value="instance_asc">Instance (A → Z)</option>
+        <option value="instance_desc">Instance (Z → A)</option>
+        <option value="level_asc">Level (Low → High)</option>
+        <option value="level_desc">Level (High → Low)</option>
       </select>
     </div>
 
     <div class="controls-row-2">
       <div class="inline-tools">
         <div class="segmented" role="tablist">
-          <button id="viewGrouped" class="active" role="tab">Grouped by Instance</button>
-          <button id="viewTable" role="tab">Flat Table</button>
+          <button id="viewGrouped" class="active" role="tab">By Instance</button>
+          <button id="viewTable" role="tab">Table</button>
         </div>
-        <button id="btnEndgame" class="toggle-pill" type="button" title="Only show Sunken Temple (50+) and higher dungeons">
-          Endgame Only (Sunken Temple+)
+        <button id="btnEndgame" class="toggle-pill" type="button" title="Sunken Temple (50+) and higher">
+          Endgame (50+)
         </button>
         <label class="chk"><input type="checkbox" id="chkCoreOnly" /> Main &amp; Final only</label>
       </div>
       <div class="inline-tools">
         <button id="btnExpandAll">Expand All</button>
         <button id="btnCollapseAll">Collapse All</button>
-        <button id="btnResetFilters">Reset Filters</button>
+        <button id="btnResetFilters">Reset</button>
       </div>
     </div>
-
-    <div class="stats" id="statsBar"></div>
   </div>
 </div>
 
 <main>
   <div class="wrap">
-    <div id="gearView"><div class="empty-state"><h3>Loading boss database…</h3></div></div>
+    <div id="gearView"><div class="empty-state"><h3>Loading…</h3></div></div>
     <div id="todoView" class="hidden"></div>
     <div id="t05View" class="hidden"></div>
+    <div id="partyView" class="hidden"></div>
     <div id="compendiumView" class="hidden"></div>
   </div>
 </main>
+
+<div id="shareModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+  <div class="modal-card">
+    <h3 id="shareModalTitle">Shared Gearset</h3>
+    <p id="shareModalSummary" class="modal-summary"></p>
+    <div class="modal-actions">
+      <button id="btnShareCancel" type="button">Cancel</button>
+      <button id="btnShareImportSelf" type="button">Import as My Set</button>
+      <button id="btnShareAddParty" class="primary" type="button">Add to Party</button>
+    </div>
+  </div>
+</div>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
@@ -1256,131 +1333,123 @@ function buildT05Stages(char) {
   return [
     {
       stage: 1,
-      title: "Stage 1 — Bracers (An Earnest Proposition)",
+      title: "Stage 1 — Wrist",
       slots: ["Wrist"],
-      summary: isAlly
-        ? "Deliana (Ironforge) • 20g + 15 Winterspring Blood Samples"
-        : "Mokvar (Orgrimmar) • 20g + 15 Silithus Venom Samples",
       milestones: [
         {
           id: "s1_samples",
-          title: isAlly ? "Collect 15x Winterspring Blood Samples" : "Collect 15x Silithus Venom Samples",
-          detail: isAlly ? "Drops from bears & frostsabers in Winterspring." : "Drops from spiders & scorpions in Silithus.",
+          title: isAlly ? "15x Winterspring Blood Samples" : "15x Silithus Venom Samples",
+          detail: isAlly ? "Bears & frostsabers in Winterspring." : "Spiders & scorpions in Silithus.",
         },
         {
           id: "s1_turnin",
-          title: "Turn in 'An Earnest Proposition' (Upgrade Wrist)",
-          detail: isAlly ? "Hand in T0 Bracers + 20g + samples to Deliana (Ironforge)." : "Hand in T0 Bracers + 20g + samples to Mokvar (Orgrimmar).",
+          title: "An Earnest Proposition",
+          detail: isAlly ? "Deliana (Ironforge) — T0 Wrist + 20g." : "Mokvar (Orgrimmar) — T0 Wrist + 20g.",
         },
       ],
       materials: [
-        "<strong>20 Gold</strong> (direct quest fee)",
-        isAlly
-          ? "<strong>15x Winterspring Blood Sample</strong> (Winterspring beasts)"
-          : "<strong>15x Silithus Venom Sample</strong> (Silithus spiders/scorpions)",
-        "<strong>Tier 0 Wrist (BoE)</strong> — farmable or bought on Auction House",
+        "<strong>20g</strong>",
+        isAlly ? "<strong>15x Winterspring Blood Sample</strong>" : "<strong>15x Silithus Venom Sample</strong>",
+        "<strong>T0 Wrist (BoE)</strong>",
       ],
     },
     {
       stage: 2,
-      title: "Stage 2 — Belt & Gloves (Just Compensation)",
+      title: "Stage 2 — Waist & Hands",
       slots: ["Waist", "Hands"],
-      summary: "Mux Manascrambler (Gadgetzan) • ~80g + Distiller mats + 36 Ectoplasm",
       milestones: [
         {
           id: "s2_distiller",
-          title: "Craft Ectoplasmic Distiller (Mux Manascrambler, Gadgetzan)",
-          detail: "Requires 1x Delicate Arcanite Converter, 4x Greater Eternal Essence, 10x Stonescale Oil, 25x Volcanic Ash.",
+          title: "Craft Ectoplasmic Distiller",
+          detail: "Mux Manascrambler (Gadgetzan) — Converter, 4x Greater Eternal Essence, 10x Stonescale Oil, 25x Volcanic Ash.",
         },
         {
           id: "s2_ectoplasm",
-          title: "Harvest 36x Ectoplasm (12 Scorched, 12 Frozen, 12 Stable)",
-          detail: "Use Distiller on ghosts in Silithus, Winterspring, and Eastern Plaguelands.",
+          title: "Harvest 36x Ectoplasm",
+          detail: "12 Scorched (Silithus), 12 Frozen (Winterspring), 12 Stable (EPL).",
         },
         {
           id: "s2_turnin",
-          title: "Turn in 'Just Compensation' (Upgrade Waist & Hands)",
-          detail: "Hand in T0 Belt & Gloves + gold fees (~80g total across Stage 2).",
+          title: "Just Compensation",
+          detail: "Turn in T0 Waist & Hands (~80g total Stage 2 fees).",
         },
       ],
       materials: [
-        "<strong>~80 Gold</strong> (cumulative Stage 2 quest/goblin fees)",
-        "<strong>1x Delicate Arcanite Converter</strong> (Engineering)",
-        "<strong>4x Greater Eternal Essence</strong> (Enchanting)",
-        "<strong>10x Stonescale Oil</strong> (Alchemy)",
-        "<strong>25x Volcanic Ash</strong> (ground nodes near lava in Burning Steppes)",
-        "<strong>Tier 0 Waist &amp; Hands (BoE)</strong>",
+        "<strong>~80g</strong>",
+        "<strong>1x Delicate Arcanite Converter</strong>",
+        "<strong>4x Greater Eternal Essence</strong>",
+        "<strong>10x Stonescale Oil</strong>",
+        "<strong>25x Volcanic Ash</strong> (Burning Steppes)",
+        "<strong>T0 Waist &amp; Hands (BoE)</strong>",
       ],
     },
     {
       stage: 3,
-      title: "Stage 3 — Boots, Legs & Shoulders (Anthion's Parting Words)",
+      title: "Stage 3 — Feet, Legs & Shoulder",
       slots: ["Feet", "Legs", "Shoulder"],
-      summary: "Anthion Harmon (Stratholme) • 45-Min Baron, Crafting Mats, Dire Maul, BRD Theldren",
       milestones: [
         {
           id: "s3_baron45",
-          title: "Dead Man's Plea — 45-Minute Timed Baron Run",
-          detail: "Save Ysida Harmon by defeating Baron Rivendare within 45 minutes of opening the Service Gate.",
+          title: "Dead Man's Plea (45-Min Baron)",
+          detail: "Save Ysida Harmon within 45 min of opening Service Gate.",
           dungeon: "Stratholme",
           boss: "Baron Rivendare",
         },
         {
           id: "s3_mats",
-          title: "Complete 'Anthion's Strange Request' (Crafting Materials)",
-          detail: "Hand in 3x Dark Iron Bar, 20x Enchanted Leather, 3x Mooncloth, 4x Cured Rugged Hide.",
+          title: "Anthion's Strange Request",
+          detail: "3x Dark Iron Bar, 20x Enchanted Leather, 3x Mooncloth, 4x Cured Rugged Hide.",
         },
         {
           id: "s3_falrin",
-          title: "Complete 'Falrin's Vendetta' (Dire Maul Ogres)",
-          detail: "Clear Dire Maul ogres to obtain the Banner of Provocation.",
+          title: "Falrin's Vendetta",
+          detail: "Clear Dire Maul ogres for Banner of Provocation.",
         },
         {
           id: "s3_theldren",
-          title: "The Challenge — Defeat Theldren in Ring of Law",
-          detail: "Plant the Banner of Provocation in the BRD Arena to summon Theldren's team.",
+          title: "The Challenge",
+          detail: "Plant Banner of Provocation in BRD Ring of Law.",
           dungeon: "Blackrock Depths",
           boss: "Theldren",
         },
         {
           id: "s3_turnin",
-          title: "Turn in 'Anthion's Parting Words' (Upgrade Feet, Legs & Shoulder)",
-          detail: "Hand in T0 Boots, Legs, and Shoulders for their T0.5 upgrades.",
+          title: "Anthion's Parting Words",
+          detail: "Turn in T0 Feet, Legs & Shoulder.",
         },
       ],
       materials: [
-        "<strong>3x Dark Iron Bar</strong> (Mining/Smelting)",
-        "<strong>20x Enchanted Leather</strong> (Enchanting/Leatherworking)",
-        "<strong>3x Mooncloth</strong> (Tailoring)",
-        "<strong>4x Cured Rugged Hide</strong> (Leatherworking)",
-        "<strong>Tier 0 Feet, Legs &amp; Shoulder (BoP dungeon drops)</strong>",
+        "<strong>3x Dark Iron Bar</strong>",
+        "<strong>20x Enchanted Leather</strong>",
+        "<strong>3x Mooncloth</strong>",
+        "<strong>4x Cured Rugged Hide</strong>",
+        "<strong>T0 Feet, Legs &amp; Shoulder</strong>",
       ],
     },
     {
       stage: 4,
-      title: "Stage 4 — Helm & Chest (Saving the Best for Last)",
+      title: "Stage 4 — Head & Chest",
       slots: ["Head", "Chest"],
-      summary: "Bodley (Blackrock Mountain) • 120g Brazier, Three Kings, 2 Amulet Bosses, Lord Valthalak",
       hasAmuletPickers: true,
       milestones: [
         {
           id: "s4_incendius",
-          title: "Three Kings of Flame — Incendicite of Incendius",
-          detail: "Defeat Lord Incendius in Blackrock Depths.",
+          title: "Three Kings of Flame — Incendicite",
+          detail: "Lord Incendius (BRD).",
           dungeon: "Blackrock Depths",
           boss: "Lord Incendius",
         },
         {
           id: "s4_emberseer",
-          title: "Three Kings of Flame — Ember of Emberseer",
-          detail: "Defeat Pyroguard Emberseer in Upper Blackrock Spire.",
+          title: "Three Kings of Flame — Ember",
+          detail: "Pyroguard Emberseer (UBRS).",
           dungeon: "Blackrock Spire: Upper (UBRS)",
           boss: "Pyroguard Emberseer",
         },
         {
           id: "s4_cynders_brazier",
-          title: "Cinder of Cynders (Silithus Wind Stone) + Hallowed Brazier (120g)",
-          detail: "Summon The Duke of Cynders in Silithus; purchase Hallowed Brazier (120g, Argent Dawn Honored).",
+          title: "The Duke of Cynders + Hallowed Brazier",
+          detail: "Silithus Wind Stone + Hallowed Brazier (120g, Argent Dawn Honored).",
         },
         {
           id: "s4_comp1",
@@ -1389,15 +1458,15 @@ function buildT05Stages(char) {
         },
         {
           id: "s4_left_amulet",
-          title: `The Left Piece of Lord Valthalak's Amulet (${leftOpt.boss})`,
-          detail: `Summon ${leftOpt.boss} using Brazier of Beckoning in ${leftOpt.room} (${leftOpt.dungeon}).`,
+          title: `Left Piece of Amulet (${leftOpt.boss})`,
+          detail: `Brazier of Beckoning in ${leftOpt.room}.`,
           dungeon: leftOpt.dungeon,
           boss: leftOpt.boss,
         },
         {
           id: "s4_alcaz",
-          title: "I See Alcaz Island In Your Future… (20x Bloodkelp)",
-          detail: "Collect 20x Bloodkelp from Alcaz Island (Dustwallow Marsh) and return to Bodley.",
+          title: "I See Alcaz Island In Your Future…",
+          detail: "20x Bloodkelp from Alcaz Island (Dustwallow Marsh).",
         },
         {
           id: "s4_comp2",
@@ -1406,28 +1475,28 @@ function buildT05Stages(char) {
         },
         {
           id: "s4_right_amulet",
-          title: `The Right Piece of Lord Valthalak's Amulet (${rightOpt.boss})`,
-          detail: `Summon ${rightOpt.boss} using Brazier of Beckoning in ${rightOpt.room} (${rightOpt.dungeon}).`,
+          title: `Right Piece of Amulet (${rightOpt.boss})`,
+          detail: `Brazier of Beckoning in ${rightOpt.room}.`,
           dungeon: rightOpt.dungeon,
           boss: rightOpt.boss,
         },
         {
           id: "s4_valthalak",
-          title: "Mea Culpa, Lord Valthalak — Final Summoned Boss",
-          detail: "Use the assembled Amulet at The Beast's room in UBRS to summon and defeat Lord Valthalak.",
+          title: "Mea Culpa, Lord Valthalak",
+          detail: "Summon at The Beast's room (UBRS).",
           dungeon: "Blackrock Spire: Upper (UBRS)",
           boss: "Lord Valthalak",
         },
         {
           id: "s4_turnin",
-          title: "Turn in 'Saving the Best for Last' (Upgrade Head & Chest)",
-          detail: "Hand in T0 Helm & Chest to complete your T0.5 set.",
+          title: "Saving the Best for Last",
+          detail: "Turn in T0 Head & Chest.",
         },
       ],
       materials: [
-        "<strong>120 Gold</strong> — <strong>Hallowed Brazier</strong> (Argent Dawn Quartermaster, requires Honored)",
-        "<strong>Twilight Cultist Set + Signet</strong> (for summoning The Duke of Cynders in Silithus)",
-        "<strong>Tier 0 Head &amp; Chest (BoP dungeon drops)</strong>",
+        "<strong>120g</strong> — <strong>Hallowed Brazier</strong> (Argent Dawn Honored)",
+        "<strong>Twilight Cultist Set + Signet</strong> (Silithus Wind Stone)",
+        "<strong>T0 Head &amp; Chest</strong>",
       ],
     },
   ];
@@ -1438,16 +1507,20 @@ const STORAGE_KEY_V1 = "wow_forever_1601_gearsets_v1";
 
 let allBosses = [];
 let state = null;
-let activeTab = "gear";          // "gear" | "todo" | "t05" | "compendium"
+let activeTab = "gear";          // "gear" | "todo" | "t05" | "party" | "compendium"
 let viewMode = "grouped";        // Compendium: "grouped" | "table"
 let endgameOnly = false;
-let gearEndgameOnly = true;
 let gearSourceFilter = "";
 let gearHideObtained = false;
 let todoScope = "active";        // "active" | "all"
 let todoSort = "remaining_desc";
 let todoHideDone = false;
 let showT05QuestBosses = true;
+let partySort = "players_desc";  // "players_desc" | "needs_desc" | "bosses_desc" | "conflict_asc" | "instance_asc"
+let partyShowT05 = true;
+let partyHideDone = false;
+let partyOverlapOnly = false;
+let pendingIncomingShare = null;
 let openInstances = new Set(["The Temple of Atal'Hakkar (Sunken Temple)"]);
 let tableSort = { col: "Instance", dir: "asc" };
 let editingItemId = null;
@@ -1458,23 +1531,25 @@ const els = {
   tabGear: document.getElementById("tabGear"),
   tabTodo: document.getElementById("tabTodo"),
   tabT05: document.getElementById("tabT05"),
+  tabParty: document.getElementById("tabParty"),
   tabCompendium: document.getElementById("tabCompendium"),
-  countGear: document.getElementById("countGear"),
-  countTodo: document.getElementById("countTodo"),
-  countT05: document.getElementById("countT05"),
-  countCompendium: document.getElementById("countCompendium"),
   compendiumControls: document.getElementById("compendiumControls"),
   gearView: document.getElementById("gearView"),
   todoView: document.getElementById("todoView"),
   t05View: document.getElementById("t05View"),
+  partyView: document.getElementById("partyView"),
   compendiumView: document.getElementById("compendiumView"),
+  shareModal: document.getElementById("shareModal"),
+  shareModalSummary: document.getElementById("shareModalSummary"),
+  btnShareAddParty: document.getElementById("btnShareAddParty"),
+  btnShareImportSelf: document.getElementById("btnShareImportSelf"),
+  btnShareCancel: document.getElementById("btnShareCancel"),
   search: document.getElementById("searchInput"),
   instance: document.getElementById("instanceFilter"),
   type: document.getElementById("typeFilter"),
   sort: document.getElementById("sortSelect"),
   btnEndgame: document.getElementById("btnEndgame"),
   coreOnly: document.getElementById("chkCoreOnly"),
-  stats: document.getElementById("statsBar"),
   viewGrouped: document.getElementById("viewGrouped"),
   viewTable: document.getElementById("viewTable"),
   expandAll: document.getElementById("btnExpandAll"),
@@ -1492,7 +1567,7 @@ function showToast(msg) {
   els.toast.textContent = msg;
   els.toast.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => els.toast.classList.remove("show"), 2600);
+  toastTimer = setTimeout(() => els.toast.classList.remove("show"), 2400);
 }
 
 function uid() {
@@ -1595,11 +1670,43 @@ function normalizeCharacter(c) {
   };
 }
 
+function normalizePartyMember(m) {
+  const items = (Array.isArray(m.items) ? m.items : []).map(normalizeItem);
+  const t05Quests = (Array.isArray(m.t05Quests) ? m.t05Quests : [])
+    .filter(q => q && q.dungeon && q.boss)
+    .map(q => ({
+      milestoneId: String(q.milestoneId || uid()),
+      stage: parseInt(q.stage, 10) || 1,
+      dungeon: String(q.dungeon),
+      boss: String(q.boss),
+      title: String(q.title || "T0.5 Quest"),
+      done: Boolean(q.done),
+    }));
+  return {
+    id: m.id || uid(),
+    playerName: String(m.playerName || m.setName || "Friend").trim(),
+    setName: String(m.setName || "Pre-BiS").trim(),
+    inParty: m.inParty !== false,
+    updatedAt: String(m.updatedAt || ""),
+    items,
+    t05Quests,
+  };
+}
+
+function normalizeParty(rawParty) {
+  const p = rawParty && typeof rawParty === "object" ? rawParty : {};
+  return {
+    includeSelf: p.includeSelf !== false,
+    selfScope: p.selfScope === "all" ? "all" : "active",
+    members: Array.isArray(p.members) ? p.members.map(normalizePartyMember) : [],
+  };
+}
+
 function migrateToV2(raw) {
   if (raw && raw.version === 2 && Array.isArray(raw.characters) && raw.characters.length) {
     const characters = raw.characters.map(normalizeCharacter);
     const activeCharId = characters.some(c => c.id === raw.activeCharId) ? raw.activeCharId : characters[0].id;
-    return { version: 2, activeCharId, characters };
+    return { version: 2, activeCharId, characters, party: normalizeParty(raw.party) };
   }
   if (raw && Array.isArray(raw.gearsets) && raw.gearsets.length) {
     const migratedChar = normalizeCharacter({
@@ -1609,10 +1716,10 @@ function migrateToV2(raw) {
       activeSetId: raw.activeSetId,
       gearsets: raw.gearsets,
     });
-    return { version: 2, activeCharId: migratedChar.id, characters: [migratedChar] };
+    return { version: 2, activeCharId: migratedChar.id, characters: [migratedChar], party: normalizeParty(null) };
   }
   const first = createCharacter("Main", "Horde");
-  return { version: 2, activeCharId: first.id, characters: [first] };
+  return { version: 2, activeCharId: first.id, characters: [first], party: normalizeParty(null) };
 }
 
 function loadState() {
@@ -1689,6 +1796,20 @@ function parseWowheadItemUrl(str) {
   return `Item #${itemId}`;
 }
 
+function extractWowheadItemId(str) {
+  const s = String(str || "").trim();
+  if (!isUrl(s)) return null;
+  try {
+    const parsed = new URL(s);
+    const host = parsed.hostname.toLowerCase();
+    if (host !== "wowhead.com" && !host.endsWith(".wowhead.com")) return null;
+    const m = parsed.pathname.match(/\/item=(\d+)/i);
+    return m ? m[1] : null;
+  } catch {
+    return null;
+  }
+}
+
 function shortLabelForItem(str) {
   const s = String(str || "").trim();
   if (!s) return "";
@@ -1733,9 +1854,6 @@ function getDungeonCatalog(onlyEndgame) {
     if (!map.has(r.Instance)) {
       map.set(r.Instance, {
         name: r.Instance,
-        origin: r.Origin,
-        zone: r.Zone,
-        level: r.Level_Range,
         minLevel: r.Min_Level,
         maxLevel: r.Max_Level,
         bosses: [],
@@ -1753,7 +1871,6 @@ function getBossRecord(dungeon, bossName) {
   return allBosses.find(b => b.Instance === dungeon && b.Boss_Name === bossName) || null;
 }
 
-// Collect actionable dungeon boss targets (regular Dungeon drops + T0.5 base-T0 drops + optional T0.5 quest bosses)
 function getDerivedTargets(scope, includeT05Quests = true) {
   const ch = getActiveChar();
   const sets = scope === "all" ? ch.gearsets : [getActiveSet()];
@@ -1800,35 +1917,12 @@ function getDerivedTargets(scope, includeT05Quests = true) {
   return entries;
 }
 
-function updateTabCounts() {
-  const ch = getActiveChar();
-  const activeSet = getActiveSet();
-  const totalItems = activeSet.items.length;
-  const gotItems = activeSet.items.filter(i => i.obtained).length;
-  els.countGear.textContent = `${gotItems}/${totalItems}`;
-
-  const targets = getDerivedTargets(todoScope, showT05QuestBosses);
-  const bossKeys = new Set();
-  const remainingBossKeys = new Set();
-  for (const t of targets) {
-    const k = `${t.dungeon}||${t.boss}`;
-    bossKeys.add(k);
-    if (!t.done) remainingBossKeys.add(k);
-  }
-  els.countTodo.textContent = bossKeys.size ? `${remainingBossKeys.size}/${bossKeys.size}` : "0";
-
-  const maxStage = getMaxRequiredT05Stage(ch);
+function syncT05TabVisibility() {
+  const maxStage = getMaxRequiredT05Stage(getActiveChar());
   els.tabT05.classList.toggle("hidden", maxStage === 0);
-  if (maxStage > 0) {
-    const reqStages = buildT05Stages(ch).filter(s => s.stage <= maxStage);
-    const allMs = reqStages.flatMap(s => s.milestones);
-    const doneMs = allMs.filter(m => ch.t05.milestones[m.id]).length;
-    els.countT05.textContent = `${doneMs}/${allMs.length}`;
-  } else if (activeTab === "t05") {
+  if (maxStage === 0 && activeTab === "t05") {
     activeTab = "gear";
   }
-
-  els.countCompendium.textContent = allBosses.length;
 }
 
 // ============================================================================
@@ -1837,25 +1931,19 @@ function updateTabCounts() {
 function renderCharBar() {
   const ch = getActiveChar();
   const charOpts = state.characters.map(c =>
-    `<option value="${esc(c.id)}" ${c.id === ch.id ? "selected" : ""}>${esc(c.name)} (${esc(c.faction)} • ${c.gearsets.length} set${c.gearsets.length === 1 ? "" : "s"})</option>`
+    `<option value="${esc(c.id)}" ${c.id === ch.id ? "selected" : ""}>${esc(c.name)}</option>`
   ).join("");
-
-  const maxStage = getMaxRequiredT05Stage(ch);
 
   els.charBar.innerHTML = `
     <div class="inline-tools">
       <span class="char-label">Character</span>
-      <select id="charSelect" aria-label="Select character" style="min-width:205px;padding:4px 8px;font-size:0.82rem;">${charOpts}</select>
-      <button id="btnToggleFaction" type="button" class="faction-btn ${ch.faction.toLowerCase()}" title="Click to toggle Horde / Alliance (affects T0.5 Stage 1)">${esc(ch.faction)}</button>
-      <button id="btnNewChar" type="button" style="padding:4px 8px;">+ Character</button>
-      <button id="btnRenameChar" type="button" style="padding:4px 8px;">Rename</button>
-      ${state.characters.length > 1 ? `<button id="btnDeleteChar" type="button" class="danger" style="padding:4px 8px;">Delete</button>` : ""}
+      <select id="charSelect" aria-label="Select character" style="min-width:170px;padding:4px 8px;font-size:0.84rem;font-weight:600;">${charOpts}</select>
+      <button id="btnToggleFaction" type="button" class="faction-btn ${ch.faction.toLowerCase()}" title="Toggle Horde / Alliance">${esc(ch.faction)}</button>
     </div>
-    <div class="inline-tools" style="font-size:0.78rem;color:var(--muted);">
-      ${maxStage > 0
-        ? `<span class="badge accent-badge">T0.5 Active (up to Stage ${maxStage})</span>`
-        : `<span>Mark any slot <strong>Source = T0.5</strong> to unlock the T0.5 Chain tab</span>`
-      }
+    <div class="inline-tools">
+      <button id="btnNewChar" type="button" style="padding:4px 9px;">+ Character</button>
+      <button id="btnRenameChar" type="button" style="padding:4px 9px;">Rename</button>
+      ${state.characters.length > 1 ? `<button id="btnDeleteChar" type="button" class="danger" style="padding:4px 9px;">Delete</button>` : ""}
     </div>
   `;
 }
@@ -1863,7 +1951,7 @@ function renderCharBar() {
 // ============================================================================
 // SHAREABLE GEARSET LINKS (#share=...)
 // ============================================================================
-function encodeSharePayload(gs) {
+function encodeSharePayload(gs, ch = null) {
   const payload = {
     n: gs.name,
     u: gs.bookmarkUrl || "",
@@ -1877,6 +1965,22 @@ function encodeSharePayload(gs) {
       x.source === "T0.5" ? x.t05Status : "",
     ]),
   };
+  if (ch) {
+    payload.c = ch.name || "";
+    payload.f = ch.faction || "Horde";
+    const maxStage = getMaxRequiredT05Stage(ch);
+    if (maxStage > 0) {
+      const quests = [];
+      for (const st of buildT05Stages(ch).filter(s => s.stage <= maxStage)) {
+        for (const ms of st.milestones) {
+          if (ms.dungeon && ms.boss) {
+            quests.push([ms.id, st.stage, ms.dungeon, ms.boss, ms.title, ch.t05.milestones[ms.id] ? 1 : 0]);
+          }
+        }
+      }
+      if (quests.length) payload.q = quests;
+    }
+  }
   const bytes = new TextEncoder().encode(JSON.stringify(payload));
   let bin = "";
   bytes.forEach(b => (bin += String.fromCharCode(b)));
@@ -1891,9 +1995,21 @@ function decodeSharePayload(encoded) {
   for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
   const payload = JSON.parse(new TextDecoder().decode(bytes));
   if (!payload || !Array.isArray(payload.i)) throw new Error("Invalid share data");
+  const t05Quests = Array.isArray(payload.q)
+    ? payload.q.filter(arr => Array.isArray(arr) && arr[2] && arr[3]).map(arr => ({
+        milestoneId: String(arr[0] || uid()),
+        stage: parseInt(arr[1], 10) || 1,
+        dungeon: String(arr[2]),
+        boss: String(arr[3]),
+        title: String(arr[4] || "T0.5 Quest"),
+        done: Boolean(arr[5]),
+      }))
+    : [];
   return {
     id: uid(),
     name: String(payload.n || "Shared Gearset").trim(),
+    charName: String(payload.c || "").trim(),
+    faction: payload.f === "Alliance" ? "Alliance" : "Horde",
     bookmarkUrl: String(payload.u || ""),
     items: payload.i.map(arr => normalizeItem({
       id: uid(),
@@ -1905,7 +2021,60 @@ function decodeSharePayload(encoded) {
       itemText: arr[5],
       t05Status: arr[6] || (arr[0] ? "t05" : "need_t0"),
     })),
+    t05Quests,
   };
+}
+
+function extractShareCode(input) {
+  const s = String(input || "").trim();
+  if (!s) return "";
+  const idx = s.indexOf("#share=");
+  if (idx >= 0) return s.slice(idx + "#share=".length).split(/[&\s]/)[0];
+  if (s.startsWith("share=")) return s.slice("share=".length).split(/[&\s]/)[0];
+  return s.split(/\s/)[0];
+}
+
+function upsertPartyMemberFromShare(decoded) {
+  const playerName = decoded.charName || decoded.name || "Friend";
+  const setName = decoded.name || "Pre-BiS";
+  const existing = state.party.members.find(m =>
+    m.playerName.toLowerCase() === playerName.toLowerCase() &&
+    m.setName.toLowerCase() === setName.toLowerCase()
+  );
+  const now = new Date().toISOString();
+  if (existing) {
+    existing.items = decoded.items;
+    existing.t05Quests = decoded.t05Quests || [];
+    existing.updatedAt = now;
+    return { member: existing, updated: true };
+  }
+  const created = normalizePartyMember({
+    id: uid(),
+    playerName,
+    setName,
+    inParty: true,
+    updatedAt: now,
+    items: decoded.items,
+    t05Quests: decoded.t05Quests || [],
+  });
+  state.party.members.push(created);
+  return { member: created, updated: false };
+}
+
+function openShareModal(decoded) {
+  pendingIncomingShare = decoded;
+  const who = decoded.charName ? `${decoded.charName} — ${decoded.name}` : decoded.name;
+  const qCount = (decoded.t05Quests || []).length;
+  const detail = qCount > 0
+    ? `${decoded.items.length} items, ${qCount} T0.5 quest bosses`
+    : `${decoded.items.length} items`;
+  els.shareModalSummary.innerHTML = `<strong>${esc(who)}</strong> (${esc(detail)})`;
+  els.shareModal.classList.remove("hidden");
+}
+
+function closeShareModal() {
+  pendingIncomingShare = null;
+  els.shareModal.classList.add("hidden");
 }
 
 function checkIncomingShareHash() {
@@ -1914,13 +2083,7 @@ function checkIncomingShareHash() {
   const code = hash.slice("#share=".length);
   try {
     const imported = decodeSharePayload(code);
-    const ch = getActiveChar();
-    if (confirm(`Import shared gearset "${imported.name}" (${imported.items.length} items) into character "${ch.name}"?`)) {
-      ch.gearsets.push(imported);
-      ch.activeSetId = imported.id;
-      saveState();
-      showToast(`Imported "${imported.name}"`);
-    }
+    openShareModal(imported);
   } catch (err) {
     console.error(err);
     alert("Could not read the shared gearset link.");
@@ -1930,14 +2093,15 @@ function checkIncomingShareHash() {
 }
 
 async function copyShareLink() {
+  const ch = getActiveChar();
   const gs = getActiveSet();
-  const code = encodeSharePayload(gs);
+  const code = encodeSharePayload(gs, ch);
   const url = `${window.location.origin}${window.location.pathname}#share=${code}`;
   try {
     await navigator.clipboard.writeText(url);
-    showToast(`Copied share link for "${gs.name}"`);
+    showToast(`Copied share link for "${ch.name} — ${gs.name}"`);
   } catch {
-    prompt("Copy this shareable gearset link:", url);
+    prompt("Copy share link:", url);
   }
 }
 
@@ -1947,20 +2111,13 @@ async function copyShareLink() {
 function renderGearTab() {
   const ch = getActiveChar();
   const gs = getActiveSet();
-  const dungeonCatalog = getDungeonCatalog(gearEndgameOnly);
   const fullCatalog = getDungeonCatalog(false);
-  const sortedDungeons = [...dungeonCatalog.values()].sort((a, b) => a.minLevel - b.minLevel || a.name.localeCompare(b.name));
-
-  const total = gs.items.length;
-  const obtained = gs.items.filter(i => i.obtained).length;
-  const bossRows = gs.items.filter(i => i.source === "Dungeon" || i.source === "T0.5");
-  const actionableAssigned = bossRows.filter(i => i.dungeon && i.boss);
-  const actionableRemaining = actionableAssigned.filter(i => !isItemDoneForBossTodo(i)).length;
-  const t05Rows = gs.items.filter(i => i.source === "T0.5");
-  const pct = total ? Math.round((obtained / total) * 100) : 0;
+  const allDungeons = [...fullCatalog.values()].sort((a, b) => a.name.localeCompare(b.name));
+  const endgameDungeons = allDungeons.filter(d => d.minLevel >= 50);
+  const levelingDungeons = allDungeons.filter(d => d.minLevel < 50);
 
   const setOptions = ch.gearsets.map(s =>
-    `<option value="${esc(s.id)}" ${s.id === gs.id ? "selected" : ""}>${esc(s.name)} (${s.items.filter(i => i.obtained).length}/${s.items.length})</option>`
+    `<option value="${esc(s.id)}" ${s.id === gs.id ? "selected" : ""}>${esc(s.name)}</option>`
   ).join("");
 
   const bookmarkValid = isUrl(gs.bookmarkUrl);
@@ -1974,26 +2131,20 @@ function renderGearTab() {
   const rowsHtml = visibleItems.map(item => {
     const canPickBoss = item.source === "Dungeon" || item.source === "T0.5";
     const isT05 = item.source === "T0.5";
-    const rowDungeons = sortedDungeons.slice();
-    if (item.dungeon && !dungeonCatalog.has(item.dungeon) && fullCatalog.has(item.dungeon)) {
-      rowDungeons.unshift(fullCatalog.get(item.dungeon));
-    }
 
     const slotOpts = SLOTS.map(s => `<option value="${esc(s)}" ${item.slot === s ? "selected" : ""}>${esc(s)}</option>`).join("");
     const sourceOpts = SOURCES.map(s => `<option value="${esc(s)}" ${item.source === s ? "selected" : ""}>${esc(s)}</option>`).join("");
 
-    const dungeonPlaceholder = isT05
-      ? "Base T0 dungeon (or blank if BoE)…"
-      : (canPickBoss ? "Select dungeon…" : "—");
-
-    let dungeonOpts = `<option value="">${dungeonPlaceholder}</option>`;
+    let dungeonOpts = `<option value="">${isT05 ? "Dungeon (optional)" : (canPickBoss ? "Dungeon…" : "—")}</option>`;
     if (canPickBoss) {
-      dungeonOpts += rowDungeons.map(d =>
-        `<option value="${esc(d.name)}" ${item.dungeon === d.name ? "selected" : ""}>${esc(d.name)} (${esc(d.level)})</option>`
+      const optList = list => list.map(d =>
+        `<option value="${esc(d.name)}" ${item.dungeon === d.name ? "selected" : ""}>${esc(d.name)}</option>`
       ).join("");
+      dungeonOpts += `<optgroup label="Endgame (50+)">${optList(endgameDungeons)}</optgroup>`;
+      dungeonOpts += `<optgroup label="Leveling (&lt;50)">${optList(levelingDungeons)}</optgroup>`;
     }
 
-    let bossOpts = `<option value="">${canPickBoss ? (item.dungeon ? "Select boss…" : (isT05 ? "BoE / pick dungeon" : "Pick dungeon first")) : "—"}</option>`;
+    let bossOpts = `<option value="">${canPickBoss && item.dungeon ? "Boss…" : "—"}</option>`;
     if (canPickBoss && item.dungeon && fullCatalog.has(item.dungeon)) {
       const d = fullCatalog.get(item.dungeon);
       const hasWings = new Set(d.bosses.map(b => b.Wing)).size > 1;
@@ -2009,8 +2160,8 @@ function renderGearTab() {
 
     const statusLabel = item.t05Status === "t05" ? "T0.5 ✓" : (item.t05Status === "have_t0" ? "Have T0" : "Need T0");
     const statusControl = isT05
-      ? `<button type="button" class="t05-state-btn ${esc(item.t05Status)}" data-cycle-t05="${esc(item.id)}" title="Click to cycle: Need T0 → Have T0 (clears T0 boss) → T0.5 ✓">${statusLabel}</button>`
-      : `<input type="checkbox" data-gear-field="obtained" ${item.obtained ? "checked" : ""} title="Mark item obtained" />`;
+      ? `<button type="button" class="t05-state-btn ${esc(item.t05Status)}" data-cycle-t05="${esc(item.id)}" title="Cycle: Need T0 → Have T0 → T0.5 ✓">${statusLabel}</button>`
+      : `<input type="checkbox" data-gear-field="obtained" ${item.obtained ? "checked" : ""} title="Mark obtained" />`;
 
     return `
       <tr class="${item.obtained ? "row-obtained" : ""}" data-item-id="${esc(item.id)}">
@@ -2031,11 +2182,11 @@ function renderGearTab() {
           <div class="item-cell-wrap">
             <div class="item-editor-slot">
               ${showDisplayMode
-                ? `<button type="button" class="item-display-btn" data-edit-item="${esc(item.id)}" title="Click to edit Wowhead URL">${esc(wowheadName)}</button>`
-                : `<input type="text" data-gear-field="itemText" value="${esc(item.itemText)}" placeholder="Paste Wowhead link or item name (optional)" />`
+                ? `<button type="button" class="item-display-btn" data-edit-item="${esc(item.id)}" title="Click to edit URL">${esc(wowheadName)}</button>`
+                : `<input type="text" data-gear-field="itemText" value="${esc(item.itemText)}" placeholder="Wowhead link or item name" />`
               }
             </div>
-            <a class="inline-link ${itemIsUrl ? "" : "hidden"}" data-item-open-link href="${itemIsUrl ? esc(item.itemText.trim()) : "#"}" target="_blank" rel="noopener noreferrer" title="Open link in new tab">↗</a>
+            <a class="inline-link ${itemIsUrl ? "" : "hidden"}" data-item-open-link href="${itemIsUrl ? esc(item.itemText.trim()) : "#"}" target="_blank" rel="noopener noreferrer" title="Open link">↗</a>
           </div>
         </td>
         <td style="width:36px;text-align:right">
@@ -2049,40 +2200,30 @@ function renderGearTab() {
     <div class="panel">
       <div class="gearset-bar">
         <div class="inline-tools">
-          <strong style="color:var(--text-strong);font-size:0.86rem;">Gearset:</strong>
-          <select id="gearsetSelect" aria-label="Select gearset" style="min-width:210px;">${setOptions}</select>
+          <strong style="color:var(--text-strong);font-size:0.85rem;">Gearset:</strong>
+          <select id="gearsetSelect" aria-label="Select gearset" style="min-width:190px;">${setOptions}</select>
           <button id="btnNewSet" class="primary" type="button">+ New Set</button>
           <button id="btnRenameSet" type="button">Rename</button>
           <button id="btnDupSet" type="button">Duplicate</button>
           ${ch.gearsets.length > 1 ? `<button id="btnDeleteSet" class="danger" type="button">Delete</button>` : ""}
         </div>
         <div class="inline-tools">
-          <button id="btnShareSet" class="primary" type="button" title="Copy a shareable link for this gearset to send in Discord">Copy Share Link</button>
-          <button id="btnImportGearCsv" type="button" title="Import a gear CSV (Obtained,Slot,Dungeon,Boss,Source,Item)">Import Gear CSV…</button>
+          <span class="item-count-tag">Total Items: <strong>${gs.items.length}</strong></span>
+          <button id="btnShareSet" class="primary" type="button" title="Copy shareable gearset link">Share Link</button>
+          <button id="btnImportGearCsv" type="button">Import CSV…</button>
         </div>
       </div>
 
       <div class="bookmark-row">
-        <label for="gearBookmarkInput">Gearset Source / SixtyUpgrades Bookmark:</label>
-        <input id="gearBookmarkInput" type="url" value="${esc(gs.bookmarkUrl || "")}" placeholder="https://sixtyupgrades.com/… or guide URL" />
-        ${bookmarkValid ? `<a id="bookmarkOpenLink" class="link-btn" href="${esc(gs.bookmarkUrl.trim())}" target="_blank" rel="noopener noreferrer">Open Bookmark ↗</a>` : ""}
-      </div>
-
-      <div class="stats">
-        <span class="stat-pill">Total Items: <strong>${total}</strong></span>
-        <span class="stat-pill done">Obtained: <strong>${obtained}</strong> / ${total} (${pct}%)</span>
-        <span class="stat-pill accent">Boss Drops Linked: <strong>${actionableAssigned.length}</strong> (${actionableRemaining} remaining)</span>
-        ${t05Rows.length ? `<span class="stat-pill accent">T0.5 Pieces: <strong>${t05Rows.filter(i => i.t05Status === "t05").length}</strong> / ${t05Rows.length} upgraded</span>` : ""}
+        <label for="gearBookmarkInput">Bookmark:</label>
+        <input id="gearBookmarkInput" type="url" value="${esc(gs.bookmarkUrl || "")}" placeholder="SixtyUpgrades or guide URL" />
+        ${bookmarkValid ? `<a id="bookmarkOpenLink" class="link-btn" href="${esc(gs.bookmarkUrl.trim())}" target="_blank" rel="noopener noreferrer">Open ↗</a>` : ""}
       </div>
     </div>
 
-    <div class="panel" style="padding:9px 12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;">
+    <div class="panel" style="padding:8px 12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;">
       <div class="inline-tools">
-        <button id="btnAddGearRow" class="primary" type="button">+ Add Gear Slot Row</button>
-        <button id="btnAddStandardSlots" type="button" title="Append a standard set of Classic gear slots">+ Standard Slots</button>
-        <button id="btnGearEndgame" class="toggle-pill ${gearEndgameOnly ? "active" : ""}" type="button" title="Limit Dungeon dropdown to Sunken Temple (50+) and up">
-          Dungeon Dropdown: ${gearEndgameOnly ? "Endgame (50+)" : "All Dungeons"}
-        </button>
+        <button id="btnAddGearRow" class="primary" type="button">+ Add Row</button>
       </div>
       <div class="inline-tools">
         <select id="gearSourceFilter" aria-label="Filter rows by source">
@@ -2105,7 +2246,7 @@ function renderGearTab() {
               <th>Source</th>
               <th>Dungeon</th>
               <th>Boss</th>
-              <th>Item / Wowhead Link (User-managed)</th>
+              <th>Item</th>
               <th></th>
             </tr>
           </thead>
@@ -2114,8 +2255,8 @@ function renderGearTab() {
       </div>
     ` : `
       <div class="empty-state">
-        <h3>No gear rows shown</h3>
-        <p>Click <strong>+ Add Gear Slot Row</strong> or adjust your filter above.</p>
+        <h3>No gear rows</h3>
+        <p>Click <strong>+ Add Row</strong> or clear your filter.</p>
       </div>
     `}
   `;
@@ -2129,10 +2270,6 @@ function renderTodoTab() {
   const maxT05Stage = getMaxRequiredT05Stage(ch);
   const targets = getDerivedTargets(todoScope, showT05QuestBosses);
   const fullCatalog = getDungeonCatalog(false);
-
-  const scopeSets = todoScope === "all" ? ch.gearsets : [getActiveSet()];
-  const nonDungeonRem = scopeSets.reduce((acc, s) => acc + s.items.filter(i => i.source !== "Dungeon" && i.source !== "T0.5" && !i.obtained).length, 0);
-  const unassignedDungeon = scopeSets.reduce((acc, s) => acc + s.items.filter(i => i.source === "Dungeon" && (!i.dungeon || !i.boss)).length, 0);
 
   const dungeonGroups = new Map();
   for (const t of targets) {
@@ -2148,78 +2285,41 @@ function renderTodoTab() {
     bossMap.get(t.boss).entries.push(t);
   }
 
-  let totalBosses = 0;
-  let completedBosses = 0;
-  let totalObjectives = targets.length;
-  let completedObjectives = targets.filter(t => t.done).length;
-
-  for (const bossMap of dungeonGroups.values()) {
-    for (const b of bossMap.values()) {
-      totalBosses++;
-      if (b.entries.every(e => e.done)) completedBosses++;
-    }
-  }
-
-  const remainingBosses = totalBosses - completedBosses;
-  const pct = totalObjectives ? Math.round((completedObjectives / totalObjectives) * 100) : 0;
-
   const toolbarHtml = `
     <div class="panel" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;">
       <div class="inline-tools">
         <div class="segmented" role="tablist">
-          <button id="scopeActive" class="${todoScope === "active" ? "active" : ""}" type="button">Active Gearset (${esc(getActiveSet().name)})</button>
-          <button id="scopeAll" class="${todoScope === "all" ? "active" : ""}" type="button">All Sets on ${esc(ch.name)} (${ch.gearsets.length})</button>
+          <button id="scopeActive" class="${todoScope === "active" ? "active" : ""}" type="button">Active Set</button>
+          <button id="scopeAll" class="${todoScope === "all" ? "active" : ""}" type="button">All Sets</button>
         </div>
         ${maxT05Stage > 0 ? `
-          <label class="chk" title="Include T0.5 questline bosses up to Stage ${maxT05Stage}">
-            <input type="checkbox" id="chkShowT05Quests" ${showT05QuestBosses ? "checked" : ""} /> Show T0.5 quest bosses
+          <label class="chk">
+            <input type="checkbox" id="chkShowT05Quests" ${showT05QuestBosses ? "checked" : ""} /> T0.5 quest bosses
           </label>
         ` : ""}
       </div>
       <div class="inline-tools">
-        <select id="todoSortSelect" aria-label="Sort To-Do dungeons">
-          <option value="remaining_desc" ${todoSort === "remaining_desc" ? "selected" : ""}>Sort: Most Needed Bosses</option>
-          <option value="level_asc" ${todoSort === "level_asc" ? "selected" : ""}>Sort: Level (Low → High)</option>
-          <option value="level_desc" ${todoSort === "level_desc" ? "selected" : ""}>Sort: Level (High → Low)</option>
-          <option value="instance_asc" ${todoSort === "instance_asc" ? "selected" : ""}>Sort: Instance (A → Z)</option>
+        <select id="todoSortSelect" aria-label="Sort dungeons">
+          <option value="remaining_desc" ${todoSort === "remaining_desc" ? "selected" : ""}>Most Bosses</option>
+          <option value="instance_asc" ${todoSort === "instance_asc" ? "selected" : ""}>Instance (A → Z)</option>
         </select>
         <label class="chk">
-          <input type="checkbox" id="chkTodoHideDone" ${todoHideDone ? "checked" : ""} /> Hide completed bosses
+          <input type="checkbox" id="chkTodoHideDone" ${todoHideDone ? "checked" : ""} /> Hide completed
         </label>
       </div>
     </div>
   `;
 
-  if (!totalBosses) {
+  if (!dungeonGroups.size) {
     els.todoView.innerHTML = toolbarHtml + `
       <div class="empty-state">
-        <h3>No dungeon bosses on ${esc(ch.name)}'s To-Do list yet</h3>
-        <p style="max-width:540px;margin:0 auto 14px;">
-          Your To-Do list is automatically built from the <strong>Gear Builder</strong> (Dungeon &amp; T0.5 rows) and your character's <strong>T0.5 Chain</strong> milestones.
-        </p>
-        ${unassignedDungeon ? `<p style="color:var(--forever-text);font-size:0.84rem;">You currently have <strong>${unassignedDungeon}</strong> Dungeon row(s) without a Dungeon &amp; Boss selected.</p>` : ""}
+        <h3>No dungeon bosses tracked</h3>
+        <p style="margin:0 auto 14px;">Assign a Dungeon and Boss in the <strong>Gear Builder</strong> to populate this list.</p>
         <button id="btnGoGearBuilder" class="primary" type="button">Open Gear Builder</button>
       </div>
     `;
     return;
   }
-
-  const statsHtml = `
-    <div class="progress-wrap">
-      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:0.82rem;color:var(--muted);margin-bottom:6px;">
-        <span>
-          Dungeon Bosses: <strong style="color:var(--text-strong)">${completedBosses} / ${totalBosses}</strong> done (${remainingBosses} remaining)
-          &nbsp;•&nbsp;
-          Objectives: <strong style="color:var(--text-strong)">${completedObjectives} / ${totalObjectives}</strong>
-          ${nonDungeonRem ? `&nbsp;•&nbsp; Non-dungeon items remaining: <strong style="color:var(--text-strong)">${nonDungeonRem}</strong>` : ""}
-        </span>
-        <strong style="color:${pct === 100 ? "var(--success)" : "var(--forever-text)"}">${pct}%</strong>
-      </div>
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill ${pct === 100 ? "complete" : ""}" style="width:${pct}%"></div>
-      </div>
-    </div>
-  `;
 
   const cardData = [];
   for (const [dName, bossMap] of dungeonGroups.entries()) {
@@ -2227,49 +2327,52 @@ function renderTodoTab() {
     let bosses = [...bossMap.values()].sort((a, b) =>
       (a.bossRec?.Boss_Order ?? 999) - (b.bossRec?.Boss_Order ?? 999) || a.bossName.localeCompare(b.bossName)
     );
-    const totalInInst = bosses.length;
     const remInInst = bosses.filter(b => b.entries.some(e => !e.done)).length;
     if (todoHideDone) {
       bosses = bosses.filter(b => b.entries.some(e => !e.done));
     }
     if (!bosses.length) continue;
-    cardData.push({ name: dName, meta, bosses, totalInInst, remInInst });
+    cardData.push({ name: dName, meta, bosses, remInInst });
   }
 
   cardData.sort((a, b) => {
-    if (todoSort === "remaining_desc") return b.remInInst - a.remInInst || (a.meta?.minLevel ?? 0) - (b.meta?.minLevel ?? 0) || a.name.localeCompare(b.name);
-    if (todoSort === "level_asc") return (a.meta?.minLevel ?? 0) - (b.meta?.minLevel ?? 0) || a.name.localeCompare(b.name);
-    if (todoSort === "level_desc") return (b.meta?.maxLevel ?? 0) - (a.meta?.maxLevel ?? 0) || a.name.localeCompare(b.name);
-    if (todoSort === "instance_asc") return a.name.localeCompare(b.name);
-    return 0;
+    if (todoSort === "remaining_desc") return b.bosses.length - a.bosses.length || a.name.localeCompare(b.name);
+    return a.name.localeCompare(b.name);
   });
 
   if (!cardData.length) {
-    els.todoView.innerHTML = toolbarHtml + statsHtml + `
+    els.todoView.innerHTML = toolbarHtml + `
       <div class="empty-state">
-        <h3>All dungeon farm targets are completed!</h3>
-        <p>Uncheck "Hide completed bosses" to review your completed targets.</p>
+        <h3>All bosses completed</h3>
+        <p>Uncheck "Hide completed" to review finished targets.</p>
       </div>
     `;
     return;
   }
 
+  const NON_STANDARD_TYPES = new Set(["Summoned", "Rare", "Secret", "Optional", "Event"]);
+
   const cardsHtml = cardData.map(g => {
-    const isForever = g.meta?.origin === "WoW Forever";
+    const hasWings = g.bosses.some(b => b.bossRec?.Wing && b.bossRec.Wing !== "Main");
+
     const rowsHtml = g.bosses.map(b => {
       const allDone = b.entries.every(e => e.done);
-      const wing = b.bossRec?.Wing || "Main";
+      const wing = b.bossRec?.Wing || "";
       const bType = b.bossRec?.Boss_Type || "Main";
-      const order = b.bossRec?.Boss_Order ?? "—";
       const bossNotes = b.bossRec?.Notes || "";
+      const typeTag = NON_STANDARD_TYPES.has(bType)
+        ? `<span class="badge type-${esc(bType)}" style="margin-left:6px;vertical-align:middle;">${esc(bType)}</span>`
+        : "";
 
       const dropsHtml = b.entries.map(e => {
         if (e.kind === "t05_quest") {
           return `
             <div class="drop-chip ${e.done ? "done" : ""}">
-              <input type="checkbox" data-todo-t05-ms="${esc(e.milestoneId)}" ${e.done ? "checked" : ""} title="Mark T0.5 quest milestone complete (syncs with T0.5 Chain tab)" />
-              <span class="t05-quest-tag">T0.5 Stage ${e.stage}</span>
-              <span style="color:var(--text)">${esc(e.title)}</span>
+              <input type="checkbox" data-todo-t05-ms="${esc(e.milestoneId)}" ${e.done ? "checked" : ""} />
+              <div class="drop-chip-body">
+                <span class="t05-quest-tag">T0.5 S${e.stage}</span>
+                <span style="color:var(--text)">${esc(e.title)}</span>
+              </div>
             </div>
           `;
         }
@@ -2278,27 +2381,24 @@ function renderTodoTab() {
         const isT05 = e.item.source === "T0.5";
         return `
           <div class="drop-chip ${e.done ? "done" : ""}">
-            <input type="checkbox" data-todo-item-id="${esc(e.item.id)}" data-todo-set-id="${esc(e.gearsetId)}" ${e.done ? "checked" : ""} title="${isT05 ? "Mark Base T0 drop obtained (advances Need T0 ↔ Have T0)" : "Mark drop obtained (syncs with Gear Builder)"}" />
-            <span class="slot-tag">${esc(e.item.slot)}</span>
-            ${isT05 ? `<span class="base-t0-tag">${e.item.t05Status === "t05" ? "T0.5 ✓" : "Base T0"}</span>` : ""}
-            ${todoScope === "all" ? `<span class="set-tag">${esc(e.gearsetName)}</span>` : ""}
-            ${link
-              ? `<a href="${esc(e.item.itemText.trim())}" target="_blank" rel="noopener noreferrer" style="color:var(--forever-text);text-decoration:none;">${esc(label)} ↗</a>`
-              : `<span style="color:${label ? "var(--text)" : "var(--muted)"}">${esc(label || (isT05 ? "Base T0 drop" : "Needed item"))}</span>`
-            }
+            <input type="checkbox" data-todo-item-id="${esc(e.item.id)}" data-todo-set-id="${esc(e.gearsetId)}" ${e.done ? "checked" : ""} />
+            <div class="drop-chip-body">
+              <span class="slot-tag">${esc(e.item.slot)}</span>
+              ${isT05 ? `<span class="base-t0-tag">${e.item.t05Status === "t05" ? "T0.5 ✓" : "Base T0"}</span>` : ""}
+              ${todoScope === "all" ? `<span class="set-tag">${esc(e.gearsetName)}</span>` : ""}
+              ${link
+                ? `<a href="${esc(e.item.itemText.trim())}" target="_blank" rel="noopener noreferrer" style="color:var(--forever-text);text-decoration:none;">${esc(label)} ↗</a>`
+                : (label ? `<span style="color:var(--text)">${esc(label)}</span>` : "")
+              }
+            </div>
           </div>
         `;
       }).join("");
 
       return `
         <tr class="${allDone ? "row-obtained" : ""}">
-          <td class="order-cell">${order}</td>
-          <td class="boss-name">
-            ${esc(b.bossName)}
-            ${allDone ? `<span class="badge done-tag" style="margin-left:6px;">✓ Done</span>` : ""}
-          </td>
-          <td style="color:var(--muted);white-space:nowrap">${esc(wing)}</td>
-          <td><span class="badge type-${esc(bType)}">${esc(bType)}</span></td>
+          <td class="boss-name">${esc(b.bossName)}${typeTag}</td>
+          ${hasWings ? `<td style="color:var(--muted)">${esc(wing)}</td>` : ""}
           <td class="notes-cell">${esc(bossNotes)}</td>
           <td><div class="todo-drops">${dropsHtml}</div></td>
         </tr>
@@ -2306,28 +2406,27 @@ function renderTodoTab() {
     }).join("");
 
     return `
-      <section class="instance-card open ${isForever ? "forever-card" : "classic-card"}">
-        <div class="instance-header" style="cursor:default">
+      <section class="instance-card open ${g.remInInst > 0 ? "has-active" : ""}">
+        <div class="instance-header static">
           <div class="inst-left">
             <span class="inst-name">${esc(g.name)}</span>
-            ${g.meta ? `<span class="badge ${isForever ? "origin-forever" : "origin-classic"}">${esc(g.meta.origin)}</span>` : ""}
-          </div>
-          <div class="inst-meta">
-            ${g.meta ? `<span>Lv. ${esc(g.meta.level)}</span><span>•</span><span>${esc(g.meta.zone)}</span><span>•</span>` : ""}
-            <span><strong style="color:var(--forever-text)">${g.remInInst}</strong> / ${g.totalInInst} bosses remaining</span>
           </div>
         </div>
         <div class="instance-body">
           <div class="table-wrap">
-            <table>
+            <table class="todo-table">
+              <colgroup>
+                <col style="width:240px" />
+                ${hasWings ? `<col style="width:155px" />` : ""}
+                <col />
+                <col style="width:360px" />
+              </colgroup>
               <thead>
                 <tr>
-                  <th class="order-cell">#</th>
-                  <th>Boss Name</th>
-                  <th>Wing</th>
-                  <th>Type</th>
-                  <th>Boss Notes</th>
-                  <th>Needed Drops &amp; T0.5 Quests</th>
+                  <th>Boss</th>
+                  ${hasWings ? `<th>Wing</th>` : ""}
+                  <th>Notes</th>
+                  <th>Targets</th>
                 </tr>
               </thead>
               <tbody>${rowsHtml}</tbody>
@@ -2338,7 +2437,7 @@ function renderTodoTab() {
     `;
   }).join("");
 
-  els.todoView.innerHTML = toolbarHtml + statsHtml + cardsHtml;
+  els.todoView.innerHTML = toolbarHtml + cardsHtml;
 }
 
 // ============================================================================
@@ -2348,12 +2447,7 @@ function renderT05Tab() {
   const ch = getActiveChar();
   const maxStage = getMaxRequiredT05Stage(ch);
   if (maxStage === 0) {
-    els.t05View.innerHTML = `
-      <div class="empty-state">
-        <h3>No T0.5 pieces configured for ${esc(ch.name)}</h3>
-        <p>Set any slot's Source to <strong>T0.5</strong> in the Gear Builder to activate the T0.5 Chain tracker.</p>
-      </div>
-    `;
+    els.t05View.innerHTML = `<div class="empty-state"><h3>No T0.5 pieces in gearsets</h3></div>`;
     return;
   }
 
@@ -2362,53 +2456,28 @@ function renderT05Tab() {
   const stages = buildT05Stages(ch);
   const visibleStages = ch.t05.showAllStages ? stages : stages.filter(s => s.stage <= maxStage);
 
-  const reqMilestones = stages.filter(s => s.stage <= maxStage).flatMap(s => s.milestones);
-  const doneMilestones = reqMilestones.filter(m => ch.t05.milestones[m.id]).length;
-  const pct = reqMilestones.length ? Math.round((doneMilestones / reqMilestones.length) * 100) : 0;
-
-  const neededSlotList = [...trackedSlots].join(", ");
-
-  const summaryHtml = `
-    <div class="panel">
-      <div class="gearset-bar">
-        <div class="inline-tools">
-          <strong style="color:var(--text-strong);font-size:0.94rem;">${esc(ch.name)} — Dungeon Set 2 (T0.5) Progression</strong>
-          <span class="badge accent-badge">Required up to Stage ${maxStage}</span>
-          <span style="color:var(--muted);font-size:0.8rem;">Tracked T0.5 slots: <strong style="color:var(--text)">${esc(neededSlotList)}</strong></span>
-        </div>
-        <div class="inline-tools">
-          ${maxStage < 4 ? `
-            <label class="chk">
-              <input type="checkbox" id="chkT05ShowAll" ${ch.t05.showAllStages ? "checked" : ""} /> Show all 4 stages
-            </label>
-          ` : ""}
-          <a class="link-btn" href="${T05_GUIDE_URL}" target="_blank" rel="noopener noreferrer">Wowhead T0.5 Guide ↗</a>
-        </div>
+  const toolbarHtml = `
+    <div class="panel" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;">
+      <div class="inline-tools">
+        ${maxStage < 4 ? `
+          <label class="chk">
+            <input type="checkbox" id="chkT05ShowAll" ${ch.t05.showAllStages ? "checked" : ""} /> Show all 4 stages
+          </label>
+        ` : `<strong style="color:var(--text-strong);font-size:0.88rem;">T0.5 Questline</strong>`}
       </div>
-
-      <div class="progress-wrap" style="margin-top:12px;margin-bottom:0;">
-        <div style="display:flex;justify-content:space-between;font-size:0.81rem;color:var(--muted);margin-bottom:5px;">
-          <span>Questline Milestones (Stages 1–${maxStage}): <strong style="color:var(--text-strong)">${doneMilestones} / ${reqMilestones.length}</strong></span>
-          <strong style="color:${pct === 100 ? "var(--success)" : "var(--forever-text)"}">${pct}%</strong>
-        </div>
-        <div class="progress-bar-bg">
-          <div class="progress-bar-fill ${pct === 100 ? "complete" : ""}" style="width:${pct}%"></div>
-        </div>
+      <div class="inline-tools">
+        <a class="link-btn" href="${T05_GUIDE_URL}" target="_blank" rel="noopener noreferrer">Wowhead Guide ↗</a>
       </div>
     </div>
   `;
 
   const cardsHtml = visibleStages.map(st => {
-    const stageDoneCount = st.milestones.filter(m => ch.t05.milestones[m.id]).length;
-    const stageComplete = stageDoneCount === st.milestones.length;
+    const stageComplete = st.milestones.every(m => ch.t05.milestones[m.id]);
     const hasTargetSlot = st.slots.some(sl => trackedSlots.has(sl));
     const roleTag = st.stage > maxStage
-      ? `<span class="badge origin-classic">Optional (Stage ${st.stage})</span>`
-      : (hasTargetSlot
-          ? `<span class="badge accent-badge">Target Stage</span>`
-          : `<span class="badge origin-classic">Prerequisite Stage</span>`);
+      ? `<span class="badge muted-badge">Optional</span>`
+      : (!hasTargetSlot ? `<span class="badge muted-badge">Prerequisite</span>` : "");
 
-    // Check if any character gear rows in this stage can be bulk-upgraded to T0.5 ✓
     const stageGearItems = allT05Items.filter(x => st.slots.includes(x.item.slot));
     const upgradableCount = stageGearItems.filter(x => x.item.t05Status !== "t05").length;
 
@@ -2420,7 +2489,7 @@ function renderT05Tab() {
         const cls = allUpgraded ? "upgraded" : (allHaveT0 ? "ready" : "");
         const statusTxt = allUpgraded ? "T0.5 ✓" : (allHaveT0 ? "Have T0" : "Need T0");
         return `
-          <span class="t05-piece-chip ${cls}" title="Synced with your Gear Builder ${esc(slot)} row(s)">
+          <span class="t05-piece-chip ${cls}">
             <strong>${esc(slot)}</strong>
             <span style="font-size:11px;color:${allUpgraded ? "var(--success)" : (allHaveT0 ? "var(--forever-text)" : "var(--muted)")}">${statusTxt}</span>
           </span>
@@ -2428,9 +2497,9 @@ function renderT05Tab() {
       } else {
         const owned = Boolean(ch.t05.prereqT0Owned[slot]);
         return `
-          <label class="t05-piece-chip ${owned ? "ready" : ""}" style="cursor:pointer;" title="Sequential questline prerequisite (not in your final Pre-BiS gearset)">
+          <label class="t05-piece-chip ${owned ? "ready" : ""}" style="cursor:pointer;">
             <input type="checkbox" data-t05-prereq="${esc(slot)}" ${owned ? "checked" : ""} />
-            <span>T0 ${esc(slot)} <span style="color:var(--muted);font-size:11px;">(prereq)</span></span>
+            <span>T0 ${esc(slot)}</span>
           </label>
         `;
       }
@@ -2439,25 +2508,25 @@ function renderT05Tab() {
     const amuletHtml = st.hasAmuletPickers ? `
       <div class="t05-amulet-grid">
         <div class="t05-amulet-picker">
-          <label for="selComp1">1. Components of Importance (1 of 4)</label>
+          <label for="selComp1">1. Components of Importance</label>
           <select id="selComp1">
             ${T05_AMULET_BRANCHES.map(b => `<option value="${esc(b.id)}" ${ch.t05.componentsFirst === b.id ? "selected" : ""}>${esc(b.componentLabel)}</option>`).join("")}
           </select>
         </div>
         <div class="t05-amulet-picker">
-          <label for="selLeftAmulet">2. Left Piece Boss (1 of 4 → Boss To-Do)</label>
+          <label for="selLeftAmulet">2. Left Piece Boss</label>
           <select id="selLeftAmulet">
             ${T05_AMULET_BRANCHES.map(b => `<option value="${esc(b.boss)}" ${ch.t05.leftAmuletBoss === b.boss ? "selected" : ""}>${esc(b.bossLabel)}</option>`).join("")}
           </select>
         </div>
         <div class="t05-amulet-picker">
-          <label for="selComp2">3. More Components of Importance (1 of 4)</label>
+          <label for="selComp2">3. More Components of Importance</label>
           <select id="selComp2">
             ${T05_AMULET_BRANCHES.map(b => `<option value="${esc(b.id)}" ${ch.t05.componentsSecond === b.id ? "selected" : ""}>${esc(b.componentLabel)}</option>`).join("")}
           </select>
         </div>
         <div class="t05-amulet-picker">
-          <label for="selRightAmulet">4. Right Piece Boss (1 of 4 → Boss To-Do)</label>
+          <label for="selRightAmulet">4. Right Piece Boss</label>
           <select id="selRightAmulet">
             ${T05_AMULET_BRANCHES.map(b => `<option value="${esc(b.boss)}" ${ch.t05.rightAmuletBoss === b.boss ? "selected" : ""}>${esc(b.bossLabel)}</option>`).join("")}
           </select>
@@ -2470,38 +2539,37 @@ function renderT05Tab() {
       return `
         <label class="t05-milestone-row ${done ? "done" : ""}" style="cursor:pointer;">
           <input type="checkbox" data-t05-ms="${esc(ms.id)}" ${done ? "checked" : ""} />
-          <span class="ms-title">${esc(ms.title)}</span>
-          ${ms.dungeon && ms.boss ? `<span class="t05-quest-tag">${esc(ms.dungeon)} → ${esc(ms.boss)}</span>` : ""}
-          <span class="ms-detail">${esc(ms.detail)}</span>
+          <div class="ms-content">
+            <span class="ms-title">${esc(ms.title)}</span>
+            ${ms.dungeon && ms.boss ? `<span class="t05-quest-tag">${esc(ms.dungeon)} → ${esc(ms.boss)}</span>` : ""}
+            <span class="ms-detail">${esc(ms.detail)}</span>
+          </div>
         </label>
       `;
     }).join("");
 
     return `
-      <section class="instance-card open ${stageComplete ? "classic-card" : "forever-card"}">
-        <div class="instance-header" style="cursor:default">
+      <section class="instance-card open ${stageComplete ? "" : "has-active"}">
+        <div class="instance-header static">
           <div class="inst-left">
             <span class="inst-name">${esc(st.title)}</span>
             ${roleTag}
-            ${stageComplete ? `<span class="badge done-tag">✓ Complete</span>` : ""}
+            ${stageComplete ? `<span class="badge done-tag">✓</span>` : ""}
           </div>
           <div class="inst-meta">
-            <span>${esc(st.summary)}</span>
-            <span>•</span>
-            <span><strong style="color:var(--forever-text)">${stageDoneCount}/${st.milestones.length}</strong> steps</span>
-            ${upgradableCount > 0 ? `<button type="button" class="primary" style="padding:3px 8px;font-size:11px;" data-upgrade-stage="${st.stage}">Mark Stage Pieces T0.5 ✓</button>` : ""}
+            ${upgradableCount > 0 ? `<button type="button" class="primary" style="padding:3px 8px;font-size:11px;" data-upgrade-stage="${st.stage}">Mark Stage T0.5 ✓</button>` : ""}
           </div>
         </div>
         <div class="instance-body">
           <div class="t05-stage-body">
             <div class="t05-turnin-strip">
-              <span class="t05-turnin-label">T0 Turn-In Pieces:</span>
+              <span class="t05-turnin-label">Turn-In T0:</span>
               ${piecesHtml}
             </div>
             ${amuletHtml}
             <div class="t05-milestones">${milestonesHtml}</div>
             <details class="t05-mats">
-              <summary>Materials &amp; Gold Shopping List (Stage ${st.stage})</summary>
+              <summary>Materials &amp; Gold</summary>
               <ul>${st.materials.map(m => `<li>${m}</li>`).join("")}</ul>
             </details>
           </div>
@@ -2510,7 +2578,490 @@ function renderT05Tab() {
     `;
   }).join("");
 
-  els.t05View.innerHTML = summaryHtml + cardsHtml;
+  els.t05View.innerHTML = toolbarHtml + cardsHtml;
+}
+
+// ============================================================================
+// TAB 4: PARTY PLANNER (MULTI-PLAYER OVERLAP & IN-RUN CHECKOFFS)
+// ============================================================================
+function getActivePartyPlayers() {
+  const players = [];
+  const ch = getActiveChar();
+  if (state.party.includeSelf) {
+    players.push({ key: "self", label: ch.name || "You", isSelf: true });
+  }
+  for (const m of state.party.members) {
+    if (m.inParty) {
+      players.push({ key: m.id, label: m.playerName, isSelf: false, member: m });
+    }
+  }
+  return players;
+}
+
+function getPartyEntries(includeT05 = true) {
+  const ch = getActiveChar();
+  const entries = [];
+
+  if (state.party.includeSelf) {
+    const selfTargets = getDerivedTargets(state.party.selfScope, includeT05);
+    for (const t of selfTargets) {
+      entries.push({
+        ...t,
+        playerKey: "self",
+        playerLabel: ch.name || "You",
+        isSelf: true,
+      });
+    }
+  }
+
+  for (const m of state.party.members) {
+    if (!m.inParty) continue;
+    for (const item of m.items) {
+      if ((item.source === "Dungeon" || item.source === "T0.5") && item.dungeon && item.boss) {
+        entries.push({
+          kind: "item",
+          memberId: m.id,
+          playerKey: m.id,
+          playerLabel: m.playerName,
+          isSelf: false,
+          dungeon: item.dungeon,
+          boss: item.boss,
+          done: isItemDoneForBossTodo(item),
+          item,
+          bossRec: getBossRecord(item.dungeon, item.boss),
+        });
+      }
+    }
+    if (includeT05) {
+      for (const q of m.t05Quests || []) {
+        if (q.dungeon && q.boss) {
+          entries.push({
+            kind: "t05_quest",
+            memberId: m.id,
+            playerKey: m.id,
+            playerLabel: m.playerName,
+            isSelf: false,
+            stage: q.stage,
+            milestoneId: q.milestoneId,
+            title: q.title,
+            dungeon: q.dungeon,
+            boss: q.boss,
+            done: Boolean(q.done),
+            bossRec: getBossRecord(q.dungeon, q.boss),
+          });
+        }
+      }
+    }
+  }
+
+  return entries;
+}
+
+function analyzeBossOverlaps(entries) {
+  const active = entries.filter(e => !e.done);
+  const contested = [];
+  const slotOverlaps = [];
+  let sharedT05 = false;
+
+  // 1. Shared T0.5 quest synergy (2+ distinct players)
+  const t05Players = new Set(active.filter(e => e.kind === "t05_quest").map(e => e.playerKey));
+  if (t05Players.size >= 2) sharedT05 = true;
+
+  // 2. Exact contested drops (same Wowhead item ID, or identical non-URL text)
+  const activeDrops = active.filter(e => e.kind === "item");
+  const byItemKey = new Map();
+  for (const e of activeDrops) {
+    const whId = extractWowheadItemId(e.item.itemText);
+    let key = "";
+    let label = "";
+    if (whId) {
+      key = `wh:${whId}`;
+      label = shortLabelForItem(e.item.itemText);
+    } else {
+      const txt = String(e.item.itemText || "").trim();
+      if (txt && !isUrl(txt)) {
+        key = `txt:${txt.toLowerCase().replace(/\s+/g, " ")}`;
+        label = txt;
+      }
+    }
+    if (!key) continue;
+    if (!byItemKey.has(key)) byItemKey.set(key, { label, players: new Set(), slots: new Set() });
+    const g = byItemKey.get(key);
+    g.players.add(e.playerKey);
+    g.slots.add(e.item.slot);
+  }
+
+  const contestedSlotsCovered = new Map();
+  for (const g of byItemKey.values()) {
+    if (g.players.size >= 2) {
+      contested.push(g.label);
+      for (const sl of g.slots) {
+        if (!contestedSlotsCovered.has(sl)) contestedSlotsCovered.set(sl, new Set());
+        for (const p of g.players) contestedSlotsCovered.get(sl).add(p);
+      }
+    }
+  }
+
+  // 3. Slot overlap (2+ distinct players want same slot without distinct Wowhead IDs)
+  const bySlot = new Map();
+  for (const e of activeDrops) {
+    const sl = e.item.slot;
+    if (!bySlot.has(sl)) bySlot.set(sl, []);
+    bySlot.get(sl).push(e);
+  }
+
+  for (const [slot, list] of bySlot.entries()) {
+    const distinctPlayers = new Set(list.map(e => e.playerKey));
+    if (distinctPlayers.size < 2) continue;
+
+    // Skip if every player in this slot already matched exact Contested
+    const covered = contestedSlotsCovered.get(slot);
+    if (covered && [...distinctPlayers].every(p => covered.has(p))) continue;
+
+    // If EVERY entry has a Wowhead item ID and NO two distinct players share an ID,
+    // they are explicitly farming different items from the same boss -> no false overlap.
+    const allHaveWhId = list.every(e => Boolean(extractWowheadItemId(e.item.itemText)));
+    if (allHaveWhId) {
+      const idPlayers = new Map();
+      let sharedId = false;
+      for (const e of list) {
+        const id = extractWowheadItemId(e.item.itemText);
+        if (!idPlayers.has(id)) idPlayers.set(id, new Set());
+        idPlayers.get(id).add(e.playerKey);
+        if (idPlayers.get(id).size >= 2) sharedId = true;
+      }
+      if (!sharedId) continue;
+    }
+
+    slotOverlaps.push(slot);
+  }
+
+  return { contested, slotOverlaps, sharedT05 };
+}
+
+function buildPartyDungeonCards() {
+  const entries = getPartyEntries(partyShowT05);
+  const dungeonGroups = new Map();
+
+  for (const e of entries) {
+    if (!dungeonGroups.has(e.dungeon)) dungeonGroups.set(e.dungeon, new Map());
+    const bossMap = dungeonGroups.get(e.dungeon);
+    if (!bossMap.has(e.boss)) {
+      bossMap.set(e.boss, {
+        bossName: e.boss,
+        bossRec: e.bossRec,
+        entries: [],
+      });
+    }
+    bossMap.get(e.boss).entries.push(e);
+  }
+
+  const cards = [];
+  for (const [dName, bossMap] of dungeonGroups.entries()) {
+    let bosses = [...bossMap.values()].sort((a, b) =>
+      (a.bossRec?.Boss_Order ?? 999) - (b.bossRec?.Boss_Order ?? 999) || a.bossName.localeCompare(b.bossName)
+    );
+
+    const remBosses = bosses.filter(b => b.entries.some(e => !e.done));
+    if (partyHideDone) {
+      bosses = remBosses;
+    }
+    if (!bosses.length) continue;
+
+    const visiblePlayers = new Set();
+    let visibleNeeds = 0;
+    let contestedCount = 0;
+    let sharedT05Count = 0;
+
+    for (const b of bosses) {
+      b.overlaps = analyzeBossOverlaps(b.entries);
+      contestedCount += b.overlaps.contested.length;
+      if (b.overlaps.sharedT05) sharedT05Count++;
+      const countedEntries = partyHideDone ? b.entries.filter(e => !e.done) : b.entries;
+      for (const e of countedEntries) {
+        visiblePlayers.add(e.playerKey);
+        visibleNeeds++;
+      }
+    }
+
+    if (partyOverlapOnly && visiblePlayers.size < 2) continue;
+
+    cards.push({
+      name: dName,
+      bosses,
+      remCount: remBosses.length,
+      playerCount: visiblePlayers.size,
+      needCount: visibleNeeds,
+      contestedCount,
+      sharedT05Count,
+    });
+  }
+
+  cards.sort((a, b) => {
+    if (partySort === "players_desc") {
+      return b.playerCount - a.playerCount || b.needCount - a.needCount || b.bosses.length - a.bosses.length || a.name.localeCompare(b.name);
+    }
+    if (partySort === "needs_desc") {
+      return b.needCount - a.needCount || b.playerCount - a.playerCount || a.name.localeCompare(b.name);
+    }
+    if (partySort === "bosses_desc") {
+      return b.bosses.length - a.bosses.length || b.playerCount - a.playerCount || a.name.localeCompare(b.name);
+    }
+    if (partySort === "conflict_asc") {
+      return a.contestedCount - b.contestedCount || b.playerCount - a.playerCount || b.needCount - a.needCount || a.name.localeCompare(b.name);
+    }
+    return a.name.localeCompare(b.name);
+  });
+
+  return cards;
+}
+
+function formatDiscordDungeonPlan(card, activeTotal) {
+  const lines = [`**${card.name}** (${card.playerCount}/${activeTotal} players)`];
+  for (const b of card.bosses) {
+    const activeEntries = b.entries.filter(e => !e.done);
+    if (!activeEntries.length) continue;
+    const tags = [];
+    if (b.overlaps.contested.length) tags.push(`Contested: ${b.overlaps.contested.join(", ")}`);
+    if (b.overlaps.sharedT05) tags.push("Shared T0.5");
+    const suffix = tags.length ? ` [${tags.join(" | ")}]` : "";
+    const who = activeEntries.map(e => {
+      if (e.kind === "t05_quest") return `${e.playerLabel} (T0.5 S${e.stage})`;
+      const itemLabel = shortLabelForItem(e.item.itemText);
+      return itemLabel ? `${e.playerLabel} (${e.item.slot}: ${itemLabel})` : `${e.playerLabel} (${e.item.slot})`;
+    }).join(", ");
+    lines.push(`- **${b.bossName}**${suffix} — ${who}`);
+  }
+  return lines.join("\n");
+}
+
+function renderPartyTab() {
+  const ch = getActiveChar();
+  const activePlayers = getActivePartyPlayers();
+  const activeTotal = activePlayers.length;
+
+  const rosterRows = [
+    `
+      <tr class="${state.party.includeSelf ? "" : "roster-row-off"}">
+        <td class="roster-chk-cell">
+          <input type="checkbox" id="chkPartyIncludeSelf" ${state.party.includeSelf ? "checked" : ""} title="Include yourself in party" />
+        </td>
+        <td>
+          <strong style="color:var(--text-strong);">${esc(ch.name)}</strong>
+          <span class="player-tag self" style="margin-left:6px;">You</span>
+        </td>
+        <td style="text-align:right;white-space:nowrap;">
+          <div class="segmented" role="tablist">
+            <button id="partySelfActive" class="${state.party.selfScope === "active" ? "active" : ""}" type="button">Active Set</button>
+            <button id="partySelfAll" class="${state.party.selfScope === "all" ? "active" : ""}" type="button">All Sets</button>
+          </div>
+        </td>
+      </tr>
+    `,
+    ...state.party.members.map(m => {
+      const showSet = m.setName && m.setName.toLowerCase() !== m.playerName.toLowerCase();
+      return `
+        <tr class="${m.inParty ? "" : "roster-row-off"}">
+          <td class="roster-chk-cell">
+            <input type="checkbox" data-party-toggle="${esc(m.id)}" ${m.inParty ? "checked" : ""} title="Toggle in party" />
+          </td>
+          <td>
+            <strong style="color:var(--text-strong);">${esc(m.playerName)}</strong>
+            ${showSet ? `<span style="margin-left:6px;color:var(--muted);font-size:0.8rem;">— ${esc(m.setName)}</span>` : ""}
+          </td>
+          <td style="text-align:right;white-space:nowrap;">
+            <button type="button" data-party-rename="${esc(m.id)}" style="padding:3px 8px;font-size:0.78rem;">Rename</button>
+            <button type="button" class="remove-btn" data-party-remove="${esc(m.id)}" title="Remove from roster">✕</button>
+          </td>
+        </tr>
+      `;
+    }),
+  ].join("");
+
+  const rosterPanelHtml = `
+    <div class="panel">
+      <div class="party-paste-row">
+        <input id="partyPasteInput" type="text" placeholder="Paste friend's #share= link to add or update…" autocomplete="off" />
+        <button id="btnPartyPaste" class="primary" type="button">Add / Update</button>
+        <button id="btnPartyCopyMyLink" type="button">Copy My Link</button>
+      </div>
+      <div class="roster-wrap">
+        <table class="roster-table">
+          <tbody>${rosterRows}</tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  const filterBarHtml = `
+    <div class="panel" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;">
+      <div class="inline-tools">
+        <select id="partySortSelect" aria-label="Sort party dungeons">
+          <option value="players_desc" ${partySort === "players_desc" ? "selected" : ""}>Most Players</option>
+          <option value="needs_desc" ${partySort === "needs_desc" ? "selected" : ""}>Most Needs</option>
+          <option value="bosses_desc" ${partySort === "bosses_desc" ? "selected" : ""}>Most Bosses</option>
+          <option value="conflict_asc" ${partySort === "conflict_asc" ? "selected" : ""}>Least Conflict</option>
+          <option value="instance_asc" ${partySort === "instance_asc" ? "selected" : ""}>Instance (A → Z)</option>
+        </select>
+      </div>
+      <div class="inline-tools">
+        <label class="chk">
+          <input type="checkbox" id="chkPartyShowT05" ${partyShowT05 ? "checked" : ""} /> T0.5 quest bosses
+        </label>
+        <label class="chk">
+          <input type="checkbox" id="chkPartyOverlapOnly" ${partyOverlapOnly ? "checked" : ""} /> Overlap only (2+)
+        </label>
+        <label class="chk">
+          <input type="checkbox" id="chkPartyHideDone" ${partyHideDone ? "checked" : ""} /> Hide completed
+        </label>
+      </div>
+    </div>
+  `;
+
+  const cards = buildPartyDungeonCards();
+
+  if (!activeTotal) {
+    els.partyView.innerHTML = rosterPanelHtml + filterBarHtml + `
+      <div class="empty-state">
+        <h3>No players selected</h3>
+        <p>Check at least one player in the roster above.</p>
+      </div>
+    `;
+    return;
+  }
+
+  if (!cards.length) {
+    els.partyView.innerHTML = rosterPanelHtml + filterBarHtml + `
+      <div class="empty-state">
+        <h3>No matching party dungeons</h3>
+        <p>Paste a friend's share link above or adjust your filters.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const NON_STANDARD_TYPES = new Set(["Summoned", "Rare", "Secret", "Optional", "Event"]);
+
+  const cardsHtml = cards.map(g => {
+    const hasWings = g.bosses.some(b => b.bossRec?.Wing && b.bossRec.Wing !== "Main");
+
+    const rowsHtml = g.bosses.map(b => {
+      const allDone = b.entries.every(e => e.done);
+      const wing = b.bossRec?.Wing || "";
+      const bType = b.bossRec?.Boss_Type || "Main";
+      const bossNotes = b.bossRec?.Notes || "";
+      const typeTag = NON_STANDARD_TYPES.has(bType)
+        ? `<span class="badge type-${esc(bType)}" style="margin-left:6px;vertical-align:middle;">${esc(bType)}</span>`
+        : "";
+
+      const overlapTags = [];
+      for (const lbl of b.overlaps.contested) {
+        overlapTags.push(`<span class="overlap-tag overlap-contested">Contested: ${esc(lbl)}</span>`);
+      }
+      for (const sl of b.overlaps.slotOverlaps) {
+        overlapTags.push(`<span class="overlap-tag overlap-slot">Slot Overlap: ${esc(sl)}</span>`);
+      }
+      if (b.overlaps.sharedT05) {
+        overlapTags.push(`<span class="overlap-tag overlap-t05">Shared T0.5</span>`);
+      }
+      const overlapHtml = overlapTags.length ? `<div class="overlap-strip">${overlapTags.join("")}</div>` : "";
+
+      const chipsHtml = b.entries.map(e => {
+        const playerTag = `<span class="player-tag ${e.isSelf ? "self" : ""}">${esc(e.isSelf ? "You" : e.playerLabel)}</span>`;
+        if (e.kind === "t05_quest") {
+          const chkAttr = e.isSelf
+            ? `data-party-self-t05="${esc(e.milestoneId)}"`
+            : `data-party-friend-t05="${esc(e.milestoneId)}" data-party-member-id="${esc(e.memberId)}"`;
+          return `
+            <div class="drop-chip ${e.done ? "done" : ""}">
+              <input type="checkbox" ${chkAttr} ${e.done ? "checked" : ""} />
+              <div class="drop-chip-body">
+                ${playerTag}
+                <span class="t05-quest-tag">T0.5 S${e.stage}</span>
+                <span style="color:var(--text)">${esc(e.title)}</span>
+              </div>
+            </div>
+          `;
+        }
+        const label = shortLabelForItem(e.item.itemText);
+        const link = isUrl(e.item.itemText);
+        const isT05 = e.item.source === "T0.5";
+        const chkAttr = e.isSelf
+          ? `data-party-self-item="${esc(e.item.id)}" data-party-self-set="${esc(e.gearsetId)}"`
+          : `data-party-friend-item="${esc(e.item.id)}" data-party-member-id="${esc(e.memberId)}"`;
+        return `
+          <div class="drop-chip ${e.done ? "done" : ""}">
+            <input type="checkbox" ${chkAttr} ${e.done ? "checked" : ""} />
+            <div class="drop-chip-body">
+              ${playerTag}
+              <span class="slot-tag">${esc(e.item.slot)}</span>
+              ${isT05 ? `<span class="base-t0-tag">${e.item.t05Status === "t05" ? "T0.5 ✓" : "Base T0"}</span>` : ""}
+              ${link
+                ? `<a href="${esc(e.item.itemText.trim())}" target="_blank" rel="noopener noreferrer" style="color:var(--forever-text);text-decoration:none;">${esc(label)} ↗</a>`
+                : (label ? `<span style="color:var(--text)">${esc(label)}</span>` : "")
+              }
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      return `
+        <tr class="${allDone ? "row-obtained" : ""}">
+          <td class="boss-name">${esc(b.bossName)}${typeTag}</td>
+          ${hasWings ? `<td style="color:var(--muted)">${esc(wing)}</td>` : ""}
+          <td class="notes-cell">${esc(bossNotes)}</td>
+          <td>${overlapHtml}<div class="todo-drops">${chipsHtml}</div></td>
+        </tr>
+      `;
+    }).join("");
+
+    const playersBadgeCls = g.playerCount >= 2 ? "accent-badge" : "muted-badge";
+    const conflictBadge = g.contestedCount > 0
+      ? `<span class="badge danger-badge">${g.contestedCount} contested</span>`
+      : "";
+    const t05Badge = g.sharedT05Count > 0
+      ? `<span class="badge type-Summoned">Shared T0.5</span>`
+      : "";
+
+    return `
+      <section class="instance-card open ${g.remCount > 0 ? "has-active" : ""}">
+        <div class="instance-header static">
+          <div class="inst-left">
+            <span class="inst-name">${esc(g.name)}</span>
+            <span class="badge ${playersBadgeCls}">${g.playerCount}/${activeTotal} players</span>
+            ${conflictBadge}
+            ${t05Badge}
+          </div>
+          <div class="inst-meta">
+            <button type="button" data-copy-party-plan="${esc(g.name)}" style="padding:3px 8px;font-size:11px;">Copy Plan</button>
+          </div>
+        </div>
+        <div class="instance-body">
+          <div class="table-wrap">
+            <table class="todo-table">
+              <colgroup>
+                <col style="width:240px" />
+                ${hasWings ? `<col style="width:155px" />` : ""}
+                <col />
+                <col style="width:400px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Boss</th>
+                  ${hasWings ? `<th>Wing</th>` : ""}
+                  <th>Notes</th>
+                  <th>Party Targets</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    `;
+  }).join("");
+
+  els.partyView.innerHTML = rosterPanelHtml + filterBarHtml + cardsHtml;
 }
 
 // ============================================================================
@@ -2520,8 +3071,8 @@ function populateInstanceDropdown() {
   const current = els.instance.value;
   const catalog = getDungeonCatalog(endgameOnly);
   const sorted = [...catalog.values()].sort((a, b) => a.name.localeCompare(b.name));
-  let html = `<option value="">All ${endgameOnly ? "Endgame " : ""}Instances (${sorted.length})</option>`;
-  html += sorted.map(d => `<option value="${esc(d.name)}">${esc(d.name)} (${esc(d.level)})</option>`).join("");
+  let html = `<option value="">All ${endgameOnly ? "Endgame " : ""}Instances</option>`;
+  html += sorted.map(d => `<option value="${esc(d.name)}">${esc(d.name)}</option>`).join("");
   els.instance.innerHTML = html;
   els.instance.value = catalog.has(current) ? current : "";
 }
@@ -2538,7 +3089,7 @@ function getFilteredCompendiumRows() {
     if (type && r.Boss_Type !== type) return false;
     if (coreOnly && r.Boss_Type !== "Main" && r.Boss_Type !== "Final") return false;
     if (q) {
-      const hay = `${r.Instance} ${r.Wing} ${r.Boss_Name} ${r.Boss_Type} ${r.Origin} ${r.Zone} ${r.Level_Range} ${r.Verification_Sources} ${r.Notes}`.toLowerCase();
+      const hay = `${r.Instance} ${r.Wing} ${r.Boss_Name} ${r.Boss_Type} ${r.Notes}`.toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
@@ -2562,30 +3113,31 @@ function renderCompendiumInstanceTable(bosses, targetCounts) {
     const tc = targetCounts.get(`${r.Instance}||${r.Boss_Name}`);
     const statusBadge = tc
       ? (tc.remaining > 0
-          ? `<span class="badge accent-badge" style="margin-left:6px;">${tc.remaining} needed</span>`
-          : `<span class="badge done-tag" style="margin-left:6px;">✓ Done</span>`)
+          ? `<span class="badge accent-badge" style="margin-left:6px;">To-Do</span>`
+          : `<span class="badge done-tag" style="margin-left:6px;">✓</span>`)
       : "";
     return `
       <tr class="${tc && tc.remaining > 0 ? "row-targeted" : ""}">
-        <td class="order-cell">${r.Boss_Order}</td>
         <td class="boss-name">${esc(r.Boss_Name)}${statusBadge}</td>
         <td><span class="badge type-${esc(r.Boss_Type)}">${esc(r.Boss_Type)}</span></td>
         <td class="notes-cell">${esc(r.Notes)}</td>
-        <td class="sources-cell">${esc(r.Verification_Sources)}</td>
       </tr>
     `;
   }).join("");
 
   return `
     <div class="table-wrap">
-      <table>
+      <table class="comp-table">
+        <colgroup>
+          <col style="width:260px" />
+          <col style="width:96px" />
+          <col />
+        </colgroup>
         <thead>
           <tr>
-            <th class="order-cell">#</th>
-            <th>Boss Name</th>
+            <th>Boss</th>
             <th>Type</th>
             <th>Notes</th>
-            <th>Sources</th>
           </tr>
         </thead>
         <tbody>${rowsHtml}</tbody>
@@ -2597,20 +3149,12 @@ function renderCompendiumInstanceTable(bosses, targetCounts) {
 function renderCompendiumTab() {
   const filtered = getFilteredCompendiumRows();
   const targetCounts = getBossTargetCounts();
-  const instSet = new Set(filtered.map(r => r.Instance));
-  const targetedInView = filtered.filter(r => targetCounts.has(`${r.Instance}||${r.Boss_Name}`)).length;
-
-  els.stats.innerHTML = `
-    <span class="stat-pill">Showing <strong>${filtered.length}</strong> / ${allBosses.length} bosses</span>
-    <span class="stat-pill">Instances: <strong>${instSet.size}</strong>${endgameOnly ? " (Endgame 50+)" : ""}</span>
-    <span class="stat-pill accent">Targeted on ${esc(getActiveChar().name)}: <strong>${targetedInView}</strong> bosses</span>
-  `;
 
   els.expandAll.classList.toggle("hidden", viewMode !== "grouped");
   els.collapseAll.classList.toggle("hidden", viewMode !== "grouped");
 
   if (!filtered.length) {
-    els.compendiumView.innerHTML = `<div class="empty-state"><h3>No matching bosses</h3>Try adjusting your search or filter settings.</div>`;
+    els.compendiumView.innerHTML = `<div class="empty-state"><h3>No matching bosses</h3></div>`;
     return;
   }
 
@@ -2622,7 +3166,7 @@ function renderCompendiumTab() {
     }
     const groupArr = [...groups.entries()].map(([name, bosses]) => {
       bosses.sort((a, b) => a.Boss_Order - b.Boss_Order);
-      return { name, bosses, sample: bosses[0], minLevel: bosses[0].Min_Level, maxLevel: bosses[0].Max_Level, count: bosses.length };
+      return { name, bosses, minLevel: bosses[0].Min_Level, maxLevel: bosses[0].Max_Level, levelRange: bosses[0].Level_Range };
     });
     const sortMode = els.sort.value;
     groupArr.sort((a, b) => {
@@ -2630,24 +3174,21 @@ function renderCompendiumTab() {
       if (sortMode === "instance_desc") return b.name.localeCompare(a.name);
       if (sortMode === "level_asc") return a.minLevel - b.minLevel || a.maxLevel - b.maxLevel || a.name.localeCompare(b.name);
       if (sortMode === "level_desc") return b.maxLevel - a.maxLevel || b.minLevel - a.minLevel || a.name.localeCompare(b.name);
-      if (sortMode === "bosses_desc") return b.count - a.count || a.name.localeCompare(b.name);
-      if (sortMode === "bosses_asc") return a.count - b.count || a.name.localeCompare(b.name);
       return 0;
     });
 
     const autoOpen = Boolean(els.search.value.trim() || els.instance.value);
     els.compendiumView.innerHTML = groupArr.map(g => {
       const isOpen = autoOpen || openInstances.has(g.name);
-      const isForever = g.sample.Origin === "WoW Forever";
       const wings = [...new Set(g.bosses.map(b => b.Wing))];
       const hasMultipleWings = wings.length > 1 || (wings.length === 1 && wings[0] !== "Main");
-      const neededHere = g.bosses.filter(b => (targetCounts.get(`${b.Instance}||${b.Boss_Name}`)?.remaining || 0) > 0).length;
+      const hasNeeded = g.bosses.some(b => (targetCounts.get(`${b.Instance}||${b.Boss_Name}`)?.remaining || 0) > 0);
 
       let bodyHtml = "";
       if (hasMultipleWings) {
         for (const w of wings) {
           const wBosses = g.bosses.filter(b => b.Wing === w);
-          bodyHtml += `<div class="wing-banner">${esc(w)} (${wBosses.length})</div>`;
+          bodyHtml += `<div class="wing-banner">${esc(w)}</div>`;
           bodyHtml += renderCompendiumInstanceTable(wBosses, targetCounts);
         }
       } else {
@@ -2655,21 +3196,14 @@ function renderCompendiumTab() {
       }
 
       return `
-        <section class="instance-card ${isForever ? "forever-card" : "classic-card"} ${isOpen ? "open" : ""}">
+        <section class="instance-card ${hasNeeded ? "has-active" : ""} ${isOpen ? "open" : ""}">
           <button type="button" class="instance-header" data-toggle="${esc(g.name)}">
             <div class="inst-left">
               <span class="chevron">▶</span>
               <span class="inst-name">${esc(g.name)}</span>
-              <span class="badge ${isForever ? "origin-forever" : "origin-classic"}">${esc(g.sample.Origin)}</span>
-              ${neededHere ? `<span class="badge accent-badge">${neededHere} boss(es) needed</span>` : ""}
+              ${hasNeeded ? `<span class="badge accent-badge">To-Do</span>` : ""}
             </div>
-            <div class="inst-meta">
-              <span>Lv. ${esc(g.sample.Level_Range)}</span>
-              <span>•</span>
-              <span>${esc(g.sample.Zone)}</span>
-              <span>•</span>
-              <span><strong>${g.count}</strong> bosses</span>
-            </div>
+            <div class="inst-meta">Lv. ${esc(g.levelRange)}</div>
           </button>
           <div class="instance-body">${bodyHtml}</div>
         </section>
@@ -2678,15 +3212,14 @@ function renderCompendiumTab() {
   } else {
     const sorted = filtered.slice().sort((a, b) => {
       const { col, dir } = tableSort;
-      let cmp = (col === "Boss_Order" || col === "Min_Level") ? (a[col] - b[col]) : String(a[col]).localeCompare(String(b[col]));
+      let cmp = col === "Min_Level" ? (a[col] - b[col]) : String(a[col]).localeCompare(String(b[col]));
       if (cmp === 0) cmp = a.Instance.localeCompare(b.Instance) || a.Boss_Order - b.Boss_Order;
       return dir === "asc" ? cmp : -cmp;
     });
 
     const cols = [
-      ["Instance", "Instance"], ["Wing", "Wing"], ["Boss_Order", "#"],
-      ["Boss_Name", "Boss Name"], ["Boss_Type", "Type"], ["Min_Level", "Level"],
-      ["Zone", "Zone"], ["Notes", "Notes"]
+      ["Instance", "Instance"], ["Min_Level", "Level"], ["Wing", "Wing"],
+      ["Boss_Name", "Boss"], ["Boss_Type", "Type"], ["Notes", "Notes"]
     ];
     const thHtml = cols.map(([k, l]) => {
       const active = tableSort.col === k;
@@ -2695,16 +3228,14 @@ function renderCompendiumTab() {
 
     const bodyHtml = sorted.map(r => {
       const tc = targetCounts.get(`${r.Instance}||${r.Boss_Name}`);
-      const badge = tc ? (tc.remaining > 0 ? `<span class="badge accent-badge" style="margin-left:6px;">${tc.remaining} needed</span>` : `<span class="badge done-tag" style="margin-left:6px;">✓</span>`) : "";
+      const badge = tc ? (tc.remaining > 0 ? `<span class="badge accent-badge" style="margin-left:6px;">To-Do</span>` : `<span class="badge done-tag" style="margin-left:6px;">✓</span>`) : "";
       return `
         <tr class="${tc && tc.remaining > 0 ? "row-targeted" : ""}">
           <td><strong>${esc(r.Instance)}</strong></td>
-          <td style="color:var(--muted)">${esc(r.Wing)}</td>
-          <td class="order-cell">${r.Boss_Order}</td>
+          <td style="color:var(--muted);white-space:nowrap">${esc(r.Level_Range)}</td>
+          <td style="color:var(--muted)">${r.Wing === "Main" ? "" : esc(r.Wing)}</td>
           <td class="boss-name">${esc(r.Boss_Name)}${badge}</td>
           <td><span class="badge type-${esc(r.Boss_Type)}">${esc(r.Boss_Type)}</span></td>
-          <td style="white-space:nowrap">${esc(r.Level_Range)}</td>
-          <td>${esc(r.Zone)}</td>
           <td class="notes-cell">${esc(r.Notes)}</td>
         </tr>
       `;
@@ -2717,26 +3248,30 @@ function renderCompendiumTab() {
 function render() {
   if (!state) return;
   renderCharBar();
-  updateTabCounts();
+  syncT05TabVisibility();
 
   els.tabGear.classList.toggle("active", activeTab === "gear");
   els.tabTodo.classList.toggle("active", activeTab === "todo");
   els.tabT05.classList.toggle("active", activeTab === "t05");
+  els.tabParty.classList.toggle("active", activeTab === "party");
   els.tabCompendium.classList.toggle("active", activeTab === "compendium");
   els.tabGear.setAttribute("aria-selected", String(activeTab === "gear"));
   els.tabTodo.setAttribute("aria-selected", String(activeTab === "todo"));
   els.tabT05.setAttribute("aria-selected", String(activeTab === "t05"));
+  els.tabParty.setAttribute("aria-selected", String(activeTab === "party"));
   els.tabCompendium.setAttribute("aria-selected", String(activeTab === "compendium"));
 
   els.gearView.classList.toggle("hidden", activeTab !== "gear");
   els.todoView.classList.toggle("hidden", activeTab !== "todo");
   els.t05View.classList.toggle("hidden", activeTab !== "t05");
+  els.partyView.classList.toggle("hidden", activeTab !== "party");
   els.compendiumControls.classList.toggle("hidden", activeTab !== "compendium");
   els.compendiumView.classList.toggle("hidden", activeTab !== "compendium");
 
   if (activeTab === "gear") renderGearTab();
   else if (activeTab === "todo") renderTodoTab();
   else if (activeTab === "t05") renderT05Tab();
+  else if (activeTab === "party") renderPartyTab();
   else renderCompendiumTab();
 }
 
@@ -2879,7 +3414,7 @@ function importGearCsv(text, filename) {
   ch.activeSetId = newSet.id;
   saveState();
   render();
-  showToast(`Imported "${setName}" (${items.length} items)`);
+  showToast(`Imported "${setName}"`);
 }
 
 function downloadBlob(content, mime, filename) {
@@ -2944,10 +3479,37 @@ function exportCsv() {
       Completed: ch.t05.milestones[ms.id] ? "TRUE" : "FALSE",
     })));
     filename = `${ch.name}_t05_chain.csv`.toLowerCase().replace(/[^a-z0-9_.]+/g, "_");
+  } else if (activeTab === "party") {
+    cols = ["Instance", "Wing", "Boss_Order", "Boss_Name", "Player", "Kind", "Slot", "Done", "Overlap", "Item_or_Quest"];
+    dataRows = [];
+    for (const card of buildPartyDungeonCards()) {
+      for (const b of card.bosses) {
+        const ov = [];
+        if (b.overlaps.contested.length) ov.push(`Contested: ${b.overlaps.contested.join("; ")}`);
+        if (b.overlaps.slotOverlaps.length) ov.push(`Slot Overlap: ${b.overlaps.slotOverlaps.join("; ")}`);
+        if (b.overlaps.sharedT05) ov.push("Shared T0.5");
+        const ovStr = ov.join(" | ");
+        for (const e of b.entries) {
+          dataRows.push({
+            Instance: card.name,
+            Wing: b.bossRec?.Wing || "Main",
+            Boss_Order: b.bossRec?.Boss_Order ?? "",
+            Boss_Name: b.bossName,
+            Player: e.isSelf ? ch.name : e.playerLabel,
+            Kind: e.kind === "t05_quest" ? `T0.5 S${e.stage}` : (e.item.source === "T0.5" ? "Base T0" : "Gear Drop"),
+            Slot: e.kind === "t05_quest" ? "T0.5" : e.item.slot,
+            Done: e.done ? "TRUE" : "FALSE",
+            Overlap: ovStr,
+            Item_or_Quest: e.kind === "t05_quest" ? e.title : e.item.itemText,
+          });
+        }
+      }
+    }
+    filename = "party_dungeon_plan.csv";
   } else {
     cols = ["Instance","Wing","Boss_Order","Boss_Name","Boss_Type","Origin","Zone","Continent","Level_Range","Verification_Sources","Notes"];
     dataRows = getFilteredCompendiumRows();
-    filename = "wow_forever_dungeon_bosses_filtered.csv";
+    filename = "dungeon_bosses_filtered.csv";
   }
 
   const lines = [cols.join(",")].concat(dataRows.map(r => cols.map(c => csvCell(r[c])).join(",")));
@@ -2957,8 +3519,8 @@ function exportCsv() {
 function backupJson() {
   const payload = JSON.stringify(state, null, 2);
   const stamp = new Date().toISOString().slice(0, 10);
-  downloadBlob(payload, "application/json;charset=utf-8;", `wow_forever_tracker_backup_${stamp}.json`);
-  showToast("Downloaded full JSON backup");
+  downloadBlob(payload, "application/json;charset=utf-8;", `dungeon_todo_backup_${stamp}.json`);
+  showToast("Backup downloaded");
 }
 
 function restoreJson(text) {
@@ -2970,13 +3532,13 @@ function restoreJson(text) {
 
     const msg = isV2
       ? `Restore ${parsed.characters.length} character(s)? This replaces your current saved data.`
-      : `Restore v1 backup (${parsed.gearsets.length} gearset(s)) as a character? This replaces your current saved data.`;
+      : `Restore v1 backup (${parsed.gearsets.length} gearset(s))? This replaces your current saved data.`;
     if (!confirm(msg)) return;
 
     state = migrateToV2(parsed);
     saveState();
     render();
-    showToast(`Restored ${state.characters.length} character(s)`);
+    showToast("Backup restored");
   } catch {
     alert("Invalid backup JSON file.");
   }
@@ -2988,7 +3550,45 @@ function restoreJson(text) {
 els.tabGear.addEventListener("click", () => { activeTab = "gear"; render(); });
 els.tabTodo.addEventListener("click", () => { activeTab = "todo"; render(); });
 els.tabT05.addEventListener("click", () => { activeTab = "t05"; render(); });
+els.tabParty.addEventListener("click", () => { activeTab = "party"; render(); });
 els.tabCompendium.addEventListener("click", () => { activeTab = "compendium"; render(); });
+
+// Incoming Share Modal events
+els.btnShareAddParty.addEventListener("click", () => {
+  if (!pendingIncomingShare) return;
+  const { member, updated } = upsertPartyMemberFromShare(pendingIncomingShare);
+  saveState();
+  closeShareModal();
+  activeTab = "party";
+  render();
+  showToast(updated ? `Updated "${member.playerName}"` : `Added "${member.playerName}" to Party`);
+});
+
+els.btnShareImportSelf.addEventListener("click", () => {
+  if (!pendingIncomingShare) return;
+  const ch = getActiveChar();
+  const importedSet = {
+    id: uid(),
+    name: pendingIncomingShare.name,
+    bookmarkUrl: pendingIncomingShare.bookmarkUrl || "",
+    items: pendingIncomingShare.items,
+  };
+  ch.gearsets.push(importedSet);
+  ch.activeSetId = importedSet.id;
+  saveState();
+  closeShareModal();
+  activeTab = "gear";
+  render();
+  showToast(`Imported "${importedSet.name}"`);
+});
+
+els.btnShareCancel.addEventListener("click", closeShareModal);
+els.shareModal.addEventListener("click", (e) => {
+  if (e.target === els.shareModal) closeShareModal();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && pendingIncomingShare) closeShareModal();
+});
 
 els.exportBtn.addEventListener("click", exportCsv);
 els.backupJsonBtn.addEventListener("click", backupJson);
@@ -3023,7 +3623,7 @@ els.charBar.addEventListener("click", (e) => {
     ch.faction = ch.faction === "Horde" ? "Alliance" : "Horde";
     saveState();
     render();
-    showToast(`${ch.name} set to ${ch.faction}`);
+    showToast(`${ch.name}: ${ch.faction}`);
     return;
   }
   if (e.target.id === "btnNewChar") {
@@ -3035,7 +3635,7 @@ els.charBar.addEventListener("click", (e) => {
     state.activeCharId = created.id;
     saveState();
     render();
-    showToast(`Created character "${created.name}" (${created.faction})`);
+    showToast(`Created "${created.name}"`);
     return;
   }
   if (e.target.id === "btnRenameChar") {
@@ -3048,7 +3648,7 @@ els.charBar.addEventListener("click", (e) => {
   }
   if (e.target.id === "btnDeleteChar") {
     if (state.characters.length <= 1) return;
-    if (!confirm(`Delete character "${ch.name}" and all ${ch.gearsets.length} of its gearset(s)?`)) return;
+    if (!confirm(`Delete character "${ch.name}"?`)) return;
     state.characters = state.characters.filter(c => c.id !== ch.id);
     state.activeCharId = state.characters[0].id;
     saveState();
@@ -3110,19 +3710,6 @@ els.gearView.addEventListener("click", (e) => {
     render();
     return;
   }
-  if (e.target.id === "btnAddStandardSlots") {
-    for (const slot of STANDARD_SLOTS) {
-      gs.items.push({ id: uid(), obtained: false, t05Status: "need_t0", slot, source: "Dungeon", dungeon: "", boss: "", itemText: "" });
-    }
-    saveState();
-    render();
-    return;
-  }
-  if (e.target.id === "btnGearEndgame") {
-    gearEndgameOnly = !gearEndgameOnly;
-    renderGearTab();
-    return;
-  }
   if (e.target.id === "btnImportGearCsv") {
     els.gearFileInput.click();
     return;
@@ -3151,7 +3738,7 @@ els.gearView.addEventListener("click", (e) => {
     if (tr && item) {
       editingItemId = id;
       const slotDiv = tr.querySelector(".item-editor-slot");
-      slotDiv.innerHTML = `<input type="text" data-gear-field="itemText" value="${esc(item.itemText)}" placeholder="Paste Wowhead link or item name (optional)" />`;
+      slotDiv.innerHTML = `<input type="text" data-gear-field="itemText" value="${esc(item.itemText)}" placeholder="Wowhead link or item name" />`;
       const input = slotDiv.querySelector("input");
       input.focus();
       input.select();
@@ -3238,7 +3825,7 @@ els.gearView.addEventListener("input", (e) => {
         a.href = gs.bookmarkUrl.trim();
         a.target = "_blank";
         a.rel = "noopener noreferrer";
-        a.textContent = "Open Bookmark ↗";
+        a.textContent = "Open ↗";
         row.appendChild(a);
       } else if (existing) {
         existing.remove();
@@ -3283,7 +3870,7 @@ els.gearView.addEventListener("focusout", (e) => {
   const wowheadName = parseWowheadItemUrl(item.itemText);
   if (wowheadName) {
     const slotDiv = tr.querySelector(".item-editor-slot");
-    slotDiv.innerHTML = `<button type="button" class="item-display-btn" data-edit-item="${esc(item.id)}" title="Click to edit Wowhead URL">${esc(wowheadName)}</button>`;
+    slotDiv.innerHTML = `<button type="button" class="item-display-btn" data-edit-item="${esc(item.id)}" title="Click to edit URL">${esc(wowheadName)}</button>`;
   }
 });
 
@@ -3352,7 +3939,7 @@ els.t05View.addEventListener("click", (e) => {
       if (turninMs) ch.t05.milestones[turninMs.id] = true;
       saveState();
       render();
-      showToast(`Marked ${count} Stage ${stageNum} piece(s) as T0.5 ✓`);
+      showToast(`Stage ${stageNum} marked T0.5 ✓`);
     }
   }
 });
@@ -3371,14 +3958,12 @@ els.t05View.addEventListener("change", (e) => {
     ch.t05.leftAmuletBoss = match.boss;
     saveState();
     render();
-    showToast(`Components #1 & Left Piece set to ${match.boss}`);
     return;
   }
   if (e.target.id === "selLeftAmulet") {
     ch.t05.leftAmuletBoss = e.target.value;
     saveState();
     render();
-    showToast(`Left Piece boss set to ${ch.t05.leftAmuletBoss}`);
     return;
   }
   if (e.target.id === "selComp2") {
@@ -3387,14 +3972,12 @@ els.t05View.addEventListener("change", (e) => {
     ch.t05.rightAmuletBoss = match.boss;
     saveState();
     render();
-    showToast(`More Components & Right Piece set to ${match.boss}`);
     return;
   }
   if (e.target.id === "selRightAmulet") {
     ch.t05.rightAmuletBoss = e.target.value;
     saveState();
     render();
-    showToast(`Right Piece boss set to ${ch.t05.rightAmuletBoss}`);
     return;
   }
   const msId = e.target.getAttribute("data-t05-ms");
@@ -3409,6 +3992,193 @@ els.t05View.addEventListener("change", (e) => {
     ch.t05.prereqT0Owned[prereqSlot] = e.target.checked;
     saveState();
     renderT05Tab();
+  }
+});
+
+// Party Planner Tab delegated events
+function handlePartyPasteSubmit() {
+  const input = document.getElementById("partyPasteInput");
+  if (!input) return;
+  const code = extractShareCode(input.value);
+  if (!code) return;
+  try {
+    const decoded = decodeSharePayload(code);
+    const { member, updated } = upsertPartyMemberFromShare(decoded);
+    saveState();
+    render();
+    showToast(updated ? `Updated "${member.playerName}"` : `Added "${member.playerName}"`);
+  } catch (err) {
+    console.error(err);
+    alert("Could not read that share link.");
+  }
+}
+
+els.partyView.addEventListener("click", async (e) => {
+  if (e.target.id === "btnPartyPaste") {
+    handlePartyPasteSubmit();
+    return;
+  }
+  if (e.target.id === "btnPartyCopyMyLink") {
+    copyShareLink();
+    return;
+  }
+  if (e.target.id === "partySelfActive") {
+    state.party.selfScope = "active";
+    saveState();
+    renderPartyTab();
+    return;
+  }
+  if (e.target.id === "partySelfAll") {
+    state.party.selfScope = "all";
+    saveState();
+    renderPartyTab();
+    return;
+  }
+
+  const renameBtn = e.target.closest("[data-party-rename]");
+  if (renameBtn) {
+    const id = renameBtn.getAttribute("data-party-rename");
+    const m = state.party.members.find(x => x.id === id);
+    if (m) {
+      const name = prompt("Rename player:", m.playerName);
+      if (name && name.trim()) {
+        m.playerName = name.trim();
+        saveState();
+        renderPartyTab();
+      }
+    }
+    return;
+  }
+
+  const removeBtn = e.target.closest("[data-party-remove]");
+  if (removeBtn) {
+    const id = removeBtn.getAttribute("data-party-remove");
+    state.party.members = state.party.members.filter(x => x.id !== id);
+    saveState();
+    renderPartyTab();
+    return;
+  }
+
+  const copyPlanBtn = e.target.closest("[data-copy-party-plan]");
+  if (copyPlanBtn) {
+    const instName = copyPlanBtn.getAttribute("data-copy-party-plan");
+    const card = buildPartyDungeonCards().find(c => c.name === instName);
+    if (card) {
+      const text = formatDiscordDungeonPlan(card, getActivePartyPlayers().length);
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(`Copied plan for ${card.name}`);
+      } catch {
+        prompt("Copy Discord plan:", text);
+      }
+    }
+  }
+});
+
+els.partyView.addEventListener("keydown", (e) => {
+  if (e.target.id === "partyPasteInput" && e.key === "Enter") {
+    e.preventDefault();
+    handlePartyPasteSubmit();
+  }
+});
+
+els.partyView.addEventListener("change", (e) => {
+  const ch = getActiveChar();
+  if (e.target.id === "chkPartyIncludeSelf") {
+    state.party.includeSelf = e.target.checked;
+    saveState();
+    renderPartyTab();
+    return;
+  }
+  if (e.target.id === "partySortSelect") {
+    partySort = e.target.value;
+    renderPartyTab();
+    return;
+  }
+  if (e.target.id === "chkPartyShowT05") {
+    partyShowT05 = e.target.checked;
+    renderPartyTab();
+    return;
+  }
+  if (e.target.id === "chkPartyOverlapOnly") {
+    partyOverlapOnly = e.target.checked;
+    renderPartyTab();
+    return;
+  }
+  if (e.target.id === "chkPartyHideDone") {
+    partyHideDone = e.target.checked;
+    renderPartyTab();
+    return;
+  }
+
+  const toggleId = e.target.getAttribute("data-party-toggle");
+  if (toggleId) {
+    const m = state.party.members.find(x => x.id === toggleId);
+    if (m) {
+      m.inParty = e.target.checked;
+      saveState();
+      renderPartyTab();
+    }
+    return;
+  }
+
+  // Own T0.5 quest milestone checkoff (live sync)
+  const selfT05 = e.target.getAttribute("data-party-self-t05");
+  if (selfT05) {
+    ch.t05.milestones[selfT05] = e.target.checked;
+    saveState();
+    renderPartyTab();
+    return;
+  }
+
+  // Own item drop checkoff (live sync to Gear Builder & Boss To-Do)
+  const selfItemId = e.target.getAttribute("data-party-self-item");
+  const selfSetId = e.target.getAttribute("data-party-self-set");
+  if (selfItemId && selfSetId) {
+    const gs = ch.gearsets.find(s => s.id === selfSetId);
+    const item = gs?.items.find(i => i.id === selfItemId);
+    if (item) {
+      if (item.source === "T0.5") {
+        item.t05Status = e.target.checked ? "have_t0" : "need_t0";
+        item.obtained = false;
+      } else {
+        item.obtained = e.target.checked;
+      }
+      saveState();
+      renderPartyTab();
+    }
+    return;
+  }
+
+  // Friend T0.5 quest checkoff (local)
+  const friendT05 = e.target.getAttribute("data-party-friend-t05");
+  const memberId = e.target.getAttribute("data-party-member-id");
+  if (friendT05 && memberId) {
+    const m = state.party.members.find(x => x.id === memberId);
+    const q = m?.t05Quests.find(x => x.milestoneId === friendT05);
+    if (q) {
+      q.done = e.target.checked;
+      saveState();
+      renderPartyTab();
+    }
+    return;
+  }
+
+  // Friend item drop checkoff (local)
+  const friendItemId = e.target.getAttribute("data-party-friend-item");
+  if (friendItemId && memberId) {
+    const m = state.party.members.find(x => x.id === memberId);
+    const item = m?.items.find(i => i.id === friendItemId);
+    if (item) {
+      if (item.source === "T0.5") {
+        item.t05Status = e.target.checked ? "have_t0" : "need_t0";
+        item.obtained = false;
+      } else {
+        item.obtained = e.target.checked;
+      }
+      saveState();
+      renderPartyTab();
+    }
   }
 });
 
@@ -3507,9 +4277,7 @@ async function init() {
     els.gearView.innerHTML = `
       <div class="empty-state">
         <h3>Could not load <code>wow_forever_dungeon_bosses.csv</code></h3>
-        <p style="max-width:540px;margin:0 auto;">
-          Make sure both <code>index.html</code> and <code>wow_forever_dungeon_bosses.csv</code> are in the same folder and served over HTTP/HTTPS (such as GitHub Pages).
-        </p>
+        <p>Serve <code>index.html</code> and <code>wow_forever_dungeon_bosses.csv</code> over HTTP/HTTPS.</p>
       </div>
     `;
   }
